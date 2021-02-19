@@ -62,7 +62,7 @@ function MyApp() {
   });
 
   return (
-    <App themeDark={false} colorTheme="orange" {...f7params}>
+    <App themeDark={false} colorTheme="teal" {...f7params}>
       <SearchContextProvider>
         <SearchResultsContextProvider>
           <Page id="app">
@@ -70,8 +70,8 @@ function MyApp() {
             <Panel left cover backdrop swipe swipeOnlyClose>
               <View>
                 <Page>
-                  <Navbar title="Left Panel" />
-                  <Block></Block>
+                  {/* <Navbar title="Left Panel" />
+                  <Block></Block> */}
                 </Page>
               </View>
             </Panel>

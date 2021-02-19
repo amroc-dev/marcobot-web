@@ -6,7 +6,6 @@ function FiltersPage() {
     <>
       <Page>
         <BlockTitle>Filters</BlockTitle>
-        <BlockTitle>Main View Navigation</BlockTitle>
         <List>
           <ListItem link="/accordion/" title="Tags" panelClose />
           <ListItem link="/action-sheet/" title="Device" panelClose />

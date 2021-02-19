@@ -1,22 +1,13 @@
 
 
-#themedButtonLabel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-// $hoverColor: alpha(var(--gt-panel-color), 0.5);
-
 .themedButton {
   padding: 1rem;
-  // background-color: var(--gt-panel-color);
-  // color: var(--f7-text-color);
+  background-color: var(--gt-panel-color);
   font-weight: 500;
   margin-left: 0.5rem;
-  // --f7-button-hover-bg-color: rgba(var(--gt-panel-color-rgb), 0.5);
+  --f7-button-hover-bg-color: rgba(var(--gt-panel-color-rgb), 0.5);
 }
 
-// .themedButton.active-state {
-//   background-color: rgba(var(--gt-panel-color-rgb), 0.5);
-// }
+.themedButton.active-state {
+  background-color: rgba(var(--gt-panel-color-rgb), 0.5);
+}

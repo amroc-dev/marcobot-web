@@ -1,0 +1,37 @@
+:root {
+  --border-radius: 10px;
+
+  --primary-font-size: var(--f7-toolbar-font-size);
+  --secondary-font-size: calc(0.75 * var(--f7-toolbar-font-size));
+  --mini-font-size: calc(0.65 * var(--f7-toolbar-font-size));
+  --rating-font-size: calc(1.2 * var(--f7-toolbar-font-size));
+
+  --secondary-font-color: rgb(125,125,125);
+
+  --f7-color-marco: #000000;
+  --f7-color-marco-rgb: 0, 0, 0;
+  --f7-color-marco-shade: #000000;
+  --f7-color-marco-tint: #141414;
+}
+
+.button {
+  text-transform: none;
+}
+
+.ios, .aurora {
+  --gt-panel-color-rgb: 255, 255, 255;
+  --gt-panel-color: rgb(var(--gt-panel-color-rgb))
+}
+
+.theme-dark {
+  --gt-panel-color-rgb: 31, 34, 37;
+  --gt-panel-color: rgb(var(--gt-panel-color-rgb))
+}
+
+
+  .color-theme-marco {
+  --f7-theme-color: #000000;
+  --f7-theme-color-rgb: 0, 0, 0;
+  --f7-theme-color-shade: #000000;
+  --f7-theme-color-tint: #141414;
+}

@@ -1,0 +1,44 @@
+.rootContainer {
+  margin: 0.5rem;
+  margin-bottom: 0rem;
+}
+
+// .searchRow {
+//   display: flex;
+// }
+
+// .searchbar {
+//   flex: 1;
+// }
+
+.sortRow {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.sortContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.sortButtonLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sortButton {
+  padding: 1rem;
+  // background-color: var(--gt-panel-color);
+  // color: var(--f7-text-color);
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+
+.sortPopover {
+  max-width: 160px;
+  left: -30px;
+}

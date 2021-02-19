@@ -1,0 +1,49 @@
+:root {
+  --gt-border-radius: 10px;
+  --gt-row-height: 44px;
+
+  --f7-font-size: 16px;
+
+  --gt-primary-font-size: calc(var(--f7-font-size));
+  --gt-secondary-font-size: calc(0.75 * var(--f7-font-size));
+  --gt-mini-font-size: calc(0.65 * var(--f7-font-size));
+  --gt-rating-font-size: calc(1.2 * var(--f7-font-size));
+
+  --gt-secondary-font-color: rgb(125,125,125);
+
+  --gt-icon-size: 1rem;
+  --gt-icon-size-large: 1.5rem;
+
+  --f7-page-push-transition-duration: 350ms;
+  --f7-page-parallax-transition-duration: 350ms;
+}
+
+.button {
+  text-transform: none;
+}
+
+.popover-backdrop {
+  transition-duration: 200ms;
+}
+
+.ios, .aurora {
+  --gt-panel-color-rgb: 255, 255, 255;
+  --gt-panel-color: rgb(var(--gt-panel-color-rgb))
+}
+
+.theme-dark {
+  --gt-panel-color-rgb: 31, 34, 37;
+  --gt-panel-color: rgb(var(--gt-panel-color-rgb))
+}
+
+
+// const effects = [
+//   'f7-circle',
+//   'f7-cover',
+//   'f7-cover-v',
+//   'f7-dive',
+//   'f7-fade',
+//   'f7-flip',
+//   'f7-parallax',
+//   'f7-push',
+// ];

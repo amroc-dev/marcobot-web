@@ -30,7 +30,7 @@ import { SearchResultsContextProvider } from "./shared/react/SearchResultsContex
 import routes from "./routes";
 import store from "./store";
 
-import './css/app.scss';
+import './css/App.scss';
 
 function MyApp() {
   // Login screen demo data
@@ -76,13 +76,10 @@ function MyApp() {
               </View>
             </Panel>
 
-            <Panel right cover swipe swipeOnlyClose containerEl="app" id="panel-nested">
+            {/* <Panel right cover swipe swipeOnlyClose containerEl="app" id="panel-nested">
               <View url="/filters-page/">
-                {/* <Page>
-                  <Navbar title="Filters" />
-                </Page> */}
               </View>
-            </Panel>
+            </Panel> */}
 
             <View main className="safe-areas" url="/" />
 

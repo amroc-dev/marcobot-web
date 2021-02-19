@@ -15,6 +15,7 @@ import {
   Row,
   Col,
   Button,
+  Icon,
 } from "framework7-react";
 import SearchPageContent from "./SearchPageContent";
 import "../css/SearchPage.scss";
@@ -34,7 +35,11 @@ function SearchPage() {
         </NavLeft>
         <NavTitle sliding>Marcobot</NavTitle>
         <NavRight>
-          <Link panelOpen="right">Filters</Link>
+          <Link href="/filters-page/" transition='f7-parallax'>
+            Filters
+            <Icon size={'var(--gt-icon-size-large)'} f7="chevron_right" />
+            </Link>
+          {/* <Link panelOpen="right">Filters</Link> */}
         </NavRight>
       </Navbar>
       <SearchPageContent />

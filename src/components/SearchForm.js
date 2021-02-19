@@ -18,12 +18,12 @@ import {
   Button,
 } from "framework7-react";
 import "../css/SearchForm.scss";
-import "./ThemedButton";
-import ThemedButton from "./ThemedButton";
+import "./LinkButton";
+import ThemedButton from "./LinkButton";
+import LinkButton from "./LinkButton";
 
 function SearchForm(props) {
-  console.log(props.themeDark)
-  console.log("wererererererer")
+
   return (
     <div className="rootContainer">
       <Searchbar inline></Searchbar>
@@ -31,10 +31,10 @@ function SearchForm(props) {
         <div className="sortContainer">
           <div>Sort</div>
 
-            <ThemedButton popoverOpen=".popover-menu">
+            <LinkButton popoverOpen=".popover-menu">
               Popularity
-              <Icon size="1.1rem" style={{ paddingLeft: "0.5rem" }} f7="chevron_down" />
-            </ThemedButton>
+              <Icon size="var(--gt-icon-size)" style={{ paddingLeft: "0.25rem" }} f7="chevron_down" />
+            </LinkButton>
 
           <Popover className="popover-menu sortPopover">
             <List>

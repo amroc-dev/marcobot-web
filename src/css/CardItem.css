@@ -1,11 +1,11 @@
 .cardItemRoot {
-  border-radius: var(--border-radius);  
+  border-radius: var(--gt-border-radius);  
   margin: 0.5rem;
 }
 
 .cardItem {
   display: flex;
-  border-radius: var(--border-radius);  
+  border-radius: var(--gt-border-radius);  
   border-color: rgba(0, 0, 0, 0);
   box-shadow: var(--box-shadow); 
   justify-content: flex-start;
@@ -28,7 +28,7 @@
   --size: 100px;
   width: var(--size);
   height: var(--size);
-  border-radius: var(--border-radius) 0 0 var(--border-radius);  
+  border-radius: var(--gt-border-radius) 0 0 var(--gt-border-radius);  
   min-width: var(--size);
   min-height: var(--size);
   /* align-self: center; */
@@ -63,14 +63,13 @@
 .cardItem .titleContainer{
   display: flex;
   flex-direction: column;
-  font-size: var(--primarybold-font-size);
-  /* font-weight: bold; */
-   
+  font-size: var(--gt-primary-font-size);
+  font-weight: 500;
 }
 
 .devName {
-  font-size: var(--secondary-font-size);
-  color: var(--secondary-font-color);
+  font-size: var(--gt-secondary-font-size);
+  color: var(--gt-secondary-font-color);
   font-weight: normal;
 }
 
@@ -98,14 +97,14 @@
 .releaseDate {
   width: 100px;
   flex: 1;
-  font-size: var(--secondary-font-size);
+  font-size: var(--gt-secondary-font-size);
   color: var(--secondary-font-color);
   /* visibility: hidden; */
 }
 
 .ratingCount {
-  font-size: var(--secondary-font-size);
-  color: var(--secondary-font-color);
+  font-size: var(--gt-secondary-font-size);
+  color: var(--gt-secondary-font-color);
 }
 
 .ratingContainer{
@@ -118,8 +117,8 @@
 
 .price {
   flex: 0;
-  color: var(--primary-font-color);
-  font-size: var(--primary-font-size);
+  color: var(--gt-primary-font-color);
+  font-size: var(--gt-primary-font-size);
   /* background-color: green; */
 }
 
@@ -129,7 +128,7 @@
   width: 36px;
   height: 36px;
   display: flex;
-  border-radius: var(--border-radius);
+  border-radius: var(--gt-border-radius);
   justify-content: center;
   margin-bottom: 0.15rem;
 }
@@ -137,5 +136,5 @@
 .ratingValue{
   color: white;
   align-self: center;
-  font-size: var(--rating-font-size);
+  font-size: var(--gt-rating-font-size);
 } 

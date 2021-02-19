@@ -2,7 +2,11 @@ import React, { useState, useRef } from "react";
 import { Block, Card, ListItem } from "framework7-react";
 import "../css/CardItem.css";
 
-import { objectKeyFromDotString, monthMap, formatRatingCount } from "../shared/react/Misc";
+import {
+  objectKeyFromDotString,
+  monthMap,
+  formatRatingCount,
+} from "../shared/react/Misc";
 const dbkeys = require("../shared/back-end/db-keys");
 
 function getDate(dateString, includeDay = false) {
@@ -23,7 +27,7 @@ function CardItem({ doc }) {
   const doc_trackName = objectKeyFromDotString(doc, dbkeys.trackName);
   const doc_artistName = objectKeyFromDotString(doc, dbkeys.artistName);
 
-  const releaseDate= getDate(doc_releaseDate, false);
+  const releaseDate = getDate(doc_releaseDate, false);
 
   const countForCurrentVersion = doc_popularity;
   let rating = "-";
@@ -50,13 +54,21 @@ function CardItem({ doc }) {
   }
 
   const ratingCellStyle = { backgroundColor: ratingCellColour };
-  const ratingCellClass = "ratingCell" + (rating === 10 ? " ratingCellGold" : " ratingCellWhite");
+  const ratingCellClass =
+    "ratingCell" + (rating === 10 ? " ratingCellGold" : " ratingCellWhite");
   const ratingCountElem = formatRatingCount(doc_popularity);
   const formattedPriceElem = doc_formattedPrice;
 
+  function onClick() {
+    // const baseURL = "itms-apps://itunes.apple.com/app/id" + doc.searchBlob.trackId;
+    const prefix = window.navigator.standalone ? "itms-apps" : "https";
+    const url = prefix + "://itunes.apple.com/app/id" + doc.searchBlob.trackId;
+    window.open(url);
+  }
+
   return (
     <div key={doc._id} className="cardItemRoot" padding={false}>
-      <div className="cardItem">
+      <div className="cardItem" onClick={onClick}>
         <img
           style={{ width: "100px", height: "100px" }}
           className="cardImage"

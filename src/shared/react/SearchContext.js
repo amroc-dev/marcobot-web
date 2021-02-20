@@ -81,13 +81,13 @@ function SearchContextProvider(props) {
   }
 
   function setPopularityFilter(min, max) {
-    if (min !== popularityFilter.min || max != popularityFilter.max) {
+    if (min !== popularityFilter.min || max !== popularityFilter.max) {
       _setPopularityFilter({ min: min, max: max });
     }
   }
 
   function setRatingFilter(val) {
-    if (val != ratingFilter)
+    if (val !== ratingFilter)
       _setRatingFilter(val)
   }
 

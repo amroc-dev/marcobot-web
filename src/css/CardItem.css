@@ -98,7 +98,7 @@
   width: 100px;
   flex: 1;
   font-size: var(--gt-secondary-font-size);
-  color: var(--secondary-font-color);
+  color: var(--gt-secondary-font-color);
   /* visibility: hidden; */
 }
 

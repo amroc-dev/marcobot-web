@@ -26,7 +26,9 @@ function SearchForm(props) {
 
   return (
     <div className="rootContainer">
-      <Searchbar inline></Searchbar>
+      <div>
+      <Searchbar inline disableButton={false}></Searchbar>
+      </div>
       <div className="sortRow">
         <div className="sortContainer">
           <div>Sort</div>

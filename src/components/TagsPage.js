@@ -13,29 +13,23 @@ import {
   Icon,
 } from "framework7-react";
 
-import FilterTags from "./FilterTags"
-
-function FiltersPage() {
+function TagsPage() {
   return (
     <>
       <Page>
         <Navbar sliding={true}>
           <NavLeft>
-            <Link back style={{ width: "60px" }}>
+            <Link back style={{ width: "60px" }} transition="f7-parallax">
               <Icon size={"var(--gt-icon-size-large)"} f7="chevron_left" />
             </Link>
           </NavLeft>
-          <NavTitle sliding>Filters</NavTitle>
+          <NavTitle sliding>Tags</NavTitle>
         </Navbar>
         {/* <List>
-          <ListItem href="/tags-page/" title="Tags" transition="f7-parallax" />
-        </List> */}
-        <BlockTitle>Tags</BlockTitle>
-        <FilterTags />
+          <ListItem link="/accordion/" title="Tags" />
+        </List>
         <BlockTitle>Device</BlockTitle>
-        <BlockTitle>Popularity</BlockTitle>
-        <BlockTitle>Rating</BlockTitle>
-        {/* <List>
+        <List>
           <ListItem link="/action-sheet/" title="Device" />
           <ListItem link="/badge/" title="Popularity" panelClose />
           <ListItem link="/buttons/" title="Rating" panelClose />
@@ -45,4 +39,4 @@ function FiltersPage() {
   );
 }
 
-export default FiltersPage;
+export default TagsPage;

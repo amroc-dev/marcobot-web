@@ -9,7 +9,7 @@ import { SearchResultsContext, statusCodes } from "../shared/react/SearchResults
 
 function SearchPageContent() {
   const allowInfinite = useRef(true);
-  const [items, setItems] = useState();
+  const [items, setItems] = useState([]);
   const [showPreloader, setShowPreloader] = useState(true);
 
   const [hasMoreItems, setHasMoreItems] = useState(false);

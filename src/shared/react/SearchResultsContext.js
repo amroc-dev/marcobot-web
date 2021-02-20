@@ -62,7 +62,7 @@ function SearchResultsContextProvider(props) {
 
   useEffect(() => {
     setFetching(false)
-    if (searchID != currentSearchID)
+    if (searchID !== currentSearchID)
       startSearch()
   }, [searchResults]);
 
@@ -93,7 +93,7 @@ function SearchResultsContextProvider(props) {
         offset
       );
 
-      if (currentSearchIDRef.current != searchIDRef.current) {
+      if (currentSearchIDRef.current !== searchIDRef.current) {
         setSearchResults( {
           status: statusCodes.None,
           resultsCount: 0,
@@ -175,7 +175,7 @@ function SearchResultsContextProvider(props) {
   }
 
   useEffect(() => {
-    if (holdSearch === false && currentSearchID != searchID) {
+    if (holdSearch === false && currentSearchID !== searchID) {
       startSearch();
     }
   }, [holdSearch]);

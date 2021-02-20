@@ -1,36 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import {
   f7,
   f7ready,
   App,
   Panel,
-  Views,
   View,
-  Popup,
   Page,
-  Navbar,
-  Toolbar,
-  NavRight,
-  Link,
-  Block,
-  BlockTitle,
-  LoginScreen,
-  LoginScreenTitle,
-  List,
-  ListItem,
-  ListInput,
-  ListButton,
-  BlockFooter,
 } from "framework7-react";
 
+
+
+import { CoreContextProvider } from "./shared/react/CoreContext";
 import { SearchContextProvider } from "./shared/react/SearchContext";
 import { SearchResultsContextProvider } from "./shared/react/SearchResultsContext";
+import { FilterTagsContextProvider } from "./shared/react/FilterTagsContext";
 
 import routes from "./routes";
 import store from "./store";
 
-import './css/App.scss';
+import "./css/App.scss";
 
 function MyApp() {
   // Login screen demo data
@@ -62,30 +51,30 @@ function MyApp() {
   });
 
   return (
-    <App themeDark={false} colorTheme="teal" {...f7params}>
-      <SearchContextProvider>
-        <SearchResultsContextProvider>
-          <Page id="app">
-            
-            <Panel left cover backdrop swipe swipeOnlyClose>
-              <View>
-                <Page>
-                  {/* <Navbar title="Left Panel" />
-                  <Block></Block> */}
-                </Page>
-              </View>
-            </Panel>
+    <App themeDark={false} colorTheme="blue" {...f7params}>
+      <CoreContextProvider>
+        <FilterTagsContextProvider>
+          <SearchContextProvider>
+            <SearchResultsContextProvider>
+              <Page id="app">
+                <Panel left cover backdrop swipe swipeOnlyClose>
+                  <View>
+                    <Page>{/* <Navbar title="Left Panel" />
+                  <Block></Block> */}</Page>
+                  </View>
+                </Panel>
 
-            {/* <Panel right cover swipe swipeOnlyClose containerEl="app" id="panel-nested">
+                {/* <Panel right cover swipe swipeOnlyClose containerEl="app" id="panel-nested">
               <View url="/filters-page/">
               </View>
             </Panel> */}
 
-            <View main className="safe-areas" url="/" />
-
-          </Page>
-        </SearchResultsContextProvider>
-      </SearchContextProvider>
+                <View main className="safe-areas" url="/" />
+              </Page>
+            </SearchResultsContextProvider>
+          </SearchContextProvider>
+        </FilterTagsContextProvider>
+      </CoreContextProvider>
     </App>
   );
 }

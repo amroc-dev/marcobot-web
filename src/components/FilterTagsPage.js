@@ -20,7 +20,7 @@ import { BackButton } from "./Misc";
 function FilterTagsPage() {
   return (
     <>
-      <TIF_Page>
+      <Page>
         <Navbar sliding={true}>
           <NavLeft>
             <BackButton />
@@ -37,7 +37,7 @@ function FilterTagsPage() {
           <ListItem link="/badge/" title="Popularity" panelClose />
           <ListItem link="/buttons/" title="Rating" panelClose />
         </List> */}
-      </TIF_Page>
+      </Page>
     </>
   );
 }

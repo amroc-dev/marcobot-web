@@ -23,7 +23,7 @@ import "@css/SearchPage.scss";
 
 function SearchPage() {
   return (
-    <TIF_Page name="home">
+    <Page name="home">
       {/* Top Navbar */}
       <Navbar sliding={true}>
         <NavLeft>
@@ -39,7 +39,7 @@ function SearchPage() {
         </NavRight>
       </Navbar>
       <SearchPageContent />
-    </TIF_Page>
+    </Page>
   );
 }
 

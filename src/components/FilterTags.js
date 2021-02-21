@@ -1,4 +1,4 @@
-import React, { useContext, useState, useLayoutEffect, useRef } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { CoreContext } from "@shared/react/CoreContext";
 import { SearchContext } from "@shared/react/SearchContext";
 import { FilterTagsContext } from "@shared/react/FilterTagsContext";
@@ -11,7 +11,7 @@ function FilterTags(props) {
   const { tagSearchField, setTagSearchField } = useContext(FilterTagsContext);
   const [filteredTags, setFilteredTags] = useState([]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!tags) {
       return;
     }
@@ -29,12 +29,6 @@ function FilterTags(props) {
   function getListItems() {
     return filteredTags.map((t, index) => (
       <ListItem key={index} title={t.name} after={t.count} checkbox >
- 
-          {/* <div id="tagNe">{t.name}</div>
-          <div id="tagnt">{t.count}</div> */}
-   
-        {/* <span>{t.name}</span>
-        <span>balls</span> */}
       </ListItem>
     ));
   }
@@ -42,7 +36,7 @@ function FilterTags(props) {
   return (
     <>
       <Block strong style={{ padding: "0" }}>
-        <List mediaList virtualList>{getListItems()}</List>
+        <List>{getListItems()}</List>
       </Block>
     </>
   );

@@ -14,17 +14,21 @@ import store from "@root/store";
 
 import "@css/App.scss";
 
-let transitioning = true;
-function setTransitioning(set) {
-  transitioning = set;
-}
-export { setTransitioning };
+import {removeBodyBounce} from 'remove-ios-bounce';
 
-function onTouchEvent(e) {
-  if (transitioning) {
-    e.preventDefault();
-  }
-}
+removeBodyBounce();
+
+// let transitioning = true;
+// function setTransitioning(set) {
+//   transitioning = set;
+// }
+// export { setTransitioning };
+
+// function onTouchEvent(e) {
+//   if (transitioning) {
+//     e.preventDefault();å
+//   }
+// }
 
 function MyApp() {
   // Login screen demo data
@@ -42,9 +46,9 @@ function MyApp() {
     routes: routes,
     // Register service worker
 
-    on: {
-      "touchstart:active": onTouchEvent,
-    },
+    // on: {
+    //   "touchstart:active": onTouchEvent,
+    // },
     touch: {
       // Enable fast clicks
       fastClicks: true,
@@ -66,10 +70,10 @@ function MyApp() {
         <FilterTagsContextProvider>
           <SearchContextProvider>
             <SearchResultsContextProvider>
-              <TIF_Page id="app">
+              <Page id="app">
                 <Panel left cover backdrop swipe swipeOnlyClose>
                   <View>
-                    <TIF_Page></TIF_Page>
+                    <Page></Page>
                   </View>
                 </Panel>
 
@@ -78,8 +82,8 @@ function MyApp() {
               </View>
             </Panel> */}
 
-                <View main animate={true} className="safe-areas" url="/" transition="f7-push" />
-              </TIF_Page>
+                <View main animate={true} className="safe-areas" url="/" transition="f7-parallax" />
+              </Page>
             </SearchResultsContextProvider>
           </SearchContextProvider>
         </FilterTagsContextProvider>

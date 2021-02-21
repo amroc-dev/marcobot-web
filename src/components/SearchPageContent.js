@@ -72,13 +72,13 @@ function SearchPageContent() {
   }
 
   return (
-      <TIF_Page id="pageRoot" infinite infiniteDistance={50} infinitePreloader={showPreloader} onInfinite={loadItems}>
+      <Page id="pageRoot" infinite infiniteDistance={50} infinitePreloader={showPreloader} onInfinite={loadItems}>
         <SearchForm />
         <List virtualList noHairlinesBetween simpleList id="resultsList">
           {searchCountCard}
           {items}
         </List>
-      </TIF_Page>
+      </Page>
   );
 }
 

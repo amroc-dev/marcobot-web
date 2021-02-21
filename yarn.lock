@@ -9572,6 +9572,11 @@ relateurl@^0.2.7:
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
+remove-ios-bounce@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/remove-ios-bounce/-/remove-ios-bounce-1.0.4.tgz#d25a3bd8c065a297cb08596f4ffa4cd4200b6e10"
+  integrity sha512-4Q8ijY8Ka4D4SaTc6FxRavhcJEkh+bK3QPxdTzW3J7QSzDcmLzMmu9FQTibUFYyx9D1hpBnfGdpG0HJp0sPFpg==
+
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz#c24bce2a283adad5bc3f58e0d48249b92379d8ef"

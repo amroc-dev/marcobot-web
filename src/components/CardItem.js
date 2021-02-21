@@ -67,7 +67,7 @@ function CardItem({ doc }) {
   }
 
   return (
-    <div key={doc._id} className="cardItemRoot" padding={false}>
+    <div key={doc._id} className="cardItemRoot">
       <div className="cardItem" onClick={onClick}>
         <img
           style={{ width: "100px", height: "100px" }}

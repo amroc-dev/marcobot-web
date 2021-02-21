@@ -13,18 +13,21 @@ import {
   Icon,
 } from "framework7-react";
 
-function TagsPage() {
+import FilterTags from "./FilterTags";
+import {TIF_Page} from "./TransitionInputFix";
+import { BackButton } from "./Misc";
+
+function FilterTagsPage() {
   return (
     <>
-      <Page>
+      <TIF_Page>
         <Navbar sliding={true}>
           <NavLeft>
-            <Link back style={{ width: "60px" }} transition="f7-parallax">
-              <Icon size={"var(--gt-icon-size-large)"} f7="chevron_left" />
-            </Link>
+            <BackButton />
           </NavLeft>
           <NavTitle sliding>Tags</NavTitle>
         </Navbar>
+        <FilterTags />
         {/* <List>
           <ListItem link="/accordion/" title="Tags" />
         </List>
@@ -34,9 +37,9 @@ function TagsPage() {
           <ListItem link="/badge/" title="Popularity" panelClose />
           <ListItem link="/buttons/" title="Rating" panelClose />
         </List> */}
-      </Page>
+      </TIF_Page>
     </>
   );
 }
 
-export default TagsPage;
+export default FilterTagsPage;

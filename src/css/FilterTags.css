@@ -1,0 +1,16 @@
+
+#tagRow {
+
+  /* align-items: flex-end; */
+}
+
+#tagName{
+  padding-left: 0.5rem;
+}
+
+#tagCount {
+  padding-left: 1rem;
+  color: rgba(var(--gt-secondary-font-color-rgb), 0.5);
+  vertical-align: text-top;
+  /* align-self: center; */
+}

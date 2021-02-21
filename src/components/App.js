@@ -1,25 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
-import {
-  f7,
-  f7ready,
-  App,
-  Panel,
-  View,
-  Page,
-} from "framework7-react";
+import { f7, f7ready, App, Panel, View, Page } from "framework7-react";
 
+import { CoreContextProvider } from "@shared/react/CoreContext";
+import { SearchContextProvider } from "@shared/react/SearchContext";
+import { SearchResultsContextProvider } from "@shared/react/SearchResultsContext";
+import { FilterTagsContextProvider } from "@shared/react/FilterTagsContext";
 
+import { TIF_Page } from "@components/TransitionInputFix";
 
-import { CoreContextProvider } from "./shared/react/CoreContext";
-import { SearchContextProvider } from "./shared/react/SearchContext";
-import { SearchResultsContextProvider } from "./shared/react/SearchResultsContext";
-import { FilterTagsContextProvider } from "./shared/react/FilterTagsContext";
+import routes from "@root/routes";
+import store from "@root/store";
 
-import routes from "./routes";
-import store from "./store";
+import "@css/App.scss";
 
-import "./css/App.scss";
+let transitioning = true;
+function setTransitioning(set) {
+  transitioning = set;
+}
+export { setTransitioning };
+
+function onTouchEvent(e) {
+  if (transitioning) {
+    e.preventDefault();
+  }
+}
 
 function MyApp() {
   // Login screen demo data
@@ -37,9 +42,14 @@ function MyApp() {
     routes: routes,
     // Register service worker
 
-    // serviceWorker: {
-    //   path: "/service-worker.js",
-    // },
+    on: {
+      "touchstart:active": onTouchEvent,
+    },
+    touch: {
+      // Enable fast clicks
+      fastClicks: true,
+      touchClicksDistanceThreshold: 20,
+    }
   };
   const alertLoginData = () => {
     f7.dialog.alert("Username: " + username + "<br>Password: " + password, () => {
@@ -56,11 +66,10 @@ function MyApp() {
         <FilterTagsContextProvider>
           <SearchContextProvider>
             <SearchResultsContextProvider>
-              <Page id="app">
+              <TIF_Page id="app">
                 <Panel left cover backdrop swipe swipeOnlyClose>
                   <View>
-                    <Page>{/* <Navbar title="Left Panel" />
-                  <Block></Block> */}</Page>
+                    <TIF_Page></TIF_Page>
                   </View>
                 </Panel>
 
@@ -69,8 +78,8 @@ function MyApp() {
               </View>
             </Panel> */}
 
-                <View main className="safe-areas" url="/" />
-              </Page>
+                <View main animate={true} className="safe-areas" url="/" transition="f7-push" />
+              </TIF_Page>
             </SearchResultsContextProvider>
           </SearchContextProvider>
         </FilterTagsContextProvider>

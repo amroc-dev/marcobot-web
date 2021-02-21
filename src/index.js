@@ -9,7 +9,7 @@ import 'framework7/framework7-bundle.css';
 
 import './css/icons.css';
 
-import App from './App';
+import App from '@components/App';
 
 Framework7.use(Framework7React)
 

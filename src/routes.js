@@ -1,7 +1,7 @@
 
 import SearchPage from "./components/SearchPage";
 import FiltersPage from "./components/FiltersPage";
-import TagsPage from "./components/TagsPage";
+import FilterTagsPage from "./components/FilterTagsPage";
 
 var routes = [
   {
@@ -13,8 +13,8 @@ var routes = [
     component: FiltersPage,
   },
   {
-    path: "/tags-page",
-    component: TagsPage,
+    path: "/filter-tags-page",
+    component: FilterTagsPage,
   },
 ];
 

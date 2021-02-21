@@ -9,14 +9,28 @@
   --gt-mini-font-size: calc(0.65 * var(--f7-font-size));
   --gt-rating-font-size: calc(1.2 * var(--f7-font-size));
 
-  --gt-secondary-font-color: rgb(125,125,125);
+  --gt-secondary-font-color-rgb: 125,125,125;
+  --gt-secondary-font-color: rgb(var(--gt-secondary-font-color-rgb));
+  
 
   --gt-icon-size: 1rem;
   --gt-icon-size-large: 1.5rem;
 
-  --f7-page-push-transition-duration: 350ms;
-  --f7-page-parallax-transition-duration: 350ms;
+  --f7-page-push-transition-duration: 250ms;
+  --f7-page-parallax-transition-duration: 250ms;
 }
+
+// body {
+//   position: fixed;
+//   overflow: hidden;
+// }
+
+// .appRoot {
+//   width: 100vw;
+//   height: 100vh;
+//   overflow-y: scroll;
+//   -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
+// }
 
 .button {
   text-transform: none;

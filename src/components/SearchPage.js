@@ -18,11 +18,12 @@ import {
   Icon,
 } from "framework7-react";
 import SearchPageContent from "./SearchPageContent";
+import {TIF_Page} from "./TransitionInputFix";
 import "@css/SearchPage.scss";
 
 function SearchPage() {
   return (
-    <Page name="home">
+    <TIF_Page name="home">
       {/* Top Navbar */}
       <Navbar sliding={true}>
         <NavLeft>
@@ -30,7 +31,7 @@ function SearchPage() {
         </NavLeft>
         <NavTitle sliding>Marcobot</NavTitle>
         <NavRight>
-          <Link href="/filters-page/" transition="f7-parallax">
+          <Link href="/filters-page/">
             Filters
             <Icon size={"var(--gt-icon-size-large)"} f7="chevron_right" />
           </Link>
@@ -38,7 +39,7 @@ function SearchPage() {
         </NavRight>
       </Navbar>
       <SearchPageContent />
-    </Page>
+    </TIF_Page>
   );
 }
 

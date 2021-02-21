@@ -4,6 +4,7 @@ import "../css/SearchPageContent.scss";
 import SearchForm from "./SearchForm";
 import CardItem from "./CardItem";
 import SearchCountCard from "./SearchCountCard";
+import {TIF_Page} from "./TransitionInputFix";
 
 import { SearchResultsContext, statusCodes } from "../shared/react/SearchResultsContext";
 
@@ -71,13 +72,13 @@ function SearchPageContent() {
   }
 
   return (
-      <Page id="pageRoot" infinite infiniteDistance={50} infinitePreloader={showPreloader} onInfinite={loadItems}>
+      <TIF_Page id="pageRoot" infinite infiniteDistance={50} infinitePreloader={showPreloader} onInfinite={loadItems}>
         <SearchForm />
         <List virtualList noHairlinesBetween simpleList id="resultsList">
           {searchCountCard}
           {items}
         </List>
-      </Page>
+      </TIF_Page>
   );
 }
 

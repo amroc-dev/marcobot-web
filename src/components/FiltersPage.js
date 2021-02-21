@@ -13,35 +13,33 @@ import {
   Icon,
 } from "framework7-react";
 
-import FilterTags from "./FilterTags"
+import FilterTags from "./FilterTags";
+import {TIF_Page} from "./TransitionInputFix";
+import { BackButton } from "./Misc";
 
 function FiltersPage() {
   return (
-    <>
-      <Page>
-        <Navbar sliding={true}>
-          <NavLeft>
-            <Link back style={{ width: "60px" }}>
-              <Icon size={"var(--gt-icon-size-large)"} f7="chevron_left" />
-            </Link>
-          </NavLeft>
-          <NavTitle sliding>Filters</NavTitle>
-        </Navbar>
-        {/* <List>
-          <ListItem href="/tags-page/" title="Tags" transition="f7-parallax" />
-        </List> */}
-        <BlockTitle>Tags</BlockTitle>
-        <FilterTags />
-        <BlockTitle>Device</BlockTitle>
-        <BlockTitle>Popularity</BlockTitle>
-        <BlockTitle>Rating</BlockTitle>
-        {/* <List>
+    <TIF_Page>
+      <Navbar sliding={true}>
+        <NavLeft>
+          <BackButton />
+        </NavLeft>
+        <NavTitle sliding>Filters</NavTitle>
+      </Navbar>
+      <List>
+        <ListItem href="/filter-tags-page/" title="Tags" />
+      </List>
+      {/* <BlockTitle>Tags</BlockTitle>
+        <FilterTags /> */}
+      <BlockTitle>Device</BlockTitle>
+      <BlockTitle>Popularity</BlockTitle>
+      <BlockTitle>Rating</BlockTitle>
+      {/* <List>
           <ListItem link="/action-sheet/" title="Device" />
           <ListItem link="/badge/" title="Popularity" panelClose />
           <ListItem link="/buttons/" title="Rating" panelClose />
         </List> */}
-      </Page>
-    </>
+    </TIF_Page>
   );
 }
 

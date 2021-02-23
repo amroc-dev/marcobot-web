@@ -27,7 +27,7 @@ function SearchPage() {
       {/* Top Navbar */}
       <Navbar sliding={true}>
         <NavLeft>
-          <Link iconIos="f7:menu" iconAurora="f7:menu" iconMd="material:menu" panelOpen="left" />
+          <Link iconIos="f7:menu" external iconAurora="f7:menu" iconMd="material:menu" panelOpen="left" />
         </NavLeft>
         <NavTitle sliding>Marcobot</NavTitle>
         <NavRight>

@@ -1,0 +1,22 @@
+.rootContainer {
+  margin: 0.5rem;
+  margin-bottom: 0rem;
+}
+
+.sortRow {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.sortContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.sortPopover {
+  max-width: 160px;
+  left: -30px;
+}

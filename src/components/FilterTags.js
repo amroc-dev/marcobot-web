@@ -1,15 +1,41 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import {
+  Page,
+  Button,
+  BlockTitle,
+  Block,
+  List,
+  ListItem,
+  Subnavbar,
+  Searchbar,
+  Swiper,
+  SwiperSlide,
+  Popover,
+  Icon,
+  Link,
+  Chip,
+  Row,
+  Col,
+  Menu,
+  MenuItem,
+  MenuDropdown,
+  MenuDropdownItem,
+} from "framework7-react";
 import { CoreContext } from "@shared/react/CoreContext";
 import { SearchContext } from "@shared/react/SearchContext";
 import { FilterTagsContext } from "@shared/react/FilterTagsContext";
+import LinkButton from "./LinkButton";
 import "@css/FilterTags.css";
-import { Page, Button, BlockTitle, Block, List, ListItem, Swiper, SwiperSlide, Link, Chip, Row, Col } from "framework7-react";
+import "@css/SortControl.scss";
 
 function FilterTags(props) {
   const { tags } = useContext(CoreContext);
   const { searchTags, addSearchTag, removeSearchTag } = useContext(SearchContext);
   const { tagSearchField, setTagSearchField } = useContext(FilterTagsContext);
   const [filteredTags, setFilteredTags] = useState([]);
+  const [vlData, setVlData] = useState({
+    items: [],
+  });
 
   useEffect(() => {
     if (!tags) {
@@ -26,73 +52,75 @@ function FilterTags(props) {
     setFilteredTags(filtered);
   }, [tagSearchField, tags]);
 
-  function getListItems() {
-    return filteredTags.map((t, index) => (
-      <ListItem key={index} title={t.name} after={t.count} checkbox >
-      </ListItem>
-    ));
-  }
+  const searchAll = (query, searchItems) => {
+    const found = [];
+    for (let i = 0; i < searchItems.length; i += 1) {
+      if (searchItems[i].name.toLowerCase().indexOf(query.toLowerCase()) >= 0 || query.trim() === "") found.push(i);
+    }
+    return found; // return array with mathced indexes
+  };
+
+  // function getListItems() {
+  //   const elems = filteredTags.map((t, index) => (
+  //     <ListItem virtualListIndex={index} key={index} title={t.name} after={t.count} checkbox></ListItem>
+  //   ));
+
+  //   return elems;
+  // }
+
+  const renderExternal = (vl, newData) => {
+    setVlData({ ...newData });
+  };
 
   return (
     <>
-      <Block strong style={{ padding: "0" }}>
-        <List>{getListItems()}</List>
-      </Block>
+      {/* <Subnavbar inner={false}>
+        <Searchbar searchContainer=".virtual-list" searchItem="li" searchIn=".item-title" />
+      </Subnavbar> */}
+      <div id="topContainer">
+        <Searchbar inline disableButton={false} searchContainer=".tags-list"
+            // searchItem="li"
+            searchIn=".item-title" />
+        <div className="sortRow" style={{ marginBottom: "0.5rem" }}>
+          <div className="sortContainer">
+            <div>Sort</div>
+            <LinkButton popoverOpen=".popover-menu">
+              Popularity
+              {/* <Icon size="var(--gt-icon-size)" style={{ paddingLeft: "0.25rem" }} f7="chevron_down" /> */}
+            </LinkButton>
+            <Popover className="popover-menu sortPopover">
+              <List>
+                <ListItem link="#" noChevron popoverClose title="Popularity" />
+                <ListItem link="#" noChevron popoverClose title="Name" />
+              </List>
+            </Popover>
+          </div>
+        </div>
+      </div>
+      <List className="tags-list searchbar-found" style={{ marginTop: "0rem" }}
+        virtualList
+        virtualListParams={{
+          items: tags,
+          searchAll,
+          renderExternal,
+          height: 48,
+        }}
+      >
+        <ul>
+          {vlData.items.map((item, index) => (
+            <ListItem
+              virtualListIndex={tags.indexOf(item)}
+              key={index}
+              title={item.name}
+              after={item.count}
+              style={{ top: `${vlData.topPosition}px` }}
+              checkbox
+            />
+          ))}
+        </ul>
+      </List>
     </>
   );
 }
 
 export default FilterTags;
-
-// let filtr = [];
-// tags.map((t) => {
-//   if (groups.length === 0 || groups[groups.length - 1].length === 10) {
-//     groups.push([]);
-//   }
-
-//   const currentGroup = groups[groups.length - 1];
-
-//   if (tagSearchField.length === 0) currentGroup.push(t);
-//   else if (t.name.toLowerCase().startsWith(tagSearchField.toLowerCase())) currentGroup.push(t);
-//   return null;
-// });
-
-// if (groups.length > 1 && groups[groups.length - 1].length === 0) {
-//   groups.pop();
-// }
-
-// let sliders = [];
-// groups.map((g, index) => {
-//   const chips = g.map((tag) => (
-//     <Chip>
-//       <Link color="black">{tag}</Link>
-//     </Chip>
-//   ));
-
-//   const slider = (
-//     <SwiperSlide virtualIndex={index} key={sliders.length} style={{ padding: "1rem" }}>
-//       Slide
-//       {/* <List style={{ display: "inline-flex", flexDirection: "column" }}>{sliders.length}</List> */}
-//     </SwiperSlide>
-//   );
-
-//   sliders.push(slider);
-//   return null;
-// });
-
-// setTagColumns(sliders);
-// }, [tagSearchField, tags]);
-
-// function renderSlide(slide, index) {
-// console.log('render')
-// }
-
-// return (
-// <>
-//   <Block strong style={{ padding: "0" }}>
-//     <Swiper spaceBetween={50} slidesPerView={3} virtual={{slides: tagColumns, renderSlide: renderSlide}}>
-//       {tagColumns}
-//     </Swiper>
-//   </Block>
-// </>
-// );

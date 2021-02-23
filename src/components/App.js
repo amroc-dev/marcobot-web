@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import { f7, f7ready, App, Panel, View, Page } from "framework7-react";
 
@@ -6,6 +6,7 @@ import { CoreContextProvider } from "@shared/react/CoreContext";
 import { SearchContextProvider } from "@shared/react/SearchContext";
 import { SearchResultsContextProvider } from "@shared/react/SearchResultsContext";
 import { FilterTagsContextProvider } from "@shared/react/FilterTagsContext";
+import { GTPage } from "@components/Misc";
 
 import { TIF_Page } from "@components/TransitionInputFix";
 
@@ -14,9 +15,11 @@ import store from "@root/store";
 
 import "@css/App.scss";
 
-import {removeBodyBounce} from 'remove-ios-bounce';
+import {removeBodyBounce, RemoveBounce, updateRemoveBodyBounce} from 'remove-ios-bounce';
 
-removeBodyBounce();
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+
+// removeBodyBounce();
 
 // let transitioning = true;
 // function setTransitioning(set) {
@@ -82,7 +85,7 @@ function MyApp() {
               </View>
             </Panel> */}
 
-                <View main animate={true} className="safe-areas" url="/" transition="f7-parallax" />
+                <View main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
               </Page>
             </SearchResultsContextProvider>
           </SearchContextProvider>

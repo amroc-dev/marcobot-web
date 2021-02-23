@@ -10,11 +10,12 @@ import {
   NavTitle,
   NavLeft,
   NavRight,
+  Subnavbar,
+  Searchbar,
   Icon,
 } from "framework7-react";
 
 import FilterTags from "./FilterTags";
-import {TIF_Page} from "./TransitionInputFix";
 import { BackButton } from "./Misc";
 
 function FilterTagsPage() {
@@ -28,15 +29,6 @@ function FilterTagsPage() {
           <NavTitle sliding>Tags</NavTitle>
         </Navbar>
         <FilterTags />
-        {/* <List>
-          <ListItem link="/accordion/" title="Tags" />
-        </List>
-        <BlockTitle>Device</BlockTitle>
-        <List>
-          <ListItem link="/action-sheet/" title="Device" />
-          <ListItem link="/badge/" title="Popularity" panelClose />
-          <ListItem link="/buttons/" title="Rating" panelClose />
-        </List> */}
       </Page>
     </>
   );

@@ -13,8 +13,10 @@ import {
   Icon,
 } from "framework7-react";
 
-import FilterTags from "./FilterTags";
-import {TIF_Page} from "./TransitionInputFix";
+import FilterDevice from "./FilterDevice";
+import FilterPopularity from "./FilterPopularity";
+import FilterRating from "./FilterRating";
+import { GTPage } from "./Misc";
 import { BackButton } from "./Misc";
 
 function FiltersPage() {
@@ -27,18 +29,11 @@ function FiltersPage() {
         <NavTitle sliding>Filters</NavTitle>
       </Navbar>
       <List>
-        <ListItem href="/filter-tags-page/" title="Tags" />
+        <ListItem link="/filter-tags-page/" title="Tags" />
       </List>
-      {/* <BlockTitle>Tags</BlockTitle>
-        <FilterTags /> */}
-      <BlockTitle>Device</BlockTitle>
-      <BlockTitle>Popularity</BlockTitle>
-      <BlockTitle>Rating</BlockTitle>
-      {/* <List>
-          <ListItem link="/action-sheet/" title="Device" />
-          <ListItem link="/badge/" title="Popularity" panelClose />
-          <ListItem link="/buttons/" title="Rating" panelClose />
-        </List> */}
+      <FilterDevice />
+      <FilterPopularity />
+      <FilterRating />
     </Page>
   );
 }

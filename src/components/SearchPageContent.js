@@ -4,7 +4,6 @@ import "../css/SearchPageContent.scss";
 import SearchForm from "./SearchForm";
 import CardItem from "./CardItem";
 import SearchCountCard from "./SearchCountCard";
-import {TIF_Page} from "./TransitionInputFix";
 
 import { SearchResultsContext, statusCodes } from "../shared/react/SearchResultsContext";
 
@@ -16,7 +15,7 @@ function SearchPageContent() {
   const [hasMoreItems, setHasMoreItems] = useState(false);
   const [searchCountCard, setSearchCountCard] = useState();
 
-  const { searchResults, fetchMoreResults, newSearchSubmitted } = useContext(SearchResultsContext);
+  const {searchResults, fetchMoreResults, newSearchSubmitted} = useContext(SearchResultsContext);
 
   const FETCH_COUNT = 20;
 
@@ -26,6 +25,7 @@ function SearchPageContent() {
     setItems([]);
     setHasMoreItems(true);
     fetchMoreResults(FETCH_COUNT);
+
   }, []);
 
   useEffect(() => {
@@ -74,7 +74,7 @@ function SearchPageContent() {
   return (
       <Page id="pageRoot" infinite infiniteDistance={50} infinitePreloader={showPreloader} onInfinite={loadItems}>
         <SearchForm />
-        <List virtualList noHairlinesBetween simpleList id="resultsList">
+        <List noHairlinesBetween simpleList id="resultsList">
           {searchCountCard}
           {items}
         </List>

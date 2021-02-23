@@ -22,6 +22,19 @@
   --f7-page-fade-transition-duration: 200ms;
 }
 
+.color-theme-blue {
+  --f7-theme-color: #00A1DE;
+  --f7-theme-color-rgb: 0, 161, 222;
+  --f7-theme-color-shade: #0e92c1;
+  --f7-theme-color-tint: #16b9f4;
+}
+
+// body {
+//   position: fixed;
+//   overflow: hidden;
+//   -webkit-overflow-scrolling: touch;
+// }
+
 // body {
 //   position: fixed;
 //   overflow: hidden;
@@ -51,6 +64,11 @@
   --gt-panel-color-rgb: 31, 34, 37;
   --gt-panel-color: rgb(var(--gt-panel-color-rgb))
 }
+
+:root {
+  --f7-menu-bg-color: #00A1DE;
+}
+
 
 
 // const effects = [

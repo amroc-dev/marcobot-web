@@ -50,20 +50,18 @@ function MyApp() {
         <FilterTagsContextProvider>
           <SearchContextProvider>
             <SearchResultsContextProvider>
-              <Page id="app">
-                <Panel left cover backdrop swipe swipeOnlyClose>
-                  <View>
-                    <Page></Page>
-                  </View>
-                </Panel>
+              <Panel left cover backdrop swipe swipeOnlyClose>
+                <View>
+                  <Page></Page>
+                </View>
+              </Panel>
 
-                {/* <Panel right cover swipe swipeOnlyClose containerEl="app" id="panel-nested">
+              {/* <Panel right cover swipe swipeOnlyClose containerEl="app" id="panel-nested">
               <View url="/filters-page/">
               </View>
             </Panel> */}
 
-                <View main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
-              </Page>
+              <View main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
             </SearchResultsContextProvider>
           </SearchContextProvider>
         </FilterTagsContextProvider>

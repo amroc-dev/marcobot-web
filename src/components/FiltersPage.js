@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
   Page,
   BlockTitle,
@@ -20,6 +20,7 @@ import { GTPage } from "./Misc";
 import { BackButton } from "./Misc";
 
 function FiltersPage() {
+  
   return (
     <Page>
       <Navbar sliding={true}>

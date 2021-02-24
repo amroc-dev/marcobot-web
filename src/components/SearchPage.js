@@ -18,7 +18,6 @@ import {
   Icon,
 } from "framework7-react";
 import SearchPageContent from "./SearchPageContent";
-import {TIF_Page} from "./TransitionInputFix";
 import "@css/SearchPage.scss";
 
 function SearchPage() {

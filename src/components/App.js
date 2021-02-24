@@ -6,32 +6,12 @@ import { CoreContextProvider } from "@shared/react/CoreContext";
 import { SearchContextProvider } from "@shared/react/SearchContext";
 import { SearchResultsContextProvider } from "@shared/react/SearchResultsContext";
 import { FilterTagsContextProvider } from "@shared/react/FilterTagsContext";
-import { GTPage } from "@components/Misc";
-
-import { TIF_Page } from "@components/TransitionInputFix";
-
 import routes from "@root/routes";
 import store from "@root/store";
 
 import "@css/App.scss";
 
-import {removeBodyBounce, RemoveBounce, updateRemoveBodyBounce} from 'remove-ios-bounce';
-
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
-
-// removeBodyBounce();
-
-// let transitioning = true;
-// function setTransitioning(set) {
-//   transitioning = set;
-// }
-// export { setTransitioning };
-
-// function onTouchEvent(e) {
-//   if (transitioning) {
-//     e.preventDefault();å
-//   }
-// }
+import "@root/inobounce.js";
 
 function MyApp() {
   // Login screen demo data
@@ -49,14 +29,11 @@ function MyApp() {
     routes: routes,
     // Register service worker
 
-    // on: {
-    //   "touchstart:active": onTouchEvent,
-    // },
     touch: {
       // Enable fast clicks
       fastClicks: true,
       touchClicksDistanceThreshold: 20,
-    }
+    },
   };
   const alertLoginData = () => {
     f7.dialog.alert("Username: " + username + "<br>Password: " + password, () => {

@@ -10,27 +10,3 @@ export function BackButton(props) {
     </Link>
   );
 }
-
-export function GTPage(props) {
-  const pageRef = useRef();
-
-  function pageBeforeIn() {
-    console.log("in")
-    // disableBodyScroll(pageRef.current);
-  }
-
-  function pageAfterOut() {
-    console.log("out")
-    // enableBodyScroll(pageRef.current);
-  }
-
-  // useEffect( () => {
-  //   disableBodyScroll(document.querySelector('#ttt'));
-  // },[])
-
-  return (
-    <Page ref={pageRef.current} {...props} onPageBeforeIn={pageBeforeIn} onPageAfterOut={pageAfterOut} >
-      {props.children}
-    </Page>
-  );
-}

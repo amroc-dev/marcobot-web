@@ -132,6 +132,8 @@ function FilterTagsPage(props) {
               after={item.count}
               style={{ top: `${vlData.topPosition}px` }}
               checkbox
+              checked={searchTags.includes(item.name)}
+              onClick={() => searchTags.includes(item.name) ? removeSearchTag(item.name) : addSearchTag(item.name)}
             />
           ))}
         </ul>

@@ -25,12 +25,26 @@ import { sortOptions } from "@shared/react/SortOptions";
 import { SearchbarFixed } from "@components/Misc";
 
 function SearchForm(props) {
-  const { sortOption, updateSortOption } = useContext(SearchContext);
+  const { submitSearch, setSearchTerm, clearSearchTerm, sortOption, updateSortOption } = useContext(SearchContext);
+  const searchbarRef = useRef();
+
+  function onSubmit() {
+    setSearchTerm(searchbarRef.current.f7Searchbar().query.trim())
+    submitSearch()
+  }
 
   return (
     <div className="rootContainer">
       <div>
-        <SearchbarFixed inline placeholder={"Search for name or tag"} />
+        <SearchbarFixed
+          customSearch
+          ref={searchbarRef}
+          onSubmit={onSubmit}
+          onChange={() => setSearchTerm(searchbarRef.current.f7Searchbar().query.trim())}
+          onSearchbarClear={clearSearchTerm}
+          inline
+          placeholder={"Search for name or tag"}
+        />
       </div>
       <div className="sortRow">
         <div className="sortContainer">

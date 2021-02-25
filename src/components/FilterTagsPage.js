@@ -35,7 +35,6 @@ function FilterTagsPage(props) {
   });
   const listRef = useRef();
   const searchbarRef = useRef();
-  const [searchbarVal, setSearchbarVal] = useState("");
   const [sortVal, setSortVal] = useState('Popularity')
 
   useEffect(() => {
@@ -57,13 +56,13 @@ function FilterTagsPage(props) {
     }
     setSortedTags(sorted);
     listRef.current.f7VirtualList().replaceAllItems(sorted)
+    const query = searchbarRef.current.f7Searchbar().query;
     searchbarRef.current.f7Searchbar().clear();
     searchbarRef.current.f7Searchbar().disable();
-    searchbarRef.current.f7Searchbar().search(searchbarVal);
+    searchbarRef.current.f7Searchbar().search(query);
   }
 
   const searchAll = (query, searchItems) => {
-    setSearchbarVal(query)
     const found = [];
     for (let i = 0; i < searchItems.length; i += 1) {
       if (searchItems[i].name.toLowerCase().indexOf(query.toLowerCase()) >= 0 || query.trim() === "") found.push(i);
@@ -91,6 +90,7 @@ function FilterTagsPage(props) {
           inline
           searchContainer=".tags-list"
           searchIn=".item-title"
+          onChange={ () =>console.log(searchbarRef.current.f7Searchbar().query)}
         />
         <div className="sortRow" style={{ marginBottom: "0.5rem" }}>
           <div className="sortContainer">

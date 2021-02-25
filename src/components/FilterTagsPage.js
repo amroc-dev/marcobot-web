@@ -20,7 +20,7 @@ import { CoreContext } from "@shared/react/CoreContext";
 import { SearchContext } from "@shared/react/SearchContext";
 import { FilterTagsContext } from "@shared/react/FilterTagsContext";
 import LinkButton from "./LinkButton";
-import { BackButton } from "./Misc";
+import { BackButton, SearchbarFixed } from "./Misc";
 import "@css/FilterTags.css";
 import "@css/SortControl.scss";
 import { fireEvent } from "@testing-library/dom";
@@ -85,10 +85,10 @@ function FilterTagsPage(props) {
       </Navbar>
 
       <div id="topContainer">
-        <Searchbar
+        <SearchbarFixed
+          placeholder={"Search " + tags.length + " tags"}
           ref = {searchbarRef}
           inline
-          disableButton={false}
           searchContainer=".tags-list"
           searchIn=".item-title"
         />

@@ -16,12 +16,9 @@
 .searchCountCardItem {
   /* display: inline-flex; */
   margin: 0;
-  padding: 0.5rem;
-  /* padding-bottom: 0; */
-  padding-left: 1rem;
-  padding-right: 1rem;
-  /* background-color: var(--body-bg);
-  box-shadow: none; */
+  height: var(--gt-row-height);
+  align-items: center;
+  padding-left: 0.75rem;
 }
 
 .cardItem .cardImage {

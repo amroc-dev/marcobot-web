@@ -9,9 +9,8 @@
   --gt-mini-font-size: calc(0.65 * var(--f7-font-size));
   --gt-rating-font-size: calc(1.2 * var(--f7-font-size));
 
-  --gt-secondary-font-color-rgb: 125,125,125;
+  --gt-secondary-font-color-rgb: 125, 125, 125;
   --gt-secondary-font-color: rgb(var(--gt-secondary-font-color-rgb));
-  
 
   --gt-icon-size: 1rem;
   --gt-icon-size-large: 1.5rem;
@@ -23,12 +22,17 @@
 }
 
 .color-theme-blue {
-  --f7-theme-color: #00A1DE;
+  --f7-theme-color: #00a1de;
   --f7-theme-color-rgb: 0, 161, 222;
   --f7-theme-color-shade: #0e92c1;
   --f7-theme-color-tint: #16b9f4;
+  --f7-list-chevron-icon-color: var(--f7-theme-color);
 }
 
+body {
+  overscroll-behavior-x: hidden;
+  overflow-x: hidden;
+}
 // body {
 //   position: fixed;
 //   overflow: hidden;
@@ -55,21 +59,20 @@
   transition-duration: 200ms;
 }
 
-.ios, .aurora {
+.ios,
+.aurora {
   --gt-panel-color-rgb: 255, 255, 255;
-  --gt-panel-color: rgb(var(--gt-panel-color-rgb))
+  --gt-panel-color: rgb(var(--gt-panel-color-rgb));
 }
 
 .theme-dark {
   --gt-panel-color-rgb: 31, 34, 37;
-  --gt-panel-color: rgb(var(--gt-panel-color-rgb))
+  --gt-panel-color: rgb(var(--gt-panel-color-rgb));
 }
 
 :root {
-  --f7-menu-bg-color: #00A1DE;
+  // --f7-menu-bg-color: #00A1DE;
 }
-
-
 
 // const effects = [
 //   'f7-circle',

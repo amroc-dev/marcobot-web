@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import {
   Page,
   Searchbar,
@@ -20,12 +20,17 @@ import {
 import "@css/SortControl.scss";
 import ThemedButton from "./LinkButton";
 import LinkButton from "./LinkButton";
+import { SearchContext } from "@shared/react/SearchContext";
+import { sortOptions } from "@shared/react/SortOptions";
+import { SearchbarFixed } from "@components/Misc";
 
 function SearchForm(props) {
+  const { sortOption, updateSortOption } = useContext(SearchContext);
+
   return (
     <div className="rootContainer">
       <div>
-        <Searchbar inline disableButton={false}></Searchbar>
+        <SearchbarFixed inline placeholder={"Search for name or tag"} />
       </div>
       <div className="sortRow">
         <div className="sortContainer">
@@ -41,15 +46,39 @@ function SearchForm(props) {
               </MenuItem>
             </Menu> */}
           <LinkButton popoverOpen=".popover-menu">
-            Popularity
+            {sortOption}
             {/* <Icon size="var(--gt-icon-size)" style={{ paddingLeft: "0.25rem" }} f7="chevron_down" /> */}
           </LinkButton>
           <Popover className="popover-menu sortPopover">
             <List>
-              <ListItem link="#" noChevron popoverClose title="Popularity" />
-              <ListItem link="#" noChevron popoverClose title="User rating" />
-              <ListItem link="#" noChevron popoverClose title="Name" />
-              <ListItem link="#" noChevron popoverClose title="Release date" />
+              <ListItem
+                link="#"
+                onClick={() => updateSortOption(sortOptions.popularity)}
+                noChevron
+                popoverClose
+                title={sortOptions.popularity}
+              />
+              <ListItem
+                link="#"
+                onClick={() => updateSortOption(sortOptions.userRating)}
+                noChevron
+                popoverClose
+                title={sortOptions.userRating}
+              />
+              <ListItem
+                link="#"
+                onClick={() => updateSortOption(sortOptions.name)}
+                noChevron
+                popoverClose
+                title={sortOptions.name}
+              />
+              <ListItem
+                link="#"
+                onClick={() => updateSortOption(sortOptions.releaseDate)}
+                noChevron
+                popoverClose
+                title={sortOptions.releaseDate}
+              />
             </List>
           </Popover>
         </div>

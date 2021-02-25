@@ -2,10 +2,12 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import { Page, List, ListItem, Card } from "framework7-react";
 import "../css/SearchPageContent.scss";
 import SearchForm from "./SearchForm";
+import SearchPills from "./SearchPills";
 import CardItem from "./CardItem";
 import SearchCountCard from "./SearchCountCard";
 
-import { SearchResultsContext, statusCodes } from "../shared/react/SearchResultsContext";
+import { SearchResultsContext, statusCodes } from "@shared/react/SearchResultsContext";
+import { SearchContext } from "@shared/react/SearchContext";
 
 function SearchPageContent() {
   const allowInfinite = useRef(true);
@@ -16,8 +18,23 @@ function SearchPageContent() {
   const [searchCountCard, setSearchCountCard] = useState();
 
   const {searchResults, fetchMoreResults, newSearchSubmitted} = useContext(SearchResultsContext);
+  const { searchID } = useContext(SearchContext);
 
   const FETCH_COUNT = 20;
+
+  // useEffect(() => {
+  //   setSearchCountCard(null);
+  //   // setNetworkError(false);
+  //   setItems([]);
+  //   setHasMoreItems(true);
+  //   fetchMoreResults(FETCH_COUNT);
+  // }, []);
+
+  useEffect(() => {
+    setSearchCountCard(null);
+    // setNetworkError(false);
+    setItems([]);
+  }, [searchID]);
 
   useEffect(() => {
     setSearchCountCard(null);
@@ -25,8 +42,7 @@ function SearchPageContent() {
     setItems([]);
     setHasMoreItems(true);
     fetchMoreResults(FETCH_COUNT);
-
-  }, []);
+  }, [newSearchSubmitted]);
 
   useEffect(() => {
     // this is just for the condition when search results has been cleared at the start of a new search
@@ -73,6 +89,7 @@ function SearchPageContent() {
 
   return (
       <Page id="pageRoot" infinite infiniteDistance={50} infinitePreloader={showPreloader} onInfinite={loadItems}>
+        <SearchPills />
         <SearchForm />
         <List noHairlinesBetween simpleList id="resultsList">
           {searchCountCard}

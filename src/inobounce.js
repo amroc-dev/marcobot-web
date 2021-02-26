@@ -12,9 +12,9 @@
 	var supportsPassiveOption = false;
 	try {
 		var opts = Object.defineProperty({}, 'passive', {
-			get: function() {
+			get: function() {  // eslint-disable-line getter-return
 				supportsPassiveOption = true;
-			}
+			} 
 		});
 		window.addEventListener('test', null, opts);
 	} catch (e) {}

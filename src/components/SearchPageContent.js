@@ -10,63 +10,55 @@ import { SearchResultsContext, statusCodes } from "@shared/react/SearchResultsCo
 import { SearchContext } from "@shared/react/SearchContext";
 
 function SearchPageContent() {
-  const allowInfinite = useRef(true);
-  const [items, setItems] = useState([]);
-  const [showPreloader, setShowPreloader] = useState(true);
+  const items = useRef([]);
+  const hasMoreItems = useRef(false);
+  const searchCountCard = useRef();
 
-  const [hasMoreItems, setHasMoreItems] = useState(false);
-  const [searchCountCard, setSearchCountCard] = useState();
+  const {searchResults, fetchMoreResults, newSearchSubmitted } = useContext(SearchResultsContext);
 
-  const {searchResults, fetchMoreResults, newSearchSubmitted} = useContext(SearchResultsContext);
-  const { searchID } = useContext(SearchContext);
+  const {searchID } = useContext(SearchContext);
 
   const FETCH_COUNT = 20;
 
-  // useEffect(() => {
-  //   setSearchCountCard(null);
-  //   // setNetworkError(false);
-  //   setItems([]);
-  //   setHasMoreItems(true);
-  //   fetchMoreResults(FETCH_COUNT);
-  // }, []);
-
   useEffect(() => {
-    setSearchCountCard(null);
+    searchCountCard.current = null;
     // setNetworkError(false);
-    setItems([]);
+    items.current = [];
   }, [searchID]);
 
   useEffect(() => {
-    setSearchCountCard(null);
+    searchCountCard.current = null;
     // setNetworkError(false);
-    setItems([]);
-    setHasMoreItems(true);
+    items.current = [];
+    hasMoreItems.current = true;
+
     fetchMoreResults(FETCH_COUNT);
-  }, [newSearchSubmitted]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newSearchSubmitted]); 
 
   useEffect(() => {
     // this is just for the condition when search results has been cleared at the start of a new search
     if (searchResults.status === statusCodes.None) {
-      setSearchCountCard(null);
+      searchCountCard.current = null;
       return;
     }
 
     if (searchResults.status === statusCodes.TimedOut || searchResults.status === statusCodes.Failed) {
       // setNetworkError(new Date().getTime());
-      setHasMoreItems(false);
+      hasMoreItems.current = false;
       return;
     }
 
-    if (items.length === 0) {
-      setSearchCountCard(<SearchCountCard key={0} count={searchResults.resultsCount} errorMessage={null} />);
+    if (items.current.length === 0) {
+      searchCountCard.current = <SearchCountCard key={0} count={searchResults.resultsCount} errorMessage={null} />;
     }
 
     if (searchResults.resultsCount === 0) {
-      setHasMoreItems(false);
+      hasMoreItems.current = false;
       return;
     }
 
-    const slicePoint = items.length;
+    const slicePoint = items.current.length;
     const resultsSlice = searchResults.results.slice(slicePoint);
 
     const newItems = [];
@@ -76,26 +68,26 @@ function SearchPageContent() {
     });
 
     if (newItems.length > 0) {
-      setItems((prev) => prev.concat(newItems));
-      setHasMoreItems(searchResults.results.length < searchResults.resultsCount);
+      items.current = items.current.concat(newItems)
+      hasMoreItems.current = searchResults.results.length < searchResults.resultsCount;
     } else {
-      setHasMoreItems(false);
+      hasMoreItems.current = false;
     }
   }, [searchResults]);
 
   function loadItems() {
-    if (hasMoreItems) fetchMoreResults(FETCH_COUNT);
+    if (hasMoreItems.current) fetchMoreResults(FETCH_COUNT);
   }
 
   return (
-      <Page id="pageRoot" infinite infiniteDistance={50} infinitePreloader={showPreloader} onInfinite={loadItems}>
-        <SearchPills />
-        <SearchForm />
-        <List noHairlinesBetween simpleList id="resultsList">
-          {searchCountCard}
-          {items}
-        </List>
-      </Page>
+    <Page id="pageRoot" infinite infiniteDistance={50} infinitePreloader={hasMoreItems.current} onInfinite={loadItems}>
+      <SearchPills />
+      <SearchForm />
+      <List noHairlinesBetween simpleList id="resultsList">
+        {searchCountCard.current}
+        {items.current}
+      </List>
+    </Page>
   );
 }
 

@@ -10,55 +10,63 @@ import { SearchResultsContext, statusCodes } from "@shared/react/SearchResultsCo
 import { SearchContext } from "@shared/react/SearchContext";
 
 function SearchPageContent() {
-  const items = useRef([]);
-  const hasMoreItems = useRef(false);
-  const searchCountCard = useRef();
+  const allowInfinite = useRef(true);
 
-  const {searchResults, fetchMoreResults, newSearchSubmitted } = useContext(SearchResultsContext);
+  const [items, setItems] = useState([]);
+  const itemsRef = useRef();
+  itemsRef.current = items;
 
-  const {searchID } = useContext(SearchContext);
+  const [showPreloader, setShowPreloader] = useState(true);
+
+  const [hasMoreItems, setHasMoreItems] = useState(false);
+  const [searchCountCard, setSearchCountCard] = useState();
+
+  const { searchResults, fetchMoreResults, newSearchSubmitted } = useContext(SearchResultsContext);
+  const fetchMoreResultsRef = useRef();
+  fetchMoreResultsRef.current = fetchMoreResults;
+
+  const { searchID } = useContext(SearchContext);
 
   const FETCH_COUNT = 20;
 
   useEffect(() => {
-    searchCountCard.current = null;
+    setSearchCountCard(null);
     // setNetworkError(false);
-    items.current = [];
+    setItems([]);
   }, [searchID]);
 
   useEffect(() => {
-    searchCountCard.current = null;
+    setSearchCountCard(null);
     // setNetworkError(false);
-    items.current = [];
-    hasMoreItems.current = true;
+    setItems([]);
+    setHasMoreItems(true);
 
-    fetchMoreResults(FETCH_COUNT);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newSearchSubmitted]); 
+    fetchMoreResultsRef.current(FETCH_COUNT);
+  }, [newSearchSubmitted]);
 
   useEffect(() => {
     // this is just for the condition when search results has been cleared at the start of a new search
     if (searchResults.status === statusCodes.None) {
-      searchCountCard.current = null;
+      setSearchCountCard(null);
       return;
     }
 
     if (searchResults.status === statusCodes.TimedOut || searchResults.status === statusCodes.Failed) {
       // setNetworkError(new Date().getTime());
-      hasMoreItems.current = false;
+      setHasMoreItems(false);
       return;
     }
 
-    if (items.current.length === 0) {
-      searchCountCard.current = <SearchCountCard key={0} count={searchResults.resultsCount} errorMessage={null} />;
+    if (itemsRef.current.length === 0) {
+      setSearchCountCard(<SearchCountCard key={0} count={searchResults.resultsCount} errorMessage={null} />);
     }
 
     if (searchResults.resultsCount === 0) {
-      hasMoreItems.current = false;
+      setHasMoreItems(false);
       return;
     }
 
-    const slicePoint = items.current.length;
+    const slicePoint = itemsRef.current.length;
     const resultsSlice = searchResults.results.slice(slicePoint);
 
     const newItems = [];
@@ -68,24 +76,24 @@ function SearchPageContent() {
     });
 
     if (newItems.length > 0) {
-      items.current = items.current.concat(newItems)
-      hasMoreItems.current = searchResults.results.length < searchResults.resultsCount;
+      setItems((prev) => prev.concat(newItems));
+      setHasMoreItems(searchResults.results.length < searchResults.resultsCount);
     } else {
-      hasMoreItems.current = false;
+      setHasMoreItems(false);
     }
   }, [searchResults]);
 
   function loadItems() {
-    if (hasMoreItems.current) fetchMoreResults(FETCH_COUNT);
+    if (hasMoreItems) fetchMoreResults(FETCH_COUNT);
   }
 
   return (
-    <Page id="pageRoot" infinite infiniteDistance={50} infinitePreloader={hasMoreItems.current} onInfinite={loadItems}>
+    <Page id="pageRoot" infinite infiniteDistance={50} infinitePreloader={showPreloader} onInfinite={loadItems}>
       <SearchPills />
       <SearchForm />
       <List noHairlinesBetween simpleList id="resultsList">
-        {searchCountCard.current}
-        {items.current}
+        {searchCountCard}
+        {items}
       </List>
     </Page>
   );

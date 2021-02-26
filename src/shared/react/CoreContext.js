@@ -18,8 +18,7 @@ function CoreContextProvider(props) {
       }
     }
 
-    if (tags.length === 0 || popularityIntervals.length === 0 || releaseYears === null) doFetchGamesMeta()
-   
+    doFetchGamesMeta()
   },[])
 
   function toggleMenu() {

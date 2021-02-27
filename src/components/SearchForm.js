@@ -31,16 +31,16 @@ function SearchForm(props) {
   const searchbarRef = useRef();
 
   function onSubmit() {
-    setSearchTerm(searchbarRef.current.f7Searchbar().query.trim())
-    submitSearch()
+    setSearchTerm(searchbarRef.current.f7Searchbar().query.trim());
+    submitSearch();
   }
 
-  useEffect( () => {
+  useEffect(() => {
     if (submittedSearchTerm.length === 0) {
       searchbarRef.current.f7Searchbar().clear();
       searchbarRef.current.f7Searchbar().disable();
     }
-  }, [submittedSearchTerm])
+  }, [submittedSearchTerm]);
 
   return (
     <div className="rootContainer">
@@ -50,7 +50,9 @@ function SearchForm(props) {
           ref={searchbarRef}
           onSubmit={onSubmit}
           onChange={() => setSearchTerm(searchbarRef.current.f7Searchbar().query.trim())}
-          onSearchbarClear={clearSearchTerm}
+          onSearchbarClear={() => {
+            if (submittedSearchTerm.length > 0) clearSearchTerm();
+          }}
           inline
           placeholder={"Search for name or tag"}
         />
@@ -70,7 +72,7 @@ function SearchForm(props) {
             </Menu> */}
           <LinkButton popoverOpen=".popover-menu">
             {sortOption}
-            {/* <Icon size="var(--gt-icon-size)" style={{ paddingLeft: "0.25rem" }} f7="chevron_down" /> */}
+            <Icon size="var(--gt-icon-size)" style={{ paddingLeft: "0.25rem" }} f7="chevron_down" />
           </LinkButton>
           <Popover className="popover-menu sortPopover">
             <List>

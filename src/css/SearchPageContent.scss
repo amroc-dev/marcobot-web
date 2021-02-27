@@ -1,5 +1,7 @@
 #pageRoot {
   // background-color: var(--gt-panel-color);
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 #resultsList {

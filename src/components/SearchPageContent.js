@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-import { Page, List, ListItem, Card } from "framework7-react";
+import { Page, List, ListItem, Card, f7 } from "framework7-react";
 import "../css/SearchPageContent.scss";
 import SearchForm from "./SearchForm";
 import SearchPills from "./SearchPills";
@@ -14,8 +14,8 @@ function SearchPageContent() {
   const itemsRef = useRef();
   itemsRef.current = items;
 
-  const [showPreloader, setShowPreloader] = useState(true);
-
+  const [showSpinner, setShowSpinner] = useState(true);
+  const [networkError, setNetworkError] = useState(false);
   const [hasMoreItems, setHasMoreItems] = useState(false);
   const [searchCountCard, setSearchCountCard] = useState();
 
@@ -29,18 +29,26 @@ function SearchPageContent() {
 
   useEffect(() => {
     setSearchCountCard(null);
-    // setNetworkError(false);
+    setNetworkError(false);
     setItems([]);
   }, [searchID]);
 
   useEffect(() => {
     setSearchCountCard(null);
-    // setNetworkError(false);
+    setNetworkError(false);
     setItems([]);
     setHasMoreItems(true);
 
     fetchMoreResultsRef.current(FETCH_COUNT);
   }, [newSearchSubmitted]);
+
+  useEffect(() => {
+    if (networkError) {
+      setShowSpinner(false)
+    } else {
+      setShowSpinner(hasMoreItems)
+    }
+  }, [networkError, hasMoreItems]);
 
   useEffect(() => {
     // this is just for the condition when search results has been cleared at the start of a new search
@@ -50,7 +58,7 @@ function SearchPageContent() {
     }
 
     if (searchResults.status === statusCodes.TimedOut || searchResults.status === statusCodes.Failed) {
-      // setNetworkError(new Date().getTime());
+      setNetworkError(new Date().getTime());
       setHasMoreItems(false);
       return;
     }
@@ -85,13 +93,17 @@ function SearchPageContent() {
     if (hasMoreItems) fetchMoreResults(FETCH_COUNT);
   }
 
+  const networkErrorMessage = networkError ? <div style={{'textAlign': 'center'}}>Network Error</div> : null;
+  
+
   return (
-    <Page id="pageRoot" infinite infiniteDistance={50} infinitePreloader={showPreloader} onInfinite={loadItems}>
+    <Page id="pageRoot" infinite infiniteDistance={50} infinitePreloader={showSpinner} onInfinite={loadItems}>
       <SearchPills />
       <SearchForm />
       <List noHairlinesBetween simpleList id="resultsList">
         {searchCountCard}
         {items}
+        {networkErrorMessage}
       </List>
     </Page>
   );

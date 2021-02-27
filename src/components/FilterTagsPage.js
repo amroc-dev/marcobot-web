@@ -14,6 +14,7 @@ import {
   Navbar,
   NavLeft,
   NavTitle,
+  Icon,
   f7,
 } from "framework7-react";
 import { CoreContext } from "@shared/react/CoreContext";
@@ -35,7 +36,7 @@ function FilterTagsPage(props) {
   });
   const listRef = useRef();
   const searchbarRef = useRef();
-  const [sortVal, setSortVal] = useState('Popularity')
+  const [sortVal, setSortVal] = useState("Popularity");
 
   useEffect(() => {
     if (!tags) {
@@ -46,16 +47,15 @@ function FilterTagsPage(props) {
   }, [tags]);
 
   function setSortType(sortType) {
-    setSortVal(sortType)
+    setSortVal(sortType);
     let sorted = [...tags];
     if (sortType === "Popularity") {
-      sorted.sort( (a,b) => (a.count > b.count) ? -1 : 1 )
-    }
-    else if (sortType === "Name") {
-      sorted.sort( (a,b) => a.name.localeCompare(b.name) )
+      sorted.sort((a, b) => (a.count > b.count ? -1 : 1));
+    } else if (sortType === "Name") {
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
     }
     setSortedTags(sorted);
-    listRef.current.f7VirtualList().replaceAllItems(sorted)
+    listRef.current.f7VirtualList().replaceAllItems(sorted);
     const query = searchbarRef.current.f7Searchbar().query;
     searchbarRef.current.f7Searchbar().clear();
     searchbarRef.current.f7Searchbar().disable();
@@ -86,22 +86,27 @@ function FilterTagsPage(props) {
       <div id="topContainer">
         <SearchbarFixed
           placeholder={"Search " + tags.length + " tags"}
-          ref = {searchbarRef}
+          ref={searchbarRef}
           inline
           searchContainer=".tags-list"
           searchIn=".item-title"
-          onChange={ () =>console.log(searchbarRef.current.f7Searchbar().query)}
         />
         <div className="sortRow" style={{ marginBottom: "0.5rem" }}>
           <div className="sortContainer">
             <div>Sort</div>
             <LinkButton popoverOpen=".popover-menu">
               {sortVal}
-              {/* <Icon size="var(--gt-icon-size)" style={{ paddingLeft: "0.25rem" }} f7="chevron_down" /> */}
+              <Icon size="var(--gt-icon-size)" style={{ paddingLeft: "0.25rem" }} f7="chevron_down" />
             </LinkButton>
             <Popover className="popover-menu sortPopover">
               <List>
-                <ListItem link="#" onClick={() => setSortType("Popularity")} noChevron popoverClose title="Popularity" />
+                <ListItem
+                  link="#"
+                  onClick={() => setSortType("Popularity")}
+                  noChevron
+                  popoverClose
+                  title="Popularity"
+                />
                 <ListItem link="#" onClick={() => setSortType("Name")} noChevron popoverClose title="Name" />
               </List>
             </Popover>
@@ -112,7 +117,7 @@ function FilterTagsPage(props) {
         <ListItem title="No results" />
       </List>
       <List
-        ref = {listRef}
+        ref={listRef}
         className="tags-list searchbar-found"
         style={{ marginTop: "0rem" }}
         virtualList
@@ -133,7 +138,7 @@ function FilterTagsPage(props) {
               style={{ top: `${vlData.topPosition}px` }}
               checkbox
               checked={searchTags.includes(item.name)}
-              onClick={() => searchTags.includes(item.name) ? removeSearchTag(item.name) : addSearchTag(item.name)}
+              onClick={() => (searchTags.includes(item.name) ? removeSearchTag(item.name) : addSearchTag(item.name))}
             />
           ))}
         </ul>

@@ -1,0 +1,29 @@
+#listItem {
+  padding: 1rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.popRange {
+  padding-top:1rem;
+}
+
+.popTextContainer {
+  display: flex;
+  padding-top: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.popTextUnits {
+  padding-left: 0.15rem;
+  padding-right: 0.15rem;
+  font-weight: 500;
+  font-size: calc(var(--gt-primary-font-size) * 1);
+}
+
+.popText {
+  padding-left: 0.15rem;
+  padding-right: 0.15rem;
+  color: var(--gt-secondary-font-color)
+}

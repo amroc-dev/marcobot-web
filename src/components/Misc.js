@@ -17,21 +17,26 @@ export const SearchbarFixed = forwardRef((props, ref) => {
   const [timeoutVal, setTimeoutVal] = useState(null);
 
   return (
-    <Searchbar
-      ref = {ref}
-      disableButtonText={cancelButtonText}
-      onBlur={() => {
-        const val = setTimeout(() => setCancelButtonText(""), 250);
-        setTimeoutVal(val);
-      }}
-      onFocus={() => {
-        if (timeoutVal) clearTimeout(timeoutVal);
-        setTimeoutVal(null);
-        setCancelButtonText("Cancel");
-      }}
-      {...props}
-    >
+    <Searchbar disableButton={false} ref = {ref} {...props}>
       {props.children}
-    </Searchbar>
-  );
+    </Searchbar>)
+
+  // return (
+  //   <Searchbar
+  //     ref = {ref}
+  //     disableButtonText={cancelButtonText}
+  //     onBlur={() => {
+  //       const val = setTimeout(() => setCancelButtonText(""), 250);
+  //       setTimeoutVal(val);
+  //     }}
+  //     onFocus={() => {
+  //       if (timeoutVal) clearTimeout(timeoutVal);
+  //       setTimeoutVal(null);
+  //       setCancelButtonText("Cancel");
+  //     }}
+  //     {...props}
+  //   >
+  //     {props.children}
+  //   </Searchbar>
+  // );
 });

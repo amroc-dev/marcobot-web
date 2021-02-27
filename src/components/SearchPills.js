@@ -3,6 +3,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Chip, Link } from "framework7-react";
 import "../css/SearchPills.css";
+import { numberWithCommas } from "@shared/react/Misc";
 import { SearchContext } from "@shared/react/SearchContext";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 
@@ -23,8 +24,8 @@ export default function SearchPills() {
     clearSearchTerm,
     deviceFilter,
     toggleDeviceFilter,
-    popularityFilterIndex,
-    setPopularityFilterIndex,
+    popularityFilter,
+    setPopularityFilter,
     searchID,
   } = useContext(SearchContext);
 
@@ -58,6 +59,21 @@ export default function SearchPills() {
       }
       return filter[e];
     });
+
+    // popularity
+    if (popularityFilter.max !== -1 || popularityFilter.min !== -1) {
+      let text = "";
+      if (popularityFilter.max === -1) {
+        text = "Min " + numberWithCommas(popularityFilter.min);
+        text = "> " + numberWithCommas(popularityFilter.min);
+      } else if (popularityFilter.min === -1) {
+        text = "Max " + numberWithCommas(popularityFilter.max);
+        text = "< " + numberWithCommas(popularityFilter.max);
+      } else if (popularityFilter.min === popularityFilter.max) {
+        text = numberWithCommas(popularityFilter.min);
+      } else text = numberWithCommas(popularityFilter.min) + " to " + numberWithCommas(popularityFilter.max);
+      _pills.push(<SearchPill key={_pills.length} name={"Popularity " + text} onClick={() => setPopularityFilter(-1, -1)} />);
+    }
 
     setPills(_pills);
     // eslint-disable-next-line react-hooks/exhaustive-deps

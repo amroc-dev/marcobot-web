@@ -15,7 +15,7 @@ function SearchCountCard(props) {
   }
 
   return (
-    <div key={0} className="cardItemRoot">
+    <div key={0} className="cardItemRoot fade-in">
       <div className="cardItem searchCountCardItem">
         {text}
       </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Page,
   Navbar,
@@ -18,11 +18,14 @@ import {
   Icon,
 } from "framework7-react";
 import SearchPageContent from "./SearchPageContent";
+import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 import "@css/SearchPage.scss";
 
 function SearchPage() {
+  const { setHoldSearch } = useContext(SearchResultsContext);
+
   return (
-    <Page name="home">
+    <Page onPageBeforeIn={() => setHoldSearch(false)} name="home">
       {/* Top Navbar */}
       <Navbar sliding={true}>
         <NavLeft>

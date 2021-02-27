@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Block, Card, ListItem } from "framework7-react";
 import "../css/CardItem.css";
+import FadeIn from 'react-fade-in';
 
 import {
   objectKeyFromDotString,
@@ -67,7 +68,7 @@ function CardItem({ doc }) {
   }
 
   return (
-    <div key={doc._id} className="cardItemRoot">
+    <div key={doc._id} className="cardItemRoot fade-in">
       <div className="cardItem" onClick={onClick}>
         <img
           style={{ width: "100px", height: "100px" }}

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useContext } from "react";
 import {
   Page,
   BlockTitle,
@@ -18,11 +18,13 @@ import FilterPopularity from "./FilterPopularity";
 import FilterRating from "./FilterRating";
 import { GTPage } from "./Misc";
 import { BackButton } from "./Misc";
+import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 
 function FiltersPage() {
-  
+  const { setHoldSearch } = useContext(SearchResultsContext);
+
   return (
-    <Page>
+    <Page onPageAfterIn={() => setHoldSearch(true)}>
       <Navbar sliding={true}>
         <NavLeft>
           <BackButton />

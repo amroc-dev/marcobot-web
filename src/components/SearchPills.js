@@ -1,13 +1,18 @@
 /* eslint no-unused-vars:0 */
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Chip, Link } from "framework7-react";
 import "../css/SearchPills.css";
 import { SearchContext } from "@shared/react/SearchContext";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 
-function SearchPill({ name, clickCallback }) {
+function SearchPill({ name, onClick }) {
   return (
-    "Pill"
+    <Chip color="blue" id="chip">
+      <Link id="link" color="white" onClick={onClick}>
+        {name}
+      </Link>
+    </Chip>
   );
 }
 
@@ -20,77 +25,38 @@ export default function SearchPills() {
     toggleDeviceFilter,
     popularityFilterIndex,
     setPopularityFilterIndex,
+    searchID,
   } = useContext(SearchContext);
 
-  const { submittedSearchTerm } = useContext(SearchResultsContext);
+  const { submittedSearchTerm, newSearchSubmitted } = useContext(SearchResultsContext);
+
+  const [pills, setPills] = useState([]);
 
   function onTagPillClick(e) {
     removeSearchTag(e.target.value);
   }
 
-  let pills = [];
+  useEffect(() => {
+    let _pills = [];
 
-  // // search pill
-  // if (submittedSearchTerm.length > 0) {
-  //   pillElems.push(
-  //     <SearchPill
-  //       key={pillElems.length}
-  //       name={submittedSearchTerm}
-  //       clickCallback={() => {
-  //         clearSearchTerm();
-  //       }}
-  //     />
-  //   );
-  // }
+    // searchbar
+    if (submittedSearchTerm.length > 0) {
+      _pills.push(<SearchPill key={_pills.length} name={submittedSearchTerm} onClick={() => clearSearchTerm()} />);
+    }
 
-  // // tags pills
-  // searchTags.map((e) => {
-  //   pillElems.push(
-  //     <SearchPill
-  //       key={pillElems.length}
-  //       name={e}
-  //       clickCallback={onTagPillClick}
-  //     />
-  //   );
-  //   return null;
-  // });
+    // tags
+    searchTags.map((e) => {
+      _pills.push(<SearchPill key={_pills.length} name={e} onClick={() => removeSearchTag(e)} />);
+      return null;
+    });
 
+    setPills(_pills);
+  }, [newSearchSubmitted, searchID]);
 
-
-  // // device filter pills
-  // function onDevicePillClick(e) {
-  //   const val = e.target.value;
-  //   toggleDeviceFilter(val);
-  // }
-
-  // const filter = { ...deviceFilter };
-  // Object.keys(filter).forEach((i) => {
-  //   if (filter[i]) {
-  //     pillElems.push(
-  //       <SearchPill
-  //         key={pillElems.length}
-  //         name={i}
-  //         clickCallback={onDevicePillClick}
-  //       />
-  //     );
-  //   }
-  //   return filter[i];
-  // });
-
-  // // popularity filter pill
-  // function onPopularityPillClick(e) {
-  //   setPopularityFilterIndex(popularityFilterCategories.length - 1)
-  // }
-
-  // if (popularityFilterCategories[popularityFilterIndex] !== -1) {
-  //   pillElems.push(
-  //     <SearchPill
-  //       key={pillElems.length}
-  //       name={"Popularity < " + MakeLabel(popularityFilterIndex)}
-  //       clickCallback={onPopularityPillClick}
-  //     />
-  //   );
-  // }
-
-  return <div>{pills}</div>;
+  const rootStyle = {'margin-top' : pills.length > 0 ? '0' : '0.5rem'}
+  return (
+    <div className="rootContainer" style={rootStyle}>
+    {pills}
+    </div>
+  )
 }

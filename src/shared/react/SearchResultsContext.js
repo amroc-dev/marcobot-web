@@ -62,8 +62,8 @@ function SearchResultsContextProvider(props) {
 
   useEffect(() => {
     setFetching(false)
-    if (searchID !== currentSearchID)
-      startSearch()
+    if (searchIDRef.current !== currentSearchIDRef.current)
+      startSearchRef.current()
   }, [searchResults]);
 
   useEffect(() => {
@@ -143,18 +143,21 @@ function SearchResultsContextProvider(props) {
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchRequest]);
 
-  const searchTermRef = useRef(searchTerm);
+  const searchTermRef = useRef();
   searchTermRef.current = searchTerm;
-  const submitSearchRef = useRef(submitSearch);
+  const submitSearchRef = useRef();
   submitSearchRef.current = submitSearch;
-  const holdSearchRef = useRef(holdSearch);
+  const holdSearchRef = useRef();
   holdSearchRef.current = holdSearch;
-  const searchIDRef = useRef(searchID);
+  const searchIDRef = useRef();
   searchIDRef.current = searchID;
-  const currentSearchIDRef = useRef(currentSearchID);
+  const currentSearchIDRef = useRef();
   currentSearchIDRef.current = currentSearchID;
+  const startSearchRef = useRef()
+  startSearchRef.current = startSearch;
 
   // use effect for whenever a new search is trigged
   useEffect(() => {
@@ -162,12 +165,12 @@ function SearchResultsContextProvider(props) {
       return;
     }
 
-    startSearch();
+    startSearchRef.current();
   }, [searchID]);
 
   function startSearch() {
-    if (searchID === currentSearchID || fetching) return;
-    setCurrentSearchID(searchID);
+    if (searchIDRef.current === currentSearchIDRef.current || fetching) return;
+    setCurrentSearchID(searchIDRef.current);
     setSearchResultsIdRecord({});
     setSearchResults(searchResultsDefault);
     setSumittedSearchTerm(searchTermRef.current);
@@ -175,8 +178,8 @@ function SearchResultsContextProvider(props) {
   }
 
   useEffect(() => {
-    if (holdSearch === false && currentSearchID !== searchID) {
-      startSearch();
+    if (holdSearch === false && currentSearchIDRef.current !== searchIDRef.current) {
+      startSearchRef.current();
     }
   }, [holdSearch]);
 

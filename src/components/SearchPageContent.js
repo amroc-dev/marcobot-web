@@ -10,8 +10,6 @@ import { SearchResultsContext, statusCodes } from "@shared/react/SearchResultsCo
 import { SearchContext } from "@shared/react/SearchContext";
 
 function SearchPageContent() {
-  const allowInfinite = useRef(true);
-
   const [items, setItems] = useState([]);
   const itemsRef = useRef();
   itemsRef.current = items;

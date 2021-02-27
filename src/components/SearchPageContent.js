@@ -97,7 +97,7 @@ function SearchPageContent() {
   
 
   return (
-    <Page id="pageRoot" infinite infiniteDistance={50} infinitePreloader={showSpinner} onInfinite={loadItems}>
+    <Page id="pageRoot" infinite infiniteDistance={window.innerHeight * 0.75} infinitePreloader={showSpinner} onInfinite={loadItems}>
       <SearchPills />
       <SearchForm />
       <List noHairlinesBetween simpleList id="resultsList">

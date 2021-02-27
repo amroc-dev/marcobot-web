@@ -1,6 +1,6 @@
 /* eslint no-unused-vars:0 */
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Chip, Link } from "framework7-react";
 import "../css/SearchPills.css";
 import { SearchContext } from "@shared/react/SearchContext";
@@ -50,13 +50,23 @@ export default function SearchPills() {
       return null;
     });
 
+    // device
+    const filter = { ...deviceFilter };
+    Object.keys(filter).forEach((e) => {
+      if (filter[e]) {
+        _pills.push(<SearchPill key={_pills.length} name={e} onClick={() => toggleDeviceFilter(e)} />);
+      }
+      return filter[e];
+    });
+
     setPills(_pills);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newSearchSubmitted, searchID]);
 
-  const rootStyle = {'margin-top' : pills.length > 0 ? '0' : '0.5rem'}
+  const rootStyle = { marginTop: pills.length > 0 ? "0" : "0.5rem" };
   return (
     <div className="rootContainer" style={rootStyle}>
-    {pills}
+      {pills}
     </div>
-  )
+  );
 }

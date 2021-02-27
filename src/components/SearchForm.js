@@ -21,17 +21,26 @@ import "@css/SortControl.scss";
 import ThemedButton from "./LinkButton";
 import LinkButton from "./LinkButton";
 import { SearchContext } from "@shared/react/SearchContext";
+import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 import { sortOptions } from "@shared/react/SortOptions";
 import { SearchbarFixed } from "@components/Misc";
 
 function SearchForm(props) {
   const { submitSearch, setSearchTerm, clearSearchTerm, sortOption, updateSortOption } = useContext(SearchContext);
+  const { submittedSearchTerm } = useContext(SearchResultsContext);
   const searchbarRef = useRef();
 
   function onSubmit() {
     setSearchTerm(searchbarRef.current.f7Searchbar().query.trim())
     submitSearch()
   }
+
+  useEffect( () => {
+    if (submittedSearchTerm.length === 0) {
+      searchbarRef.current.f7Searchbar().clear();
+      searchbarRef.current.f7Searchbar().disable();
+    }
+  }, [submittedSearchTerm])
 
   return (
     <div className="rootContainer">

@@ -25,7 +25,7 @@ function SearchPage() {
   const { setHoldSearch } = useContext(SearchResultsContext);
 
   return (
-    <Page onPageBeforeIn={() => setHoldSearch(false)} name="home">
+    <Page onPageBeforeIn={() => setHoldSearch(false)} onPageAfterOut={() => setHoldSearch(true)} name="home">
       {/* Top Navbar */}
       <Navbar sliding={true}>
         <NavLeft>

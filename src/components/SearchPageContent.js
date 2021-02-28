@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-import { Page, List, ListItem, Card, f7 } from "framework7-react";
+import { Page, PageContent, List, ListItem, Card, f7 } from "framework7-react";
 import "../css/SearchPageContent.scss";
 import SearchForm from "./SearchForm";
 import SearchPills from "./SearchPills";
@@ -44,9 +44,9 @@ function SearchPageContent() {
 
   useEffect(() => {
     if (networkError) {
-      setShowSpinner(false)
+      setShowSpinner(false);
     } else {
-      setShowSpinner(hasMoreItems)
+      setShowSpinner(hasMoreItems);
     }
   }, [networkError, hasMoreItems]);
 
@@ -93,11 +93,17 @@ function SearchPageContent() {
     if (hasMoreItems) fetchMoreResults(FETCH_COUNT);
   }
 
-  const networkErrorMessage = networkError ? <div style={{'textAlign': 'center'}}>Network Error</div> : null;
-  
+  const networkErrorMessage = networkError ? <div style={{ textAlign: "center" }}>Network Error</div> : null;
 
   return (
-    <Page id="pageRoot" infinite infiniteDistance={window.innerHeight * 0.75} infinitePreloader={showSpinner} onInfinite={loadItems}>
+    <PageContent
+      style={{padding:0}}
+      id="pageRoot"
+      infinite
+      infiniteDistance={window.innerHeight * 0.75}
+      infinitePreloader={showSpinner}
+      onInfinite={loadItems}
+    >
       <SearchPills />
       <SearchForm />
       <List noHairlinesBetween simpleList id="resultsList">
@@ -105,7 +111,7 @@ function SearchPageContent() {
         {items}
         {networkErrorMessage}
       </List>
-    </Page>
+    </PageContent>
   );
 }
 

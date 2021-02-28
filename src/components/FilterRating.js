@@ -62,8 +62,6 @@ function FilterRating(props) {
         <ListItemCell id="listItem" className="flex-shrink-3">
           {getText()}
           <Range className="popRange" style={{marginBottom: '0.6rem'}}
-            rippleColor="gray"
-            className="popRange"
             value={sliderVal}
             min={MIN_VAL}
             max={MAX_VAL}

@@ -37,23 +37,18 @@
   --f7-list-chevron-icon-color: var(--f7-theme-color);
 }
 
-// body {
-//   position: fixed;
-//   overflow: hidden;
-//   -webkit-overflow-scrolling: touch;
-// }
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
 
-// body {
-//   position: fixed;
-//   overflow: hidden;
-// }
+body {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
 
-// .appRoot {
-//   width: 100vw;
-//   height: 100vh;
-//   overflow-y: scroll;
-//   -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
-// }
 
 .button {
   text-transform: none;

@@ -8,7 +8,7 @@ import { Page, Button, BlockTitle, Block, List, ListItem, ListItemCell, Range } 
 function FilterPopularity(props) {
   const { popularityIntervals } = useContext(CoreContext);
   const { popularityFilter, setPopularityFilter } = useContext(SearchContext);
-  const [sliderVal, setSliderVal] = useState({ min: 0, max: 10 });
+  const [sliderVal, setSliderVal] = useState({ min: 0, max: 0 });
   
   useEffect(() => {
     function getSliderMax() {

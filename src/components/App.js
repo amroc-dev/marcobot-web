@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-import { f7, f7ready, App, Panel, View, Page } from "framework7-react";
+import { f7, f7ready, App, Panel, View, Views, Page, Row, Col } from "framework7-react";
 
 import { CoreContextProvider } from "@shared/react/CoreContext";
 import { SearchContextProvider } from "@shared/react/SearchContext";
@@ -11,7 +11,7 @@ import store from "@root/store";
 
 import "@css/App.scss";
 
-import "@root/inobounce.js";
+// import "@root/inobounce.js";
 
 function MyApp() {
   // Login screen demo data
@@ -56,12 +56,21 @@ function MyApp() {
                 </View>
               </Panel>
 
-              {/* <Panel right cover swipe swipeOnlyClose containerEl="app" id="panel-nested">
-              <View url="/filters-page/">
-              </View>
-            </Panel> */}
-
               <View main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
+{/* 
+              <Panel
+                style={{ width: "300px" }}
+                right
+                cover
+                swipe
+                swipeOnlyClose
+                containerEl="app"
+                visibleBreakpoint={768}
+                transition="f7-parallax" 
+                id="panel-nested"
+              >
+                <View url="/filters-page/"></View>
+              </Panel> */}
             </SearchResultsContextProvider>
           </SearchContextProvider>
         </FilterTagsContextProvider>

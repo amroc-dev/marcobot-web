@@ -6,6 +6,7 @@ import "../css/SearchPills.css";
 import { numberWithCommas } from "@shared/react/Misc";
 import { SearchContext } from "@shared/react/SearchContext";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
+import { MIN_VAL as RATING_MIN_VAL, MAX_VAL as RATING_MAX_VAL } from "./FilterRating";
 
 function SearchPill({ name, onClick }) {
   return (
@@ -26,6 +27,8 @@ export default function SearchPills() {
     toggleDeviceFilter,
     popularityFilter,
     setPopularityFilter,
+    ratingFilter,
+    setRatingFilter,
     searchID,
   } = useContext(SearchContext);
 
@@ -73,6 +76,17 @@ export default function SearchPills() {
         text = numberWithCommas(popularityFilter.min);
       } else text = numberWithCommas(popularityFilter.min) + " to " + numberWithCommas(popularityFilter.max);
       _pills.push(<SearchPill key={_pills.length} name={"Popularity " + text} onClick={() => setPopularityFilter(-1, -1)} />);
+    }
+
+    // rating
+    if (ratingFilter > RATING_MIN_VAL) {
+      let text = "";
+      if (ratingFilter < RATING_MAX_VAL) {
+        text = "> " + ratingFilter + " ★";
+      } else {
+        text = ratingFilter + " ★";
+      }
+      _pills.push(<SearchPill key={_pills.length} name={"User rating " + text} onClick={() => setRatingFilter(-1)} />);
     }
 
     setPills(_pills);

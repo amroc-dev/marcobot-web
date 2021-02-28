@@ -1,49 +1,85 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { CoreContext } from "@shared/react/CoreContext";
 import { SearchContext } from "@shared/react/SearchContext";
-import { numberWithCommas } from "@shared/react/Misc";
+import { numberWithCommas, clamp } from "@shared/react/Misc";
 import "@css/FilterPopularity.css";
 import { Page, Button, BlockTitle, Block, List, ListItem, ListItemCell, Range } from "framework7-react";
+
+export const MIN_VAL = 0;
+export const MAX_VAL = 5;
 
 function FilterRating(props) {
   const { ratingFilter, setRatingFilter } = useContext(SearchContext);
   const [sliderVal, setSliderVal] = useState(0);
-  
 
-  function onChange(vals) {
-    setSliderVal(vals[0]);
+
+  useEffect(() => {
+    setSliderVal(clamp(ratingFilter, MIN_VAL, MAX_VAL));
+  }, [ratingFilter]);
+
+  function onChange(val) {
+    val = parseFloat(val).toFixed(1)
+    setSliderVal(val);
   }
 
   function onChanged(val) {
-    if (val === 0)
-      val = -1;
-
+    val = parseFloat(val).toFixed(1)
+    if (val === 0) val = -1;
     setRatingFilter(val);
   }
 
+  function getText() {
+    let text = <div></div>;
+    const val = sliderVal;
+    if (val <= MIN_VAL) {
+      text = (
+        <div className="popTextContainer">
+          <div className="popTextUnits">Any</div>
+          <div className="popText"> rating</div>
+        </div>
+      );
+    } else if (val < MAX_VAL) {
+      text = (
+        <div className="popTextContainer">
+          <div className="popText">At least </div>
+          <div className="popTextUnits">{val} ★</div>
+        </div>
+      );
+    } else {
+      text = (
+        <div className="popTextContainer">
+          <div className="popTextUnits">{val} ★</div>
+        </div>
+      );
+    }
+    return text;
+  }
 
   return (
     <div>
       <BlockTitle>User Rating</BlockTitle>
       <List>
         <ListItemCell id="listItem" className="flex-shrink-3">
-          <Range 
-            rippleColor='gray'
+          {getText()}
+          <Range className="popRange" style={{marginBottom: '0.6rem'}}
+            rippleColor="gray"
             className="popRange"
-            min={0}
-            max={5}
+            value={sliderVal}
+            min={MIN_VAL}
+            max={MAX_VAL}
             step={0.1}
-            // value={[sliderVal.min, sliderVal.max]}
-            label={true}
-            formatLabel={ val => String(parseFloat(val).toFixed(1))}
-            // limitKnobPosition
-            // color="green"
+            scale={true}
+            scaleSteps={5}
+            // scaleSubSteps={2}
+            formatScaleLabel={() => ""}
+            // label={true}
+            // formatLabel={(val) => String(parseFloat(val).toFixed(1))}
             onRangeChange={onChange}
             onRangeChanged={onChanged}
           />
         </ListItemCell>
       </List>
-      </div>
+    </div>
   );
 }
 

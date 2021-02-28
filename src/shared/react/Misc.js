@@ -41,3 +41,12 @@ export function extractRGB(rgbString) {
   const strVals = rgbString.substring(4, rgbString.length - 1).replace(/ /g, "").split(",");
   return ([parseInt(strVals[0]), parseInt(strVals[1]), parseInt(strVals[2])])
 }
+
+export function clamp(val, min, max) {
+  if (val < min) return min;
+
+  if (val > max) return max;
+
+  return val;
+}
+

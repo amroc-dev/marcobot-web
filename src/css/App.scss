@@ -29,6 +29,14 @@
   --f7-list-chevron-icon-color: var(--f7-theme-color);
 }
 
+.color-theme-orange {
+  --f7-theme-color: #E67E22;
+  --f7-theme-color-rgb: 230, 126, 34;
+  --f7-theme-color-shade: #c0600d;
+  --f7-theme-color-tint: #ff963a;
+  --f7-list-chevron-icon-color: var(--f7-theme-color);
+}
+
 // body {
 //   position: fixed;
 //   overflow: hidden;

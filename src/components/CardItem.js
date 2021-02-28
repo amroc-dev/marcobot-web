@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Block, Card, ListItem } from "framework7-react";
 import "../css/CardItem.css";
-import FadeIn from 'react-fade-in';
 
 import {
   objectKeyFromDotString,
@@ -22,41 +21,35 @@ function getDate(dateString, includeDay = false) {
 
 function CardItem({ doc }) {
   const doc_releaseDate = objectKeyFromDotString(doc, dbkeys.releaseDate);
+  const doc_recentReleaseDate = objectKeyFromDotString(doc, dbkeys.currentVersionReleaseDate);
   const doc_popularity = objectKeyFromDotString(doc, dbkeys.popularity);
+  const doc_ratingCount = objectKeyFromDotString(doc, dbkeys.ratingCountCurrentVersion);
   const doc_rating = objectKeyFromDotString(doc, dbkeys.ratingCurrentVersion);
   const doc_formattedPrice = objectKeyFromDotString(doc, dbkeys.formattedPrice);
   const doc_trackName = objectKeyFromDotString(doc, dbkeys.trackName);
+  const doc_trackId = objectKeyFromDotString(doc, dbkeys.trackId);
   const doc_artistName = objectKeyFromDotString(doc, dbkeys.artistName);
+  const doc_artworkUrl = objectKeyFromDotString(doc, dbkeys.artworkUrl);
 
   const releaseDate = getDate(doc_releaseDate, false);
 
-  const countForCurrentVersion = doc_popularity;
-  let rating = "-";
-
-  let ratingCellColour = "rgba(125, 145, 165, 1)";
-
-  const ratingVal = parseFloat(doc_rating);
-  const remainder = Math.abs(ratingVal - Math.round(ratingVal));
-  const fixedDigits = remainder < 0.1 ? 0 : 1;
-
-  rating = ratingVal.toFixed(fixedDigits);
-  if (countForCurrentVersion >= 5) {
-    ratingCellColour = "rgba(92, 184, 92, 1)";
+  //////// rating
+  let rating = parseFloat(parseFloat(doc_rating).toFixed(1));
+  let ratingCellColour = 'rgb(125, 125, 125)';
+  if (doc_ratingCount >= 5) {
+    ratingCellColour = 'rgb(92, 184, 92)';
 
     if (rating < 4) {
-      ratingCellColour = "rgba(225, 180, 48, 1)";
+      ratingCellColour = 'rgb(225, 180, 48)';
     }
     if (rating < 3) {
-      ratingCellColour = "rgba(225, 0, 0, 1)";
+      ratingCellColour = 'rgb(225, 0, 0)';
     }
-    rating = Math.round(rating * 2);
-  } else {
+  } else if (doc_ratingCount === 0) {
     rating = "-";
   }
 
   const ratingCellStyle = { backgroundColor: ratingCellColour };
-  const ratingCellClass =
-    "ratingCell" + (rating === 10 ? " ratingCellGold" : " ratingCellWhite");
   const ratingCountElem = formatRatingCount(doc_popularity);
   const formattedPriceElem = doc_formattedPrice;
 
@@ -68,12 +61,12 @@ function CardItem({ doc }) {
   }
 
   return (
-    <div key={doc._id} className="cardItemRoot fade-in">
+    <div key={doc_trackId} className="cardItemRoot fade-in">
       <div className="cardItem" onClick={onClick}>
         <img
           style={{ width: "100px", height: "100px" }}
           className="cardImage"
-          src={doc.searchBlob.artworkUrl512}
+          src={doc_artworkUrl}
           alt=""
         />
         <div className="dataContainer">
@@ -86,7 +79,7 @@ function CardItem({ doc }) {
           <div className="bottomRowContainer">
             <div className="releaseDate">{releaseDate}</div>
             <div className="ratingContainer">
-              <div className={ratingCellClass} style={ratingCellStyle}>
+              <div className="ratingCell" style={ratingCellStyle}>
                 <div className="ratingValue">{rating}</div>
               </div>
               <div className="ratingCount">{ratingCountElem}</div>

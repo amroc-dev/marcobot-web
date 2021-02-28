@@ -134,6 +134,7 @@
   color: white;
   align-self: center;
   font-size: var(--gt-rating-font-size);
+  font-weight: 500;
 } 
 
 .fade-in {

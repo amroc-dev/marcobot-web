@@ -112,11 +112,11 @@ function FilterPopularity(props) {
           <Range className="popRange"
             min={0}
             max={popularityIntervals.length - 1}
-     
+    
             value={[sliderVal.min, sliderVal.max]}
             // label={true}
+            // formatLabel={ (i) => String(numberWithCommas(popularityIntervals[i]))}
             dual={true}
-            limitKnobPosition
             // color="green"
             onRangeChange={onChange}
             onRangeChanged={onChanged}

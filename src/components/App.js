@@ -32,7 +32,7 @@ function MyApp() {
     touch: {
       // Enable fast clicks
       fastClicks: true,
-      touchClicksDistanceThreshold: 20,
+      touchClicksDistanceThreshold: 30,
     },
   };
   const alertLoginData = () => {
@@ -65,12 +65,13 @@ function MyApp() {
                 swipe
                 swipeOnlyClose
                 containerEl="app"
-                visibleBreakpoint={768}
+                visibleBreakpoint={20}
                 transition="f7-parallax" 
                 id="panel-nested"
               >
                 <View url="/filters-page/"></View>
               </Panel> */}
+              
             </SearchResultsContextProvider>
           </SearchContextProvider>
         </FilterTagsContextProvider>

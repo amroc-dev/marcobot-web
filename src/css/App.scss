@@ -37,17 +37,37 @@
   --f7-list-chevron-icon-color: var(--f7-theme-color);
 }
 
-html {
-  height: 100%;
-  width: 100%;
+html,
+body {
+  position: fixed;
   overflow: hidden;
 }
 
-body {
-  height: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
+// html {
+//   height: 100%;
+//   width: 100%;
+//   overflow: hidden;
+//   position: absolute;
+
+//  }
+
+// body {
+//   height: 100%;
+//   overflow: auto;
+//   -webkit-overflow-scrolling: touch;
+// }
+
+// html {
+//   overflow: hidden;
+//   height: 100%;
+//   position: fixed;
+// }
+
+// body {
+//   overflow: auto;
+//   height: 100%;
+//   position: relative;
+// }
 
 
 .button {

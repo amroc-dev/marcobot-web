@@ -4,7 +4,7 @@ const CoreContext = React.createContext();
 
 function CoreContextProvider(props) {
   const [tags, setTags] = useState([]);
-  const [popularityIntervals, setPopularityIntervals] = useState([0])
+  const [popularityIntervals, setPopularityIntervals] = useState([])
   const [releaseYears, setReleaseYears] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
 

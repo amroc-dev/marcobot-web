@@ -19,7 +19,7 @@ function getDate(dateString, includeDay = false) {
   }
 }
 
-function CardItem({ doc }) {
+function CardItem({ doc, id }) {
   const doc_releaseDate = objectKeyFromDotString(doc, dbkeys.releaseDate);
   const doc_recentReleaseDate = objectKeyFromDotString(doc, dbkeys.currentVersionReleaseDate);
   const doc_popularity = objectKeyFromDotString(doc, dbkeys.popularity);
@@ -61,7 +61,7 @@ function CardItem({ doc }) {
   }
 
   return (
-    <div key={doc_trackId} className="cardItemRoot fade-in">
+    <div key={doc_trackId} id={id} className="cardItemRoot fade-in">
       <div className="cardItem" onClick={onClick}>
         <img
           style={{ width: "100px", height: "100px" }}

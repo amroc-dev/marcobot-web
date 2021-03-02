@@ -16,29 +16,37 @@ import {
   Col,
   Button,
   Icon,
+  f7,
 } from "framework7-react";
 import SearchPageContent from "./SearchPageContent";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
+import { F7Context } from "@root/F7Context";
 import "@css/SearchPage.scss";
 
 function SearchPage() {
   const { setHoldSearch } = useContext(SearchResultsContext);
+  const { filtersPanelOpen } = useContext(F7Context);
+
+  function pageIn() {}
+
+  function pageOut() {}
 
   return (
-    <Page onPageBeforeIn={() => setHoldSearch(false)} onPageAfterOut={() => setHoldSearch(true)} name="home">
+    <Page pageContent={false} onPageBeforeIn={pageIn} onPageAfterOut={pageOut} name="home">
       {/* Top Navbar */}
       <Navbar sliding={true}>
         <NavLeft>
           <Link iconIos="f7:menu" external iconAurora="f7:menu" iconMd="material:menu" panelOpen="left" />
         </NavLeft>
         <NavTitle sliding>Marcobot</NavTitle>
-        <NavRight>
-          <Link href="/filters-page/">
-            Filters
-            <Icon size={"var(--gt-icon-size-large)"} f7="chevron_right" />
-          </Link>
-          {/* <Link panelOpen="right">Filters</Link> */}
-        </NavRight>
+        {filtersPanelOpen ? null : (
+          <NavRight>
+            <Link panelOpen="right">
+              Filters
+              <Icon size={"var(--gt-icon-size-large)"} f7="chevron_right" />
+            </Link>
+          </NavRight>
+        )}
       </Navbar>
       <SearchPageContent />
     </Page>

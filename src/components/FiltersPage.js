@@ -1,6 +1,7 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import {
   Page,
+  Panel,
   BlockTitle,
   Block,
   List,
@@ -18,19 +19,16 @@ import FilterPopularity from "./FilterPopularity";
 import FilterRating from "./FilterRating";
 import { GTPage } from "./Misc";
 import { BackButton } from "./Misc";
+import "@css/FiltersPage.css";
 
 function FiltersPage() {
-  
   return (
-    <Page >
+    <Page id="pageRoot">
       <Navbar sliding={true}>
-        <NavLeft>
-          <BackButton />
-        </NavLeft>
         <NavTitle sliding>Filters</NavTitle>
       </Navbar>
       <List>
-        <ListItem link="/filter-tags-page/" title="Tags" />
+        <ListItem link="/filter-tags-page/" title="Tags" transition="f7-push" />
       </List>
       <FilterDevice />
       <FilterPopularity />

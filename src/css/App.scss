@@ -19,6 +19,9 @@
   --f7-page-parallax-transition-duration: 300ms;
   --f7-page-dive-transition-duration: 200ms;
   --f7-page-fade-transition-duration: 200ms;
+
+  --f7-panel-width: 300px;
+  // --f7-block-title-margin-bottom: 0.5rem;
 }
 
 .color-theme-blue {
@@ -43,33 +46,6 @@ body {
   overflow: hidden;
 }
 
-// html {
-//   height: 100%;
-//   width: 100%;
-//   overflow: hidden;
-//   position: absolute;
-
-//  }
-
-// body {
-//   height: 100%;
-//   overflow: auto;
-//   -webkit-overflow-scrolling: touch;
-// }
-
-// html {
-//   overflow: hidden;
-//   height: 100%;
-//   position: fixed;
-// }
-
-// body {
-//   overflow: auto;
-//   height: 100%;
-//   position: relative;
-// }
-
-
 .button {
   text-transform: none;
 }
@@ -82,6 +58,8 @@ body {
 .aurora {
   --gt-panel-color-rgb: 255, 255, 255;
   --gt-panel-color: rgb(var(--gt-panel-color-rgb));
+  --f7-navbar-height: var(--gt-row-height);
+  --f7-navbar-tablet-height: var(--gt-row-height);
 }
 
 .theme-dark {
@@ -89,8 +67,13 @@ body {
   --gt-panel-color: rgb(var(--gt-panel-color-rgb));
 }
 
-:root {
-  // --f7-menu-bg-color: #00A1DE;
+// :root {
+// }
+
+#marcobotRightPanel {
+  border-left: calc(1px / var(--f7-device-pixel-ratio)) solid rgba(0,0,0,0.2);
+  height: 100%;
+  top: 0;
 }
 
 // const effects = [

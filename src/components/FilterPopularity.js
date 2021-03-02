@@ -9,7 +9,8 @@ function FilterPopularity(props) {
   const { popularityIntervals } = useContext(CoreContext);
   const { popularityFilter, setPopularityFilter } = useContext(SearchContext);
   const [sliderVal, setSliderVal] = useState({ min: 0, max: 0 });
-  
+  const rangeRef = useRef();
+
   useEffect(() => {
     function getSliderMax() {
       if (popularityFilter.max === -1) {
@@ -38,6 +39,8 @@ function FilterPopularity(props) {
       return 0;
     }
 
+    console.log("updated: " + popularityIntervals.length);
+
     setSliderVal({ min: getSliderMin(), max: getSliderMax() });
   }, [popularityIntervals, popularityFilter]);
 
@@ -54,6 +57,8 @@ function FilterPopularity(props) {
 
   function getText() {
     let text = <div></div>;
+    if (popularityIntervals.length === 0)
+      return <div className="popTextContainer">Loading...</div>;
     const sliderMin = sliderVal.min === -1 ? 0 : sliderVal.min;
     const sliderMax = sliderVal.max === -1 ? popularityIntervals.length - 1 : sliderVal.max;
 
@@ -109,21 +114,24 @@ function FilterPopularity(props) {
       <List>
         <ListItemCell id="listItem" className="flex-shrink-3">
           {getText()}
-          <Range className="popRange"
-            min={0}
-            max={popularityIntervals.length - 1}
-    
-            value={[sliderVal.min, sliderVal.max]}
-            // label={true}
-            // formatLabel={ (i) => String(numberWithCommas(popularityIntervals[i]))}
-            dual={true}
-            // color="green"
-            onRangeChange={onChange}
-            onRangeChanged={onChanged}
-          />
+          {popularityIntervals.length > 0 ? (
+            <Range
+              className="popRange"
+              ref={rangeRef}
+              min={0}
+              max={popularityIntervals.length - 1}
+              value={[sliderVal.min, sliderVal.max]}
+              // label={true}
+              // formatLabel={ (i) => String(numberWithCommas(popularityIntervals[i]))}
+              dual={true}
+              // color="green"
+              onRangeChange={onChange}
+              onRangeChanged={onChanged}
+            />
+          ) : null}
         </ListItemCell>
       </List>
-      </div>
+    </div>
   );
 }
 

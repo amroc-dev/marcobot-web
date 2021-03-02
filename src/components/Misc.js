@@ -6,8 +6,8 @@ import { Link, Icon, Page } from "framework7-react";
 export function BackButton(props) {
   return (
     <Link back>
-      <Icon size={"var(--gt-icon-size-large)"} f7="chevron_left" />
-      Back
+      <Icon style={{paddingRight: "2rem"}} size={"var(--gt-icon-size-large)"} f7="chevron_left" />
+      {/* Back */}
     </Link>
   );
 }

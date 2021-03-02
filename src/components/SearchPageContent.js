@@ -97,20 +97,19 @@ function SearchPageContent() {
 
   return (
     <PageContent
-      style={{padding:0}}
       id="pageRoot"
       infinite
       infiniteDistance={window.innerHeight * 0.75}
       infinitePreloader={showSpinner}
       onInfinite={loadItems}
     >
-      <SearchPills />
-      <SearchForm />
-      <List noHairlinesBetween simpleList id="resultsList">
+      <div id="listContent">
+        <SearchPills />
+        <SearchForm />
         {searchCountCard}
         {items}
         {networkErrorMessage}
-      </List>
+      </div>
     </PageContent>
   );
 }

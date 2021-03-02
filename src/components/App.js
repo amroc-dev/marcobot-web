@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 
 import { f7, f7ready, App, Panel, View, Views, Page, Row, Col } from "framework7-react";
 
@@ -6,6 +6,7 @@ import { CoreContextProvider } from "@shared/react/CoreContext";
 import { SearchContextProvider } from "@shared/react/SearchContext";
 import { SearchResultsContextProvider } from "@shared/react/SearchResultsContext";
 import { FilterTagsContextProvider } from "@shared/react/FilterTagsContext";
+import { F7ContextProvider, F7Context } from "@root/F7Context";
 import routes from "@root/routes";
 import store from "@root/store";
 
@@ -46,37 +47,43 @@ function MyApp() {
 
   return (
     <App themeDark={false} colorTheme="blue" {...f7params}>
-      <CoreContextProvider>
-        <FilterTagsContextProvider>
-          <SearchContextProvider>
-            <SearchResultsContextProvider>
-              <Panel left cover backdrop swipe swipeOnlyClose>
-                <View>
-                  <Page></Page>
-                </View>
-              </Panel>
-
-              <View main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
-{/* 
-              <Panel
-                style={{ width: "300px" }}
-                right
-                cover
-                swipe
-                swipeOnlyClose
-                containerEl="app"
-                visibleBreakpoint={20}
-                transition="f7-parallax" 
-                id="panel-nested"
-              >
-                <View url="/filters-page/"></View>
-              </Panel> */}
-              
-            </SearchResultsContextProvider>
-          </SearchContextProvider>
-        </FilterTagsContextProvider>
-      </CoreContextProvider>
+      <F7ContextProvider>
+        <CoreContextProvider>
+          <FilterTagsContextProvider>
+            <SearchContextProvider>
+              <SearchResultsContextProvider>
+                <Panel left cover backdrop swipe swipeOnlyClose>
+                  <View>
+                    <Page></Page>
+                  </View>
+                </Panel>
+                <View main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
+                <RightPanel />
+              </SearchResultsContextProvider>
+            </SearchContextProvider>
+          </FilterTagsContextProvider>
+        </CoreContextProvider>
+      </F7ContextProvider>
     </App>
+  );
+}
+
+function RightPanel() {
+  const {setFiltersPanelOpen} = useContext(F7Context)
+
+  return (
+    <Panel
+      id="marcobotRightPanel"
+      right
+      cover
+      swipe
+      swipeOnlyClose
+      visibleBreakpoint={900}
+      onPanelBreakpoint={ e => setFiltersPanelOpen(e.opened)}
+      transition="f7-parallax"
+    >
+      <View url="/filters-page/"></View>
+    </Panel>
   );
 }
 

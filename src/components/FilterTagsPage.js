@@ -75,7 +75,7 @@ function FilterTagsPage(props) {
   };
 
   return (
-    <Page>
+    <Page pageContent>
       <Navbar sliding={true}>
         <NavLeft>
           <BackButton />

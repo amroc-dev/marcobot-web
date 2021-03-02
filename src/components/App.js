@@ -52,22 +52,28 @@ function MyApp() {
           <FilterTagsContextProvider>
             <SearchContextProvider>
               <SearchResultsContextProvider>
-                <Panel left cover backdrop swipe swipeOnlyClose transition="f7-parallax">
-                  <View>
-                    <Page>
-                      {/* <Navbar title="Left Panel" />
-                      <Block></Block> */}
-                    </Page>
-                  </View>
-                </Panel>
-                <RightPanel />
+                <LeftPanel />
                 <View main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
+                <RightPanel />
               </SearchResultsContextProvider>
             </SearchContextProvider>
           </FilterTagsContextProvider>
         </CoreContextProvider>
       </F7ContextProvider>
     </App>
+  );
+}
+
+function LeftPanel() {
+  return (
+    <Panel left reveal backdrop swipe swipeOnlyClose transition="f7-parallax">
+      <View>
+        <Page>
+          <Navbar title="Menu" />
+          <Block></Block>
+        </Page>
+      </View>
+    </Panel>
   );
 }
 

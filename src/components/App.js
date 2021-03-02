@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 
-import { f7, f7ready, App, Panel, View, Views, Page, Row, Col } from "framework7-react";
+import { f7, f7ready, App, Panel, View, Views, Page, Row, Col, Navbar, Block } from "framework7-react";
 
 import { CoreContextProvider } from "@shared/react/CoreContext";
 import { SearchContextProvider } from "@shared/react/SearchContext";
@@ -52,13 +52,16 @@ function MyApp() {
           <FilterTagsContextProvider>
             <SearchContextProvider>
               <SearchResultsContextProvider>
-                <Panel left cover backdrop swipe swipeOnlyClose>
+                <Panel left cover backdrop swipe swipeOnlyClose transition="f7-parallax">
                   <View>
-                    <Page></Page>
+                    <Page>
+                      {/* <Navbar title="Left Panel" />
+                      <Block></Block> */}
+                    </Page>
                   </View>
                 </Panel>
-                <View main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
                 <RightPanel />
+                <View main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
               </SearchResultsContextProvider>
             </SearchContextProvider>
           </FilterTagsContextProvider>
@@ -69,7 +72,7 @@ function MyApp() {
 }
 
 function RightPanel() {
-  const {setFiltersPanelOpen} = useContext(F7Context)
+  const { setFiltersPanelOpen } = useContext(F7Context);
 
   return (
     <Panel
@@ -79,7 +82,7 @@ function RightPanel() {
       swipe
       swipeOnlyClose
       visibleBreakpoint={900}
-      onPanelBreakpoint={ e => setFiltersPanelOpen(e.opened)}
+      onPanelBreakpoint={(e) => setFiltersPanelOpen(e.opened)}
       transition="f7-parallax"
     >
       <View url="/filters-page/"></View>

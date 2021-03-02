@@ -39,8 +39,6 @@ function FilterPopularity(props) {
       return 0;
     }
 
-    console.log("updated: " + popularityIntervals.length);
-
     setSliderVal({ min: getSliderMin(), max: getSliderMax() });
   }, [popularityIntervals, popularityFilter]);
 

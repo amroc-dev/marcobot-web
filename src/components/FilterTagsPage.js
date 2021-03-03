@@ -75,12 +75,12 @@ function FilterTagsPage(props) {
   };
 
   return (
-    <Page pageContent>
+    <Page pageContent id="filterTagsPageRoot">
       <Navbar sliding={true}>
         <NavLeft>
           <BackButton />
         </NavLeft>
-        <NavTitle sliding>Tags</NavTitle>
+        <NavTitle style={{fontWeight: "400"}}  sliding>Tags</NavTitle>
       </Navbar>
 
       <div id="topContainer">

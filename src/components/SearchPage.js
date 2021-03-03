@@ -23,9 +23,10 @@ import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 import { F7Context } from "@root/F7Context";
 import "@css/SearchPage.scss";
 
+
 function SearchPage() {
   const { setHoldSearch } = useContext(SearchResultsContext);
-  const { filtersPanelOpen } = useContext(F7Context);
+  const { filtersPanelOpen, menuPanelOpen } = useContext(F7Context);
 
   function pageIn() {}
 
@@ -35,9 +36,11 @@ function SearchPage() {
     <Page pageContent={false} onPageBeforeIn={pageIn} onPageAfterOut={pageOut} name="home">
       {/* Top Navbar */}
       <Navbar sliding={true}>
-        <NavLeft>
-          <Link iconIos="f7:menu" iconAurora="f7:menu" iconMd="material:menu" panelOpen="left" />
-        </NavLeft>
+        {menuPanelOpen ? null : (
+          <NavLeft>
+            <Link iconIos="f7:menu" iconAurora="f7:menu" iconMd="material:menu" panelOpen="left" />
+          </NavLeft>
+        )}
         <NavTitle sliding>Marcobot</NavTitle>
         {filtersPanelOpen ? null : (
           <NavRight>

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-import { Page, PageContent, List, ListItem, Card, f7 } from "framework7-react";
+import { Page, PageContent, List, ListItem, Card, f7, Block } from "framework7-react";
 import "../css/SearchPageContent.scss";
 import SearchForm from "./SearchForm";
 import SearchPills from "./SearchPills";

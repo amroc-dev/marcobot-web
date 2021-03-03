@@ -4,6 +4,7 @@ const F7Context = React.createContext();
 
 function F7ContextProvider(props) {
   const [filtersPanelOpen, setFiltersPanelOpen] = useState(false);
+  const [menuPanelOpen, setMenuPanelOpen] = useState(false);
 
   return (
     <F7Context.Provider
@@ -11,6 +12,8 @@ function F7ContextProvider(props) {
         {
           filtersPanelOpen,
           setFiltersPanelOpen,
+          menuPanelOpen,
+          setMenuPanelOpen,
         }
       }
     >

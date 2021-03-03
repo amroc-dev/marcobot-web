@@ -1,6 +1,7 @@
 .cardItemRoot {
   border-radius: var(--gt-border-radius);  
   margin: 0.5rem;
+  box-shadow: 0 0 8px rgba(0,0,0,0.025);
 }
 
 .cardItem {
@@ -22,7 +23,7 @@
 }
 
 .cardItem .cardImage {
-  --size: 100px;
+  --size: 110px;
   width: var(--size);
   height: var(--size);
   border-radius: var(--gt-border-radius) 0 0 var(--gt-border-radius);  

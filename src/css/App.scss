@@ -21,7 +21,8 @@
   --f7-page-fade-transition-duration: 200ms;
 
   --f7-panel-width: 300px;
-  // --f7-block-title-margin-bottom: 0.5rem;
+  // --f7-list-bg-color: rgba(0,0,0,0);
+  // --f7-panel-bg-color: white;
 }
 
 .color-theme-blue {
@@ -44,6 +45,19 @@ html,
 body {
   position: fixed;
   overflow: hidden;
+  scrollbar-width: thin;
+}
+
+html {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(175,175,175);
+
+}
+
+body {
+  max-width: 1440px;
+  box-shadow: 0 0 64px rgba(0,0,0,0.3);
 }
 
 .button {
@@ -68,13 +82,39 @@ body {
   --gt-panel-color: rgb(var(--gt-panel-color-rgb));
 }
 
-// :root {
+:root {
+  --f7-navbar-bg-color: rgb(255, 255, 255);
+
+  // --f7-block-title-margin-bottom: 0px;
+}
+
+// ::-webkit-scrollbar{
+//   background-color: transparent;
+//   width: 4px;
 // }
 
+// ::-webkit-scrollbar-track{
+//   background-color: transparent;
+// }
+
+// ::-webkit-scrollbar-track-piece{
+//   background-color: transparent;
+// }
+
+// ::-webkit-scrollbar-thumb{
+//   background-color: rgb(175,175,175);
+//   border-radius: 6px;
+// }
+
+
 #marcobotRightPanel {
-  border-left: calc(1px / var(--f7-device-pixel-ratio)) solid rgba(0,0,0,0.2);
-  height: 100%;
-  top: 0;
+  border-left: calc(1px / var(--f7-device-pixel-ratio)) solid rgba(0,0,0,0.125);
+  // box-shadow: 0 0 256px rgba(0,0,0,0.1);
+}
+
+#marcobotLeftPanel {
+  border-right: calc(1px / var(--f7-device-pixel-ratio)) rgba(0,0,0,0.125);
+  // box-shadow: 0 0 64px rgba(0,0,0,0.1);
 }
 
 // const effects = [

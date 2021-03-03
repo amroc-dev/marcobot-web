@@ -25,7 +25,7 @@ function FiltersPage() {
   return (
     <Page id="pageRoot">
       <Navbar sliding={true}>
-        <NavTitle sliding>Filters</NavTitle>
+        <NavTitle style={{fontWeight: "400"}} sliding>Filters</NavTitle>
       </Navbar>
       <List>
         <ListItem link="/filter-tags-page/" title="Tags" transition="f7-push" />

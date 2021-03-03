@@ -64,7 +64,7 @@ function CardItem({ doc, id }) {
     <div key={doc_trackId} id={id} className="cardItemRoot fade-in">
       <div className="cardItem" onClick={onClick}>
         <img
-          style={{ width: "100px", height: "100px" }}
+          style={{ width: "110px", height: "110px" }}
           className="cardImage"
           src={doc_artworkUrl}
           alt=""

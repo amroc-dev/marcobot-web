@@ -65,14 +65,21 @@ function MyApp() {
 }
 
 function LeftPanel() {
+  const { setMenuPanelOpen } = useContext(F7Context);
+  
   return (
-    <Panel left reveal backdrop swipe swipeOnlyClose transition="f7-parallax">
-      <View>
-        <Page>
-          <Navbar title="Menu" />
-          <Block></Block>
-        </Page>
-      </View>
+    <Panel
+      id="marcobotLeftPanel"
+      visibleBreakpoint={1280}
+      style={{ width: "200px" }}
+      left
+      cover
+      swipe
+      swipeOnlyClose
+      onPanelBreakpoint={(e) => setMenuPanelOpen(e.opened)}
+      transition="f7-parallax"
+    >
+      <View url="/menu-page/"></View>
     </Panel>
   );
 }

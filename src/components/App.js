@@ -54,7 +54,7 @@ function MyApp() {
               <SearchResultsContextProvider>
                 <LeftPanel />
                 <View main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
-                {/* <RightPanel /> */}
+                <RightPanel />
               </SearchResultsContextProvider>
             </SearchContextProvider>
           </FilterTagsContextProvider>
@@ -84,6 +84,29 @@ export function LeftPanel(props) {
       {...props}
     >
       <View url="/menu-page/"></View>
+    </Panel>
+  );
+}
+
+export function RightPanel(props) {
+  const { setRightPanelOpen, allowRightPanel } = useContext(F7Context);
+
+  if (!allowRightPanel)
+    return null;
+
+  return (
+    <Panel
+      id="marcobotRightPanel"
+      right
+      cover
+      swipe
+      swipeOnlyClose
+      visibleBreakpoint={900}
+      onPanelBreakpoint={(e) => setRightPanelOpen(e.opened)}
+      transition="f7-parallax"
+      {...props}
+    >
+      <View url="/filters-page/"></View>
     </Panel>
   );
 }

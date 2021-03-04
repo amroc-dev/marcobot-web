@@ -3,20 +3,23 @@ import { f7, f7ready, App, Panel, View, Views, Page, Row, Col } from "framework7
 const F7Context = React.createContext();
 
 function F7ContextProvider(props) {
-  const [filtersPanelOpen, setFiltersPanelOpen] = useState(false);
+  const [rightPanelOpen, setRightPanelOpen] = useState(false);
   const [menuPanelOpen, setMenuPanelOpen] = useState(false);
   const [allowMenu, setAllowMenu] = useState(false);
+  const [allowRightPanel, setAllowRightPanel] = useState(false);
 
   return (
     <F7Context.Provider
       value={
         {
-          filtersPanelOpen,
-          setFiltersPanelOpen,
+          rightPanelOpen,
+          setRightPanelOpen,
           menuPanelOpen,
           setMenuPanelOpen,
           allowMenu,
           setAllowMenu,
+          allowRightPanel,
+          setAllowRightPanel,
         }
       }
     >

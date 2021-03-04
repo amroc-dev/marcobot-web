@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import {
   Page,
+  PageContent,
   Panel,
   View,
   Navbar,
@@ -28,13 +29,16 @@ import "@css/App.scss";
 
 function SearchPage() {
   const { setHoldSearch } = useContext(SearchResultsContext);
-  const { filtersPanelOpen, menuPanelOpen, setAllowMenu } = useContext(F7Context);
+  const { rightPanelOpen, menuPanelOpen, setAllowMenu, setAllowRightPanel } = useContext(F7Context);
 
   function pageIn() {
     setAllowMenu(true)
+    setAllowRightPanel(true)
   }
 
-  function pageOut() {}
+  function pageOut() {
+    setAllowRightPanel(false)
+  }
 
   return (
       <Page id="searchPageRoot" pageContent={false} onPageBeforeIn={pageIn} onPageAfterOut={pageOut} name="home">
@@ -46,40 +50,40 @@ function SearchPage() {
             </NavLeft>
           )}
           <NavTitle sliding>Marcobot</NavTitle>
-          {filtersPanelOpen ? null : (
+          {rightPanelOpen ? null : (
             <NavRight>
-              <Link panelOpen="right">
+              <Link panelToggle="right">
                 Filters
                 {/* <Icon size={"var(--gt-icon-size-large)"} f7="chevron_right" /> */}
               </Link>
             </NavRight>
           )}
         </Navbar>
-        <SearchPageContent id="tits" />
-        <RightPanel containerEl="#searchPageRoot"/>
+        <SearchPageContent />
+        {/* <RightPanel containerEl="#searchPageRoot"/> */}
       </Page>
   );
 }
 
-export function RightPanel(props) {
-  const { setFiltersPanelOpen } = useContext(F7Context);
+// export function RightPanel(props) {
+//   const { setFiltersPanelOpen } = useContext(F7Context);
 
-  return (
-    <Panel
-      id="marcobotRightPanel"
-      right
-      cover
-      swipe
-      swipeOnlyClose
-      visibleBreakpoint={900}
-      onPanelBreakpoint={(e) => setFiltersPanelOpen(e.opened)}
-      transition="f7-parallax"
-      {...props}
-    >
-      <View url="/filters-page/"></View>
-    </Panel>
-  );
-}
+//   return (
+//     <Panel
+//       id="marcobotRightPanel"
+//       right
+//       cover
+//       swipe
+//       swipeOnlyClose
+//       visibleBreakpoint={900}
+//       onPanelBreakpoint={(e) => setFiltersPanelOpen(e.opened)}
+//       transition="f7-parallax"
+//       {...props}
+//     >
+//       <View url="/filters-page/"></View>
+//     </Panel>
+//   );
+// }
 
 
 export default SearchPage;

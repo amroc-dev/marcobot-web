@@ -113,7 +113,7 @@ export default function SearchPills() {
     }
 
     //clear all
-    if (pills.length > 1) {
+    if (_pills.length > 1) {
       _pills.splice(
         0,
         0,

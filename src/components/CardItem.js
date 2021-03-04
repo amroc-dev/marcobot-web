@@ -50,7 +50,8 @@ function CardItem({ doc, id }) {
   }
 
   const ratingCellStyle = { backgroundColor: ratingCellColour };
-  const ratingCountElem = formatRatingCount(doc_popularity);
+  const formattedPopularity = formatRatingCount(doc_popularity);
+  const formattedRecentRatingCount = formatRatingCount(doc_ratingCount);
   const formattedPriceElem = doc_formattedPrice;
 
   function onClick() {
@@ -82,7 +83,7 @@ function CardItem({ doc, id }) {
               <div className="ratingCell" style={ratingCellStyle}>
                 <div className="ratingValue">{rating}</div>
               </div>
-              <div className="ratingCount">{ratingCountElem}</div>
+              <div className="ratingCount">{formattedRecentRatingCount}</div>
             </div>
             <div className="price">{formattedPriceElem}</div>
           </div>

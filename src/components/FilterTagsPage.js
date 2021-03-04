@@ -78,10 +78,18 @@ function FilterTagsPage(props) {
 
   return (
     <Page pageContent id="filterTagsPageRoot">
-      <Subnavbar sliding>
+      {/* <Subnavbar sliding>
         <BackButton />
         <div style={{ position: "absolute", left: "45%", fontWeight: "bold" }}>Tags</div>
-      </Subnavbar>
+      </Subnavbar> */}
+      <Navbar sliding={true}>
+        <NavLeft>
+          <BackButton />
+        </NavLeft>
+        <NavTitle style={{ fontWeight: "400" }} sliding>
+          Tags
+        </NavTitle>
+      </Navbar>
 
       <div id="topContainer">
         <SearchbarFixed

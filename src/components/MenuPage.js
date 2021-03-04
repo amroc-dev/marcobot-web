@@ -28,7 +28,9 @@ function MenuPage() {
 
   return (
     <Page >
-
+      <Navbar sliding={true}>
+        <NavTitle sliding>Menu</NavTitle>
+      </Navbar>
     </Page>
   );
 }

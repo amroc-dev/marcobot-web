@@ -20,7 +20,7 @@
   --f7-page-dive-transition-duration: 200ms;
   --f7-page-fade-transition-duration: 200ms;
 
-  --f7-panel-width: 300px;
+  --f7-panel-width: 290px;
 
   // --f7-list-bg-color: rgba(0,0,0,0);
   // --f7-panel-bg-color: white;
@@ -110,11 +110,11 @@ body {
 
 #marcobotRightPanel {
   border-left: calc(1px / var(--f7-device-pixel-ratio)) solid rgba(0,0,0,0.125);
-  // box-shadow: 0 0 256px rgba(0,0,0,0.1);
+  // box-shadow: 0 0 64px rgba(0,0,0,0.1);
 }
 
 #marcobotLeftPanel {
-  border-right: calc(1px / var(--f7-device-pixel-ratio)) rgba(0,0,0,0.125);
+  border-right: calc(1px / var(--f7-device-pixel-ratio)) solid rgba(0,0,0,0.125);
   // box-shadow: 0 0 64px rgba(0,0,0,0.1);
 }
 

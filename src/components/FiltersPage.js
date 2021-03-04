@@ -24,17 +24,17 @@ import "@css/FiltersPage.css";
 
 function FiltersPage() {
   return (
-    <Page withSubnavbar id="pageRoot">
-      <Subnavbar sliding>
+    <Page id="pageRoot">
+      {/* <Subnavbar sliding>
         <div style={{margin:"auto", fontWeight:"bold"}}>
         Filters
-        </div>
-        {/* <Navbar sliding={true}>
+        </div> */}
+        <Navbar sliding={true}>
           <NavTitle style={{ fontWeight: "400" }} sliding>
             Filters
           </NavTitle>
-        </Navbar> */}
-      </Subnavbar>
+        </Navbar>
+      {/* </Subnavbar> */}
 
       <List>
         <ListItem link="/filter-tags-page/" title="Tags" transition="f7-parallax" />

@@ -1,6 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   Page,
+  Panel,
+  View,
   Navbar,
   NavLeft,
   NavTitle,
@@ -21,14 +23,16 @@ import {
 import SearchPageContent from "./SearchPageContent";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 import { F7Context } from "@root/F7Context";
-import { LeftPanel, RightPanel } from "@components/App";
 import "@css/SearchPage.scss";
+import "@css/App.scss";
 
 function SearchPage() {
   const { setHoldSearch } = useContext(SearchResultsContext);
-  const { filtersPanelOpen, menuPanelOpen } = useContext(F7Context);
+  const { filtersPanelOpen, menuPanelOpen, setAllowMenu } = useContext(F7Context);
 
-  function pageIn() {}
+  function pageIn() {
+    setAllowMenu(true)
+  }
 
   function pageOut() {}
 
@@ -51,11 +55,31 @@ function SearchPage() {
             </NavRight>
           )}
         </Navbar>
-        <LeftPanel containerEl="#searchPageRoot" />
-        <SearchPageContent />
-        <RightPanel containerEl="#searchPageRoot" />
+        <SearchPageContent id="tits" />
+        <RightPanel containerEl="#searchPageRoot"/>
       </Page>
   );
 }
+
+export function RightPanel(props) {
+  const { setFiltersPanelOpen } = useContext(F7Context);
+
+  return (
+    <Panel
+      id="marcobotRightPanel"
+      right
+      cover
+      swipe
+      swipeOnlyClose
+      visibleBreakpoint={900}
+      onPanelBreakpoint={(e) => setFiltersPanelOpen(e.opened)}
+      transition="f7-parallax"
+      {...props}
+    >
+      <View url="/filters-page/"></View>
+    </Panel>
+  );
+}
+
 
 export default SearchPage;

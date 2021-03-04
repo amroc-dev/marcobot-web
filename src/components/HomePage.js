@@ -23,10 +23,15 @@ import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 import { F7Context } from "@root/F7Context";
 
 function HomePage() {
+  const { setAllowMenu } = useContext(F7Context);
+
+  function pageIn() {
+    setAllowMenu(false)
+  }
 
   return (
-    <Page style={{margin:'auto'}}  >
-      <Link href="/search-page" animate={false} >
+    <Page onPageBeforeIn={pageIn}  style={{margin:'auto'}}  >
+      <Link href="/search-page" animate={true} transition="f7-dive" >
         Go to search
       </Link>
     </Page>

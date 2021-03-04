@@ -37,7 +37,7 @@ function SearchPage() {
       <Navbar sliding={true}>
         {menuPanelOpen ? null : (
           <NavLeft>
-            <Link iconIos="f7:menu" iconAurora="f7:menu" iconMd="material:menu" panelOpen="left" />
+            <Link iconF7="line_horizontal_3" panelOpen="left" />
           </NavLeft>
         )}
         <NavTitle sliding>Marcobot</NavTitle>

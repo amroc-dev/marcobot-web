@@ -95,6 +95,8 @@ function SearchPageContent() {
 
   const networkErrorMessage = networkError ? <div style={{ textAlign: "center" }}>Network Error</div> : null;
 
+  console.log("render");
+
   return (
     <PageContent
       id="pageRoot"

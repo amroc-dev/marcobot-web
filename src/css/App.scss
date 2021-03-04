@@ -21,6 +21,7 @@
   --f7-page-fade-transition-duration: 200ms;
 
   --f7-panel-width: 300px;
+
   // --f7-list-bg-color: rgba(0,0,0,0);
   // --f7-panel-bg-color: white;
 }
@@ -51,7 +52,7 @@ body {
 html {
   display: flex;
   justify-content: center;
-  background-color: rgb(175,175,175);
+  background-color: rgb(175,182,189);
 
 }
 
@@ -84,7 +85,7 @@ body {
 
 :root {
   --f7-navbar-bg-color: rgb(255, 255, 255);
-
+  --f7-subnavbar-bg-color: rgb(255, 255, 255);
   // --f7-block-title-margin-bottom: 0px;
 }
 

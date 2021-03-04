@@ -21,6 +21,7 @@ import {
 import SearchPageContent from "./SearchPageContent";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 import { F7Context } from "@root/F7Context";
+import { LeftPanel, RightPanel } from "@components/App";
 import "@css/SearchPage.scss";
 
 function SearchPage() {
@@ -32,26 +33,28 @@ function SearchPage() {
   function pageOut() {}
 
   return (
-    <Page pageContent={false} onPageBeforeIn={pageIn} onPageAfterOut={pageOut} name="home">
-      {/* Top Navbar */}
-      <Navbar sliding={true}>
-        {menuPanelOpen ? null : (
-          <NavLeft>
-            <Link iconF7="line_horizontal_3" panelOpen="left" />
-          </NavLeft>
-        )}
-        <NavTitle sliding>Marcobot</NavTitle>
-        {filtersPanelOpen ? null : (
-          <NavRight>
-            <Link panelOpen="right">
-              Filters
-              <Icon size={"var(--gt-icon-size-large)"} f7="chevron_right" />
-            </Link>
-          </NavRight>
-        )}
-      </Navbar>
-      <SearchPageContent />
-    </Page>
+      <Page id="searchPageRoot" pageContent={false} onPageBeforeIn={pageIn} onPageAfterOut={pageOut} name="home">
+        {/* Top Navbar */}
+        <Navbar sliding={true}>
+          {menuPanelOpen ? null : (
+            <NavLeft>
+              <Link iconF7="line_horizontal_3" panelOpen="left" />
+            </NavLeft>
+          )}
+          <NavTitle sliding>Marcobot</NavTitle>
+          {filtersPanelOpen ? null : (
+            <NavRight>
+              <Link panelOpen="right">
+                Filters
+                {/* <Icon size={"var(--gt-icon-size-large)"} f7="chevron_right" /> */}
+              </Link>
+            </NavRight>
+          )}
+        </Navbar>
+        <LeftPanel containerEl="#searchPageRoot" />
+        <SearchPageContent />
+        <RightPanel containerEl="#searchPageRoot" />
+      </Page>
   );
 }
 

@@ -21,16 +21,16 @@ import {
 import SearchPageContent from "./SearchPageContent";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 import { F7Context } from "@root/F7Context";
-import "@css/MenuPage.scss";
 
-function MenuPage() {
-  const { filtersPanelOpen } = useContext(F7Context);
+function HomePage() {
 
   return (
-    <Page >
-
+    <Page style={{margin:'auto'}}  >
+      <Link href="/search-page" animate={false} >
+        Go to search
+      </Link>
     </Page>
   );
 }
 
-export default MenuPage;
+export default HomePage;

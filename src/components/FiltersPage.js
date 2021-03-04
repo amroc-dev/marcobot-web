@@ -11,6 +11,7 @@ import {
   NavTitle,
   NavLeft,
   NavRight,
+  Subnavbar,
   Icon,
 } from "framework7-react";
 
@@ -23,12 +24,20 @@ import "@css/FiltersPage.css";
 
 function FiltersPage() {
   return (
-    <Page id="pageRoot">
-      <Navbar sliding={true}>
-        <NavTitle style={{fontWeight: "400"}} sliding>Filters</NavTitle>
-      </Navbar>
+    <Page withSubnavbar id="pageRoot">
+      <Subnavbar sliding>
+        <div style={{margin:"auto", fontWeight:"bold"}}>
+        Filters
+        </div>
+        {/* <Navbar sliding={true}>
+          <NavTitle style={{ fontWeight: "400" }} sliding>
+            Filters
+          </NavTitle>
+        </Navbar> */}
+      </Subnavbar>
+
       <List>
-        <ListItem link="/filter-tags-page/" title="Tags" transition="f7-push" />
+        <ListItem link="/filter-tags-page/" title="Tags" transition="f7-parallax" />
       </List>
       <FilterDevice />
       <FilterPopularity />

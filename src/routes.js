@@ -1,4 +1,4 @@
-
+import HomePage from "./components/HomePage";
 import SearchPage from "./components/SearchPage";
 import FiltersPage from "./components/FiltersPage";
 import MenuPage from "./components/MenuPage";
@@ -6,11 +6,16 @@ import FilterTagsPage from "./components/FilterTagsPage";
 
 var routes = [
   {
-    path: '/',
-    component: SearchPage,
+    path: "/",
+    component: HomePage,
   },
   {
-    path: '/menu-page',
+    path: "/search-page",
+    component: SearchPage,
+  },
+
+  {
+    path: "/menu-page",
     component: MenuPage,
   },
   {

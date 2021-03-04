@@ -15,6 +15,8 @@ import {
   NavLeft,
   NavTitle,
   Icon,
+  Row,
+  Col,
   f7,
 } from "framework7-react";
 import { CoreContext } from "@shared/react/CoreContext";
@@ -76,12 +78,10 @@ function FilterTagsPage(props) {
 
   return (
     <Page pageContent id="filterTagsPageRoot">
-      <Navbar sliding={true}>
-        <NavLeft>
-          <BackButton />
-        </NavLeft>
-        <NavTitle style={{fontWeight: "400"}}  sliding>Tags</NavTitle>
-      </Navbar>
+      <Subnavbar sliding>
+        <BackButton />
+        <div style={{ position: "absolute", left: "45%", fontWeight: "bold" }}>Tags</div>
+      </Subnavbar>
 
       <div id="topContainer">
         <SearchbarFixed

@@ -46,15 +46,15 @@ function MyApp() {
   });
 
   return (
-    <App themeDark={false} colorTheme="blue" {...f7params}>
+    <App id="marcobotApp" themeDark={false} colorTheme="blue" {...f7params}>
       <F7ContextProvider>
         <CoreContextProvider>
           <FilterTagsContextProvider>
             <SearchContextProvider>
               <SearchResultsContextProvider>
-                <LeftPanel />
+                {/* <LeftPanel /> */}
                 <View main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
-                <RightPanel />
+                {/* <RightPanel /> */}
               </SearchResultsContextProvider>
             </SearchContextProvider>
           </FilterTagsContextProvider>
@@ -64,27 +64,28 @@ function MyApp() {
   );
 }
 
-function LeftPanel() {
+export function LeftPanel(props) {
   const { setMenuPanelOpen } = useContext(F7Context);
   
   return (
     <Panel
       id="marcobotLeftPanel"
-      visibleBreakpoint={1280}
       style={{ width: "200px" }}
       left
       cover
       swipe
       swipeOnlyClose
+      visibleBreakpoint={1280}
       onPanelBreakpoint={(e) => setMenuPanelOpen(e.opened)}
       transition="f7-parallax"
+      {...props}
     >
       <View url="/menu-page/"></View>
     </Panel>
   );
 }
 
-function RightPanel() {
+export function RightPanel(props) {
   const { setFiltersPanelOpen } = useContext(F7Context);
 
   return (
@@ -97,6 +98,7 @@ function RightPanel() {
       visibleBreakpoint={900}
       onPanelBreakpoint={(e) => setFiltersPanelOpen(e.opened)}
       transition="f7-parallax"
+      {...props}
     >
       <View url="/filters-page/"></View>
     </Panel>

@@ -1,6 +1,5 @@
 
 #tagRow {
-
   /* align-items: flex-end; */
 }
 
@@ -18,8 +17,4 @@
 #topContainer {
   margin: 0.5rem;
   margin-bottom: 0;
-}
-
-#filterTagsPageRoot {
-
 }

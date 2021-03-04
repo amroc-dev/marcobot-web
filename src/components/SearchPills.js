@@ -1,18 +1,35 @@
 /* eslint no-unused-vars:0 */
 
 import React, { useContext, useEffect, useState, useRef } from "react";
-import { Chip, Link } from "framework7-react";
+import { Chip, Link, Icon } from "framework7-react";
 import "../css/SearchPills.css";
 import { numberWithCommas } from "@shared/react/Misc";
 import { SearchContext } from "@shared/react/SearchContext";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 import { MIN_VAL as RATING_MIN_VAL, MAX_VAL as RATING_MAX_VAL } from "./FilterRating";
 
-function SearchPill({ name, onClick }) {
+function SearchPill({ name, onClick, iconName }) {
+  const icon = iconName ? <Icon size="calc(var(--gt-icon-size) * 1.5)" f7={iconName} /> : null;
+
   return (
     <Chip color="blue" id="chip">
       <Link id="link" color="white" onClick={onClick}>
         {name}
+        {icon}
+      </Link>
+    </Chip>
+  );
+}
+
+function ClearPill({ onClick }) {
+  return (
+    <Chip
+      color="grey"
+      id="chip"
+      style={{ backgroundColor: "rgba(0,0,0,0)", marginLeft: "-0.5rem", marginRight: "-0.25rem" }}
+    >
+      <Link id="link" color="gray" onClick={onClick}>
+        <Icon size="calc(var(--gt-icon-size) * 1.5)" f7={"xmark_circle_fill"} />
       </Link>
     </Chip>
   );
@@ -23,6 +40,8 @@ export default function SearchPills() {
     searchTags,
     removeSearchTag,
     clearSearchTerm,
+    clearSearchTags,
+    resetDeviceFilter,
     deviceFilter,
     toggleDeviceFilter,
     popularityFilter,
@@ -35,10 +54,6 @@ export default function SearchPills() {
   const { submittedSearchTerm, newSearchSubmitted } = useContext(SearchResultsContext);
 
   const [pills, setPills] = useState([]);
-
-  function onTagPillClick(e) {
-    removeSearchTag(e.target.value);
-  }
 
   useEffect(() => {
     let _pills = [];
@@ -64,6 +79,9 @@ export default function SearchPills() {
     });
 
     // popularity
+    function clearPopularityFilter() {
+      setPopularityFilter(-1, -1)
+    }
     if (popularityFilter.max !== -1 || popularityFilter.min !== -1) {
       let text = "";
       if (popularityFilter.max === -1) {
@@ -75,10 +93,15 @@ export default function SearchPills() {
       } else if (popularityFilter.min === popularityFilter.max) {
         text = numberWithCommas(popularityFilter.min);
       } else text = numberWithCommas(popularityFilter.min) + " to " + numberWithCommas(popularityFilter.max);
-      _pills.push(<SearchPill key={_pills.length} name={"Popularity " + text} onClick={() => setPopularityFilter(-1, -1)} />);
+      _pills.push(
+        <SearchPill key={_pills.length} name={"Popularity " + text} onClick={clearPopularityFilter} />
+      );
     }
 
     // rating
+    function clearRatingFilter() {
+      setRatingFilter(-1)
+    }
     if (ratingFilter > RATING_MIN_VAL) {
       let text = "";
       if (ratingFilter < RATING_MAX_VAL) {
@@ -86,7 +109,25 @@ export default function SearchPills() {
       } else {
         text = ratingFilter + " ★";
       }
-      _pills.push(<SearchPill key={_pills.length} name={"User rating " + text} onClick={() => setRatingFilter(-1)} />);
+      _pills.push(<SearchPill key={_pills.length} name={"User rating " + text} onClick={clearRatingFilter} />);
+    }
+
+    //clear all
+    if (pills.length > 1) {
+      _pills.splice(
+        0,
+        0,
+        <ClearPill
+          key={_pills.length}
+          onClick={() => {
+            clearSearchTerm();
+            clearSearchTags();
+            resetDeviceFilter();
+            clearPopularityFilter();
+            clearRatingFilter();
+          }}
+        />
+      );
     }
 
     setPills(_pills);

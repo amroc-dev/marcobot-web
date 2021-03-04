@@ -69,7 +69,7 @@ function FilterRating(props) {
             scale={true}
             scaleSteps={5}
             // scaleSubSteps={2}
-            formatScaleLabel={() => ""}
+            // formatScaleLabel={() => ""}
             // label={true}
             // formatLabel={(val) => String(parseFloat(val).toFixed(1))}
             onRangeChange={onChange}

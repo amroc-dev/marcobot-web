@@ -23,7 +23,6 @@ import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 import { F7Context } from "@root/F7Context";
 import "@css/SearchPage.scss";
 
-
 function SearchPage() {
   const { setHoldSearch } = useContext(SearchResultsContext);
   const { filtersPanelOpen, menuPanelOpen } = useContext(F7Context);

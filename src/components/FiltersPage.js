@@ -32,7 +32,7 @@ function FiltersPage() {
       </List>
       <FilterDevice />
       <FilterPopularity />
-      <FilterRating />
+      {/* <FilterRating /> */}
     </Page>
   );
 }

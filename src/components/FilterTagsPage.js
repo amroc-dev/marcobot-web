@@ -94,11 +94,11 @@ function FilterTagsPage(props) {
         <div className="sortRow" style={{ marginBottom: "0.5rem" }}>
           <div className="sortContainer">
             <div>Sort</div>
-            <LinkButton popoverOpen=".popover-menu">
+            <LinkButton popoverOpen=".tag-popover-menu">
               {sortVal}
               <Icon size="var(--gt-icon-size)" style={{ paddingLeft: "0.25rem" }} f7="chevron_down" />
             </LinkButton>
-            <Popover className="popover-menu sortPopover">
+            <Popover className="tag-popover-menu sortPopover">
               <List>
                 <ListItem
                   link="#"

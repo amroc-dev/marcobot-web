@@ -2,13 +2,21 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { f7, f7ready, App, Panel, View, Views, Page, Row, Col } from "framework7-react";
 const F7PanelContext = React.createContext();
 
-export function LeftPanel(props) {
-  const { setLeftPanelOpen, allowLeftPanel } = useContext(F7PanelContext);
+export const LeftPanelBreakpoint = 1280;
 
-  useEffect( () => {
+export function LeftPanel(props) {
+  const { allowLeftPanel, setLeftPanelOpen } = useContext(F7PanelContext);
+
+  useEffect(() => {
     const panel = f7.panel.get("left");
-    allowLeftPanel ? panel.enableVisibleBreakpoint() : panel.disableVisibleBreakpoint();
-  }, [allowLeftPanel])
+    if (allowLeftPanel) {
+      panel.params.visibleBreakpoint = LeftPanelBreakpoint;
+      panel.enableVisibleBreakpoint()
+    } else {
+      panel.params.visibleBreakpoint = null;
+      panel.disableVisibleBreakpoint();
+    } 
+  }, [allowLeftPanel]);
 
   return (
     <Panel
@@ -18,8 +26,8 @@ export function LeftPanel(props) {
       cover
       swipe
       swipeOnlyClose
-      visibleBreakpoint={1280}
-      onPanelBreakpoint={(e) => setLeftPanelOpen(e.opened)}
+      onPanelOpen={() => setLeftPanelOpen(true)}
+      onPanelClose={() => setLeftPanelOpen(false)}
       {...props}
     >
       <View url="/menu-page/"></View>
@@ -27,13 +35,21 @@ export function LeftPanel(props) {
   );
 }
 
-export function RightPanel(props) {
-  const { setRightPanelOpen, allowRightPanel } = useContext(F7PanelContext);
+export const RightPanelBreakpoint = 900;
 
-  useEffect( () => {
+export function RightPanel(props) {
+  const { allowRightPanel, setRightPanelOpen } = useContext(F7PanelContext);
+
+  useEffect(() => {
     const panel = f7.panel.get("right");
-    allowRightPanel ? panel.enableVisibleBreakpoint() : panel.disableVisibleBreakpoint();
-  }, [allowRightPanel])
+    if (allowRightPanel) {
+      panel.params.visibleBreakpoint = RightPanelBreakpoint;
+      panel.enableVisibleBreakpoint();
+    } else {
+      panel.params.visibleBreakpoint = null;
+      panel.disableVisibleBreakpoint();
+    }
+  }, [allowRightPanel]);
 
   return (
     <Panel
@@ -42,8 +58,8 @@ export function RightPanel(props) {
       cover
       swipe
       swipeOnlyClose
-      visibleBreakpoint={1280}
-      onPanelBreakpoint={(e) => setRightPanelOpen(e.opened)}
+      onPanelOpen={() => setRightPanelOpen(true)}
+      onPanelClose={() => setRightPanelOpen(false)}
       {...props}
     >
       <View url="/filters-page/"></View>
@@ -54,7 +70,6 @@ export function RightPanel(props) {
 function F7PanelContextProvider(props) {
   const [allowLeftPanel, setAllowLeftPanel] = useState(false);
   const [leftPanelOpen, setLeftPanelOpen] = useState(false);
-
   const [allowRightPanel, setAllowRightPanel] = useState(false);
   const [rightPanelOpen, setRightPanelOpen] = useState(false);
 
@@ -80,18 +95,18 @@ function F7PanelContextProvider(props) {
         // Left
         allowLeftPanel,
         setAllowLeftPanel,
-        leftPanelOpen,
-        setLeftPanelOpen,
         openLeftPanel,
         closeLeftPanel,
+        leftPanelOpen,
+        setLeftPanelOpen,
 
         // Right
         allowRightPanel,
         setAllowRightPanel,
-        rightPanelOpen,
-        setRightPanelOpen,
         openRightPanel,
         closeRightPanel,
+        rightPanelOpen,
+        setRightPanelOpen,
       }}
     >
       {props.children}

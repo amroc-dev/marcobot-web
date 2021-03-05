@@ -24,13 +24,13 @@ import {
 import SearchPageContent from "./SearchPageContent";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 import { F7PanelContext } from "@root/F7PanelContext";
-import { LeftPanelNavLink } from "@components/Misc";
+import { LeftPanelNavLink, RightPanelNavLink } from "@components/Misc";
 import "@css/SearchPage.scss";
 import "@css/App.scss";
 
 function SearchPage() {
   const { setHoldSearch } = useContext(SearchResultsContext);
-  const { rightPanelOpen, setAllowRightPanel } = useContext(F7PanelContext);
+  const { rightPanelOpen, setAllowRightPanel, openRightPanel } = useContext(F7PanelContext);
 
   function pageBeforeIn() {
     setAllowRightPanel(true);
@@ -46,14 +46,7 @@ function SearchPage() {
       <Navbar sliding={true}>
         <LeftPanelNavLink />
         <NavTitle sliding>Marcobot</NavTitle>
-        {rightPanelOpen ? null : (
-          <NavRight>
-            <Link panelToggle="right">
-              Filters
-              {/* <Icon size={"var(--gt-icon-size-large)"} f7="chevron_right" /> */}
-            </Link>
-          </NavRight>
-        )}
+        <RightPanelNavLink>Filters</RightPanelNavLink>
       </Navbar>
       <SearchPageContent />
       {/* <RightPanel containerEl="#searchPageRoot"/> */}

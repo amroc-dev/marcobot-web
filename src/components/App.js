@@ -29,7 +29,6 @@ function MyApp() {
     // App routes
     routes: routes,
     // Register service worker
-
     touch: {
       // Enable fast clicks
       fastClicks: true,
@@ -43,20 +42,15 @@ function MyApp() {
   };
   f7ready(() => {
     // Call F7 APIs here
-
   });
-
-  const appRef = useRef()
 
   useEffect(() => {
     f7ready((f7) => {
-      const test = appRef.current;
-      const num = 5;
     })
   }, [])
 
   return (
-    <App ref={appRef} id="marcobotApp" themeDark={false} colorTheme="blue" {...f7params}>
+    <App id="marcobotApp" themeDark={false} colorTheme="blue" {...f7params}>
       <F7PanelContextProvider>
         <CoreContextProvider>
           <FilterTagsContextProvider>

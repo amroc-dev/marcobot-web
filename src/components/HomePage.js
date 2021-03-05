@@ -39,8 +39,8 @@ function HomePage() {
     <Page id="homePageRoot" onPageBeforeIn={pageIn} onPageAfterOut={afterPageOut}>
       <div id="homePageBody">
         <img id="logo" src={marcobot} alt="" />
-        <Link style={{ margin: "auto" }} href="/search-page" animate={false} transition="f7-dive">
-          Go to search
+        <Link style={{ margin: "auto", marginTop: "1rem" }} href="/search-page" animate={false} transition="f7-dive">
+          Go
         </Link>
       </div>
     </Page>

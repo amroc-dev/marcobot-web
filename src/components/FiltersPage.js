@@ -23,8 +23,15 @@ import { BackButton } from "./Misc";
 import "@css/FiltersPage.css";
 
 function FiltersPage() {
+  
+  function pageBeforeIn() {
+  }
+
+  function pageAfterOut() {
+  }
+  
   return (
-    <Page id="pageRoot">
+    <Page onPageBeforeIn={pageBeforeIn} onPageBeforeOut={pageAfterOut} id="pageRoot">
       {/* <Subnavbar sliding>
         <div style={{margin:"auto", fontWeight:"bold"}}>
         Filters

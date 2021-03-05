@@ -107,11 +107,29 @@ body {
 //   border-radius: 6px;
 // }
 
+::-webkit-scrollbar{
+  background-color: transparent;
+  width: 12px;
+  // border-left: calc(1px / var(--f7-device-pixel-ratio)) solid rgba(0,0,0,0.05);
+}
+
+::-webkit-scrollbar-thumb{
+  border: 3px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box; 
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.175);
+}
+
+
 
 #marcobotRightPanel {
   border-left: calc(1px / var(--f7-device-pixel-ratio)) solid rgba(0,0,0,0.125);
   // box-shadow: 0 0 64px rgba(0,0,0,0.1);
+  ::-webkit-scrollbar{
+    border-left: calc(1px / var(--f7-device-pixel-ratio)) solid rgba(0,0,0,0.125);
+  }
 }
+
 
 #marcobotLeftPanel {
   border-right: calc(1px / var(--f7-device-pixel-ratio)) solid rgba(0,0,0,0.125);

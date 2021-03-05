@@ -1,7 +1,8 @@
-import React, { useRef, useEffect, useState, forwardRef } from "react";
-import { Searchbar } from "framework7-react";
+import React, { useRef, useEffect, useContext, useState, forwardRef } from "react";
+import { Link, Icon, Searchbar, NavLeft } from "framework7-react";
+import { F7PanelContext } from "@root/F7PanelContext";
 import "@css/App.scss";
-import { Link, Icon, Page } from "framework7-react";
+
 
 export function BackButton(props) {
   return (
@@ -20,23 +21,10 @@ export const SearchbarFixed = forwardRef((props, ref) => {
     <Searchbar disableButton={false} ref = {ref} {...props}>
       {props.children}
     </Searchbar>)
-
-  // return (
-  //   <Searchbar
-  //     ref = {ref}
-  //     disableButtonText={cancelButtonText}
-  //     onBlur={() => {
-  //       const val = setTimeout(() => setCancelButtonText(""), 250);
-  //       setTimeoutVal(val);
-  //     }}
-  //     onFocus={() => {
-  //       if (timeoutVal) clearTimeout(timeoutVal);
-  //       setTimeoutVal(null);
-  //       setCancelButtonText("Cancel");
-  //     }}
-  //     {...props}
-  //   >
-  //     {props.children}
-  //   </Searchbar>
-  // );
 });
+
+export function LeftPanelNavLink() {
+  const {leftPanelOpen, openLeftPanel} = useContext(F7PanelContext);
+
+  return ( leftPanelOpen ? null : <NavLeft><Link iconF7="line_horizontal_3" onClick={() => openLeftPanel()}/></NavLeft> )
+}

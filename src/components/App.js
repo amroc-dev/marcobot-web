@@ -6,7 +6,7 @@ import { CoreContextProvider } from "@shared/react/CoreContext";
 import { SearchContextProvider } from "@shared/react/SearchContext";
 import { SearchResultsContextProvider } from "@shared/react/SearchResultsContext";
 import { FilterTagsContextProvider } from "@shared/react/FilterTagsContext";
-import { F7ContextProvider, F7Context } from "@root/F7Context";
+import { F7PanelContextProvider, LeftPanel, RightPanel } from "@root/F7PanelContext";
 import routes from "@root/routes";
 import store from "@root/store";
 
@@ -43,72 +43,36 @@ function MyApp() {
   };
   f7ready(() => {
     // Call F7 APIs here
+
   });
 
+  const appRef = useRef()
+
+  useEffect(() => {
+    f7ready((f7) => {
+      const test = appRef.current;
+      const num = 5;
+    })
+  }, [])
+
   return (
-    <App id="marcobotApp" themeDark={false} colorTheme="blue" {...f7params}>
-      <F7ContextProvider>
+    <App ref={appRef} id="marcobotApp" themeDark={false} colorTheme="blue" {...f7params}>
+      <F7PanelContextProvider>
         <CoreContextProvider>
           <FilterTagsContextProvider>
             <SearchContextProvider>
               <SearchResultsContextProvider>
                 <LeftPanel />
-                <View main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
+                <View id="appMainView" main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
                 <RightPanel />
               </SearchResultsContextProvider>
             </SearchContextProvider>
           </FilterTagsContextProvider>
         </CoreContextProvider>
-      </F7ContextProvider>
+      </F7PanelContextProvider>
     </App>
   );
 }
 
-export function LeftPanel(props) {
-  const { setMenuPanelOpen, allowMenu } = useContext(F7Context);
-  
-  if (!allowMenu)
-    return null;
-
-  return (
-    <Panel
-      id="marcobotLeftPanel"
-      style={{ width: "200px" }}
-      left
-      cover
-      swipe
-      swipeOnlyClose
-      visibleBreakpoint={1280}
-      onPanelBreakpoint={(e) => setMenuPanelOpen(e.opened)}
-      transition="f7-parallax"
-      {...props}
-    >
-      <View url="/menu-page/"></View>
-    </Panel>
-  );
-}
-
-export function RightPanel(props) {
-  const { setRightPanelOpen, allowRightPanel } = useContext(F7Context);
-
-  if (!allowRightPanel)
-    return null;
-
-  return (
-    <Panel
-      id="marcobotRightPanel"
-      right
-      cover
-      swipe
-      swipeOnlyClose
-      visibleBreakpoint={900}
-      onPanelBreakpoint={(e) => setRightPanelOpen(e.opened)}
-      transition="f7-parallax"
-      {...props}
-    >
-      <View url="/filters-page/"></View>
-    </Panel>
-  );
-}
 
 export default MyApp;

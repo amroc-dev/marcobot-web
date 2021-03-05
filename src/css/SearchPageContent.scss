@@ -12,12 +12,13 @@
   // }  
 }
 
-// #pageRoot::-webkit-scrollbar{
+// #sp-pageRoot::-webkit-scrollbar{
 //   background-color: transparent;
-//   width: 10px;
+//   width: 12px;
+//   border: calc(1px / var(--f7-device-pixel-ratio)) solid rgba(0,0,0,0.05);
 // }
 
-// #pageRoot::-webkit-scrollbar-thumb{
+// #sp-pageRoot::-webkit-scrollbar-thumb{
 //   border: 3px solid rgba(0, 0, 0, 0);
 //   background-clip: padding-box; 
 //   border-radius: 20px;

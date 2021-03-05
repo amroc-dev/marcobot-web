@@ -18,3 +18,9 @@
   margin: 0.5rem;
   margin-bottom: 0;
 }
+
+/* #tagsList::-webkit-scrollbar{
+  background-color: transparent;
+  width: 22px;
+  border: calc(1px / var(--f7-device-pixel-ratio)) solid rgba(0,0,0,4);
+} */

@@ -1,8 +1,9 @@
-import HomePage from "./components/HomePage";
-import SearchPage from "./components/SearchPage";
-import FiltersPage from "./components/FiltersPage";
-import MenuPage from "./components/MenuPage";
-import FilterTagsPage from "./components/FilterTagsPage";
+import HomePage from "@components/HomePage";
+import SearchPage from "@components/SearchPage";
+import FiltersPage from "@components/FiltersPage";
+import MenuPage from "@components/MenuPage";
+import FilterTagsPage from "@components/FilterTagsPage";
+import SettingsPage from "@components/SettingsPage";
 
 var routes = [
   {
@@ -25,6 +26,10 @@ var routes = [
   {
     path: "/filter-tags-page",
     component: FilterTagsPage,
+  },
+  {
+    path: "/settings-page",
+    component: SettingsPage,
   },
 ];
 

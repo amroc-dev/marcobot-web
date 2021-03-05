@@ -23,50 +23,46 @@ import {
 } from "framework7-react";
 import SearchPageContent from "./SearchPageContent";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
-import { F7Context } from "@root/F7Context";
+import { F7PanelContext } from "@root/F7PanelContext";
+import { LeftPanelNavLink } from "@components/Misc";
 import "@css/SearchPage.scss";
 import "@css/App.scss";
 
 function SearchPage() {
   const { setHoldSearch } = useContext(SearchResultsContext);
-  const { rightPanelOpen, menuPanelOpen, setAllowMenu, setAllowRightPanel } = useContext(F7Context);
+  const { rightPanelOpen, setAllowRightPanel } = useContext(F7PanelContext);
 
-  function pageIn() {
-    setAllowMenu(true)
-    setAllowRightPanel(true)
+  function pageBeforeIn() {
+    setAllowRightPanel(true);
   }
 
-  function pageOut() {
-    setAllowRightPanel(false)
+  function pageBeforeOut() {
+    setAllowRightPanel(false);
   }
 
   return (
-      <Page id="searchPageRoot" pageContent={false} onPageBeforeIn={pageIn} onPageAfterOut={pageOut} name="home">
-        {/* Top Navbar */}
-        <Navbar sliding={true}>
-          {menuPanelOpen ? null : (
-            <NavLeft>
-              <Link iconF7="line_horizontal_3" panelOpen="left" />
-            </NavLeft>
-          )}
-          <NavTitle sliding>Marcobot</NavTitle>
-          {rightPanelOpen ? null : (
-            <NavRight>
-              <Link panelToggle="right">
-                Filters
-                {/* <Icon size={"var(--gt-icon-size-large)"} f7="chevron_right" /> */}
-              </Link>
-            </NavRight>
-          )}
-        </Navbar>
-        <SearchPageContent />
-        {/* <RightPanel containerEl="#searchPageRoot"/> */}
-      </Page>
+    <Page id="searchPageRoot" pageContent={false} onPageBeforeIn={pageBeforeIn} onPageBeforeOut={pageBeforeOut} name="home">
+      {/* Top Navbar */}
+      <Navbar sliding={true}>
+        <LeftPanelNavLink />
+        <NavTitle sliding>Marcobot</NavTitle>
+        {rightPanelOpen ? null : (
+          <NavRight>
+            <Link panelToggle="right">
+              Filters
+              {/* <Icon size={"var(--gt-icon-size-large)"} f7="chevron_right" /> */}
+            </Link>
+          </NavRight>
+        )}
+      </Navbar>
+      <SearchPageContent />
+      {/* <RightPanel containerEl="#searchPageRoot"/> */}
+    </Page>
   );
 }
 
 // export function RightPanel(props) {
-//   const { setFiltersPanelOpen } = useContext(F7Context);
+//   const { setFiltersPanelOpen } = useContext(F7PanelContext);
 
 //   return (
 //     <Panel
@@ -84,6 +80,5 @@ function SearchPage() {
 //     </Panel>
 //   );
 // }
-
 
 export default SearchPage;

@@ -1,0 +1,14 @@
+#homePageBody {
+  margin:auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#logo {
+  width: 256px;
+  height: 256px;
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

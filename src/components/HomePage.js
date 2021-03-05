@@ -20,20 +20,29 @@ import {
 } from "framework7-react";
 import SearchPageContent from "./SearchPageContent";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
-import { F7Context } from "@root/F7Context";
+import { F7PanelContext } from "@root/F7PanelContext";
+import marcobot from "@assets/marcobot.png";
+import "@css/HomePage.css";
 
 function HomePage() {
-  const { setAllowMenu } = useContext(F7Context);
+  const { setAllowLeftPanel } = useContext(F7PanelContext);
 
   function pageIn() {
-    setAllowMenu(false)
+    setAllowLeftPanel(false);
+  }
+
+  function afterPageOut() {
+    setAllowLeftPanel(true);
   }
 
   return (
-    <Page onPageBeforeIn={pageIn}  style={{margin:'auto'}}  >
-      <Link href="/search-page" animate={true} transition="f7-dive" >
-        Go to search
-      </Link>
+    <Page id="homePageRoot" onPageBeforeIn={pageIn} onPageAfterOut={afterPageOut}>
+      <div id="homePageBody">
+        <img id="logo" src={marcobot} alt="" />
+        <Link style={{ margin: "auto" }} href="/search-page" animate={false} transition="f7-dive">
+          Go to search
+        </Link>
+      </div>
     </Page>
   );
 }

@@ -8,7 +8,7 @@ import SettingsPage from "@components/SettingsPage";
 var routes = [
   {
     path: "/",
-    component: HomePage,
+    component: SearchPage,
   },
   {
     path: "/search-page",

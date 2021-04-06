@@ -26,7 +26,7 @@ export const SearchbarFixed = forwardRef((props, ref) => {
 export function LeftPanelNavLink(props) {
   const { leftPanelOpen, openLeftPanel } = useContext(F7PanelContext);
 
-  return leftPanelOpen ? null : (
+  return (
     <NavLeft>
       <Link iconF7="line_horizontal_3" onClick={() => openLeftPanel()}>
         {props.children}
@@ -35,10 +35,34 @@ export function LeftPanelNavLink(props) {
   );
 }
 
+export function DonateIcon() {
+//rgba(255, 126, 34, 0.9)
+//rgba(125, 50, 225, 0.75)  
+//"var(--f7-theme-color)"
+ return (
+    <Icon
+      style={{ padding: "0.2rem", color: "var(--f7-theme-color)" }}
+      size={"var(--gt-icon-size-medium)"}
+      f7="rocket_fill"
+    />
+  );
+}
+
+export function AboutIcon() {
+    return (
+      <Icon
+        style={{ padding: "0.25rem", color: "rgba(230, 126, 34, 0.75)" }}
+        size={"var(--gt-icon-size-large)"}
+        f7="question_square_fill"
+      />
+    );
+  }
+  
+
 export function RightPanelNavLink(props) {
   const { rightPanelOpen, openRightPanel } = useContext(F7PanelContext);
 
-  return rightPanelOpen ? null : (
+  return (
     <NavRight>
       <Link onClick={() => openRightPanel()}>
         {props.children}

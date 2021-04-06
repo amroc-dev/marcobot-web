@@ -1,0 +1,56 @@
+#patreonButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-color: rgb(254, 66, 76);
+  border-radius: 42px;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  font-weight: 600;
+}
+
+#patreonLogo {
+  padding-right: 0.75rem;
+  height: 28px;
+}
+
+
+
+  #bitcoinButton {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 30px;
+    background-color: rgba( 0, 0, 0, 0.0);
+    border-radius: 42px;
+    padding: 0.4rem 1.5rem 0.5rem 1rem;
+    font-weight: 600;
+  }
+
+#bitcoinLogo {
+    height: 16px;
+    align-self: center;
+  }
+
+  #nanoButton {
+    margin-top: 0rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    height: 30px;
+    background-color: rgba( 0, 0, 0, 0.0);
+    border-radius: 42px;
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    font-weight: 600;
+  }
+
+#nanoLogo {
+    height: 16px;
+  }
+
+#donateButtons {
+  display: flex;
+  justify-content: space-evenly;
+}

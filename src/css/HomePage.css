@@ -12,3 +12,12 @@
   margin-top: 3rem;
   margin-bottom: 1rem;
 }
+
+#AppleLogin {
+  margin: auto;
+}
+
+.signin-button {
+  width: 210px;
+  height: 40px;
+}

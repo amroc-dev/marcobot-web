@@ -5,7 +5,7 @@ const F7PanelContext = React.createContext();
 export const LeftPanelBreakpoint = 1280;
 
 export function LeftPanel(props) {
-  const { allowLeftPanel, setLeftPanelOpen } = useContext(F7PanelContext);
+  const { allowLeftPanel } = useContext(F7PanelContext);
 
   useEffect(() => {
     const panel = f7.panel.get("left");
@@ -26,8 +26,7 @@ export function LeftPanel(props) {
       cover
       swipe
       swipeOnlyClose
-      onPanelOpen={() => setLeftPanelOpen(true)}
-      onPanelClose={() => setLeftPanelOpen(false)}
+
       {...props}
     >
       <View url="/menu-page/"></View>
@@ -38,7 +37,7 @@ export function LeftPanel(props) {
 export const RightPanelBreakpoint = 900;
 
 export function RightPanel(props) {
-  const { allowRightPanel, setRightPanelOpen } = useContext(F7PanelContext);
+  const { allowRightPanel } = useContext(F7PanelContext);
 
   useEffect(() => {
     const panel = f7.panel.get("right");
@@ -58,8 +57,8 @@ export function RightPanel(props) {
       cover
       swipe
       swipeOnlyClose
-      onPanelOpen={() => setRightPanelOpen(true)}
-      onPanelClose={() => setRightPanelOpen(false)}
+      // onPanelOpened={() => setRightPanelOpen(true)}
+      // onPanelClose={() => setRightPanelOpen(false)}
       {...props}
     >
       <View url="/filters-page/"></View>
@@ -69,9 +68,9 @@ export function RightPanel(props) {
 
 function F7PanelContextProvider(props) {
   const [allowLeftPanel, setAllowLeftPanel] = useState(false);
-  const [leftPanelOpen, setLeftPanelOpen] = useState(false);
+  // const [leftPanelOpen, setLeftPanelOpen] = useState(false);
   const [allowRightPanel, setAllowRightPanel] = useState(false);
-  const [rightPanelOpen, setRightPanelOpen] = useState(false);
+  // const [rightPanelOpen, setRightPanelOpen] = useState(false);
 
   function openLeftPanel() {
     if (allowLeftPanel) f7.panel.get("left").open();
@@ -97,16 +96,16 @@ function F7PanelContextProvider(props) {
         setAllowLeftPanel,
         openLeftPanel,
         closeLeftPanel,
-        leftPanelOpen,
-        setLeftPanelOpen,
+        // leftPanelOpen,
+        // setLeftPanelOpen,
 
         // Right
         allowRightPanel,
         setAllowRightPanel,
         openRightPanel,
         closeRightPanel,
-        rightPanelOpen,
-        setRightPanelOpen,
+        // rightPanelOpen,
+        // setRightPanelOpen,
       }}
     >
       {props.children}

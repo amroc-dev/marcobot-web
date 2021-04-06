@@ -31,7 +31,7 @@ function MenuPage() {
         <NavTitle sliding>Menu</NavTitle>
       </Navbar> */}
       <Block inset>
-        <MenuLink href="/" view="#appMainView">
+        <MenuLink href="/">
           Splash
         </MenuLink>
       </Block>
@@ -50,12 +50,11 @@ function MenuLink(props) {
 
   return (
     <Link
-      animate={false}
-      transition={"f7-fade"}
+      // animate={false}
+      transition={null}
       view="#appMainView"
-      onClick={() => {
-        closeLeftPanel();
-      }}
+      panelClose="left"
+      // onClick={closeLeftPanel}
       {...props}
     >
       {props.children}

@@ -1,3 +1,9 @@
 .searchPageRoot {
   // margin: auto;
 }
+
+#searchPageLogo {
+  height: calc(var(--f7-navbar-height) - 12px);
+  align-self: center;
+  padding: 0rem;
+}

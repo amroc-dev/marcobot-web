@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-import { Page, PageContent, List, ListItem, Card, f7, Block } from "framework7-react";
+import { Page, PageContent, List, ListItem, Card, f7 } from "framework7-react";
 import "../css/SearchPageContent.scss";
 import SearchForm from "./SearchForm";
 import SearchPills from "./SearchPills";
@@ -97,19 +97,20 @@ function SearchPageContent() {
 
   return (
     <PageContent
-      id="sp-pageRoot"
+
+      id="pageRoot"
       infinite
       infiniteDistance={window.innerHeight * 0.75}
       infinitePreloader={showSpinner}
       onInfinite={loadItems}
     >
-      <div id="listContent">
-        <SearchPills />
-        <SearchForm />
+      <SearchPills />
+      <SearchForm />
+
         {searchCountCard}
         {items}
         {networkErrorMessage}
-      </div>
+  
     </PageContent>
   );
 }

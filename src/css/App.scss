@@ -13,6 +13,7 @@
   --gt-secondary-font-color: rgb(var(--gt-secondary-font-color-rgb));
 
   --gt-icon-size: 1rem;
+  --gt-icon-size-medium: 1.3rem;
   --gt-icon-size-large: 1.5rem;
 
   --f7-page-push-transition-duration: 300ms;
@@ -57,7 +58,7 @@ html {
 }
 
 body {
-  max-width: 1440px;
+  max-width: 1280px;
   box-shadow: 0 0 64px rgba(0,0,0,0.3);
 }
 
@@ -86,6 +87,7 @@ body {
 :root {
   --f7-navbar-bg-color: rgb(255, 255, 255);
   --f7-subnavbar-bg-color: rgb(255, 255, 255);
+  --f7-navbar-title-font-weight: 500;
   // --f7-block-title-margin-bottom: 0px;
 }
 

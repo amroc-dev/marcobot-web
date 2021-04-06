@@ -42,12 +42,17 @@ function MyApp() {
   };
   f7ready(() => {
     // Call F7 APIs here
+    // f7.$('body').css({
+    //   maxWidth: "800px"
+    // })
   });
 
   useEffect(() => {
     f7ready((f7) => {
     })
   }, [])
+
+
 
   return (
     <App id="marcobotApp" themeDark={false} colorTheme="blue" {...f7params}>
@@ -56,8 +61,8 @@ function MyApp() {
           <FilterTagsContextProvider>
             <SearchContextProvider>
               <SearchResultsContextProvider>
-                <LeftPanel />
-                <View id="appMainView" main stackPages animate={true} className="safe-areas" url="/" transition="f7-parallax" />
+                {/* <LeftPanel /> */}
+                <View id="appMainView" main stackPages animate={false} className="safe-areas" url="/" />
                 <RightPanel />
               </SearchResultsContextProvider>
             </SearchContextProvider>

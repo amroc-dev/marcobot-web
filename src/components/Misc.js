@@ -36,10 +36,11 @@ export function LeftPanelNavLink(props) {
 }
 
 export function DonateIcon() {
-//rgba(255, 126, 34, 0.9)
-//rgba(125, 50, 225, 0.75)  
-//"var(--f7-theme-color)"
- return (
+  // "rgba(255, 126, 0, 0.85)"
+  //rgba(255, 126, 34, 0.9)
+  //rgba(125, 50, 225, 0.75)
+  //"var(--f7-theme-color)"
+  return (
     <Icon
       style={{ padding: "0.2rem", color: "var(--f7-theme-color)" }}
       size={"var(--gt-icon-size-medium)"}
@@ -49,15 +50,14 @@ export function DonateIcon() {
 }
 
 export function AboutIcon() {
-    return (
-      <Icon
-        style={{ padding: "0.25rem", color: "rgba(230, 126, 34, 0.75)" }}
-        size={"var(--gt-icon-size-large)"}
-        f7="question_square_fill"
-      />
-    );
-  }
-  
+  return (
+    <Icon
+      style={{ padding: "0.25rem", color: "rgba(230, 126, 34, 0.75)" }}
+      size={"var(--gt-icon-size-large)"}
+      f7="question_square_fill"
+    />
+  );
+}
 
 export function RightPanelNavLink(props) {
   const { rightPanelOpen, openRightPanel } = useContext(F7PanelContext);

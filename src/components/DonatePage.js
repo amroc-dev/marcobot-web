@@ -23,8 +23,9 @@ import marcobot from "@assets/marcobot_256.png";
 import AppleLogin from "@components/AppleLogin";
 import { DonateIcon } from "@components/Misc";
 import "@css/DonatePage.css";
-import patreon from "@assets/patreon_128.png";
+import patreon from "@assets/patreon.png";
 import nano from "@assets/nano.png";
+import paypal from "@assets/paypal.png";
 import bitcoin from "@assets/bitcoin.png";
 import "@css/HomePage.css";
 
@@ -47,30 +48,37 @@ function DonatePage() {
         </NavRight>
       </Navbar>
       <Block>
-        Marcobot is completely free. Free from ads, data harvesting (absolutely no information is collected or stored),
+        Marcobot is free. Free from ads, data harvesting (absolutely no information is collected or stored),
         and other monetization mechanisms that have made much of the internet shit.
       </Block>
       <Block>
-        If you find Marcobot valuable, and can afford to, please consider donating. It's the only way I'll be able to
-        keep this alive, and continue working on it.
+        If you find Marcobot valuable, please consider donating, even just a dollar, if you can afford to of course. It's the only way I'll be able to keep this alive, and continue working on it.
       </Block>
-      <Block>Thanks loads, Marco.</Block>
+      <Block>Thanks for your support. 
+          <p>Marco.</p></Block>
       <Block>
         <div id="donateButtons">
-          <Link color="white" href="https://www.patreon.com/bePatron?u=7282195" external>
-            <div id="patreonButton">
-              <img id="patreonLogo" src={patreon} alt="" />
-              Support on Patreon
-            </div>
-          </Link>
-        </div>
-        <div id="bitcoinButton">
+          <div>
+            <Link color="white" href="https://www.patreon.com/bePatron?u=7282195" external>
+              <div id="patreonButton">
+                <img id="patreonLogo" src={patreon} alt="" />
+                Patreon
+              </div>
+            </Link>
+            <Link style={{ marginLeft: "1rem" }}></Link>
+
+            <Link color="white" href="https://www.paypal.com/donate?hosted_button_id=8TRKHBL2AKUCA" external>
+              <div id="paypalButton">
+                <img id="paypalLogo" src={paypal} alt="" />
+                
+              </div>
+            </Link>
+          </div>
+
           <img id="bitcoinLogo" src={bitcoin} alt="" />
           <div
             style={{
-              fontSize: "12px",
               alignSelf: "center",
-              fontWeight: "500",
               paddingLeft: "0.75rem",
               paddingTop: "0.3rem",
             }}
@@ -78,6 +86,7 @@ function DonatePage() {
             1HnHSWMkMKd2FsMJJ7rfV8gfT5mbWtbNSA
           </div>
         </div>
+
         {/* <div id="nanoButton">
           <img id="nanoLogo" src={nano} alt="" />
           <div style={{ fontSize: "1.8vw", fontWeight: "400", paddingLeft: "0.75rem" }}>

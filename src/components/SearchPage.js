@@ -56,20 +56,17 @@ function SearchPage() {
       <Navbar sliding={true}>
         {/* <LeftPanelNavLink /> */}
         <NavLeft>
-          <div style={{ display: "flex", fontSize: "16px" }}>
-            <div style={{ padding: "0.25rem", paddingLeft:0 }}>
+          <div style={{ display: "flex" }}>
+            <div style={{ padding: "0.25rem", paddingLeft: 0 }}>
               <Link popupOpen=".donatePagePopup">
                 Donate
                 <DonateIcon />
               </Link>
             </div>
-            <div style={{ padding: "0.25rem" }}>
-            </div>
+            <div style={{ padding: "0.25rem" }}></div>
           </div>
         </NavLeft>
-        <Popup
-          className="donatePagePopup"
-        >
+        <Popup className="donatePagePopup">
           <DonatePage />
         </Popup>
 
@@ -77,8 +74,8 @@ function SearchPage() {
           <div style={{ display: "flex", alignItems: "center" }}>
             <Link href={document.location.pathname} external>
               <img src={logo} id="searchPageLogo" alt="" />
+              <div style={{ marginLeft: "0.25rem", color:"black" }}>Marcobot</div>
             </Link>
-
           </div>
         </NavTitle>
 

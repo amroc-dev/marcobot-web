@@ -36,13 +36,34 @@ export function LeftPanelNavLink(props) {
 }
 
 export function DonateIcon() {
+//   const position = useRef([0, 0]);
+//   const iter = useRef(0);
+//   const [transformStyle, setTransformStyle] = useState("translate(0,0)");
+
+//   function update() {
+//     iter.current += 4;
+//     const x = Math.sin(iter.current * 0.3) * 0.5;
+//     const y = Math.cos(iter.current * 0.2) * 0.5;
+//     position.current = [x, y];
+//     setTransformStyle("translate(" + position.current[0] + "px," + position.current[1] + "px)");
+//     setTransformStyle("rotate(-20deg)");
+//   }
+
+//   useEffect(() => {
+//     const interval = setInterval(update, 100);
+//     return () => clearInterval(interval);
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, []);
+
   // "rgba(255, 126, 0, 0.85)"
   //rgba(255, 126, 34, 0.9)
   //rgba(125, 50, 225, 0.75)
   //"var(--f7-theme-color)"
+
+
   return (
     <Icon
-      style={{ padding: "0.2rem", color: "var(--f7-theme-color)" }}
+      style={{ padding: "0.2rem", color: "var(--f7-theme-color)", transform: "rotate(-15deg)" }}
       size={"var(--gt-icon-size-medium)"}
       f7="rocket_fill"
     />

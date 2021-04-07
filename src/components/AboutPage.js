@@ -36,7 +36,7 @@ function AboutPage() {
       <Navbar>
         <NavTitle>
           About
-          <AboutIcon />
+          {/* <AboutIcon /> */}
         </NavTitle>
         <NavRight>
           <Link popupClose>Close</Link>

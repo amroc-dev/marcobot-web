@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^13.0.16",
+    "dotenv": "^8.2.0",
     "framework7": "^6.0.14",
     "framework7-react": "^6.0.14",
     "node-sass": "^5.0.0",

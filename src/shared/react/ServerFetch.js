@@ -113,11 +113,11 @@ export function getRateData() {
   return rateData;
 }
 
-const serverAddr = "http://marco-air.local:80/"
+// const serverAddr = "http://marco-air.local:80/"
 // const serverAddr = "http://localhost:80/";
 // const serverAddr = "https://marcobot-server.ngrok.io";
 
-// const serverAddr = "https://amroc-marcobot-server.herokuapp.com";
+const serverAddr = "https://amroc-marcobot-server.herokuapp.com";
 
 //////////////////////////////////////////////////////
 export async function serverFetch(

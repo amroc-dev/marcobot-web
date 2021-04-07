@@ -57,7 +57,7 @@ export function RightPanel(props) {
       cover
       swipe
       swipeOnlyClose
-      onPanelBreakpoint= { () => setOnRightPanelBreak( val => !val)}
+      onPanelBreakpoint = { () => setOnRightPanelBreak( val => !val)}
       // onPanelOpened={() => setRightPanelOpen(true)}
       // onPanelClose={() => setRightPanelOpen(false)}
       {...props}

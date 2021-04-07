@@ -12,6 +12,10 @@ import store from "@root/store";
 
 import "@css/App.scss";
 
+require("dotenv").config();
+
+console.log(process.env.MARCO_API_KEY);
+
 // import "@root/inobounce.js";
 
 function MyApp() {
@@ -48,11 +52,8 @@ function MyApp() {
   });
 
   useEffect(() => {
-    f7ready((f7) => {
-    })
-  }, [])
-
-
+    f7ready((f7) => {});
+  }, []);
 
   return (
     <App id="marcobotApp" themeDark={false} colorTheme="blue" {...f7params}>
@@ -72,6 +73,5 @@ function MyApp() {
     </App>
   );
 }
-
 
 export default MyApp;

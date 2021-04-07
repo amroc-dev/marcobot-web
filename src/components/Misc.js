@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useContext, useState, forwardRef } from "react";
 import { Link, Icon, Searchbar, NavLeft, NavRight, f7 } from "framework7-react";
-import { F7PanelContext } from "@root/F7PanelContext";
+import { F7PanelContext, RightPanelBreakpoint } from "@root/F7PanelContext";
 import "@css/App.scss";
 
 export function BackButton(props) {
@@ -36,30 +36,29 @@ export function LeftPanelNavLink(props) {
 }
 
 export function DonateIcon() {
-//   const position = useRef([0, 0]);
-//   const iter = useRef(0);
-//   const [transformStyle, setTransformStyle] = useState("translate(0,0)");
+  //   const position = useRef([0, 0]);
+  //   const iter = useRef(0);
+  //   const [transformStyle, setTransformStyle] = useState("translate(0,0)");
 
-//   function update() {
-//     iter.current += 4;
-//     const x = Math.sin(iter.current * 0.3) * 0.5;
-//     const y = Math.cos(iter.current * 0.2) * 0.5;
-//     position.current = [x, y];
-//     setTransformStyle("translate(" + position.current[0] + "px," + position.current[1] + "px)");
-//     setTransformStyle("rotate(-20deg)");
-//   }
+  //   function update() {
+  //     iter.current += 4;
+  //     const x = Math.sin(iter.current * 0.3) * 0.5;
+  //     const y = Math.cos(iter.current * 0.2) * 0.5;
+  //     position.current = [x, y];
+  //     setTransformStyle("translate(" + position.current[0] + "px," + position.current[1] + "px)");
+  //     setTransformStyle("rotate(-20deg)");
+  //   }
 
-//   useEffect(() => {
-//     const interval = setInterval(update, 100);
-//     return () => clearInterval(interval);
-//     // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, []);
+  //   useEffect(() => {
+  //     const interval = setInterval(update, 100);
+  //     return () => clearInterval(interval);
+  //     // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   }, []);
 
   // "rgba(255, 126, 0, 0.85)"
   //rgba(255, 126, 34, 0.9)
   //rgba(125, 50, 225, 0.75)
   //"var(--f7-theme-color)"
-
 
   return (
     <Icon
@@ -86,8 +85,10 @@ export function RightPanelNavLink(props) {
   const f7RightPanel = f7.panel.get("right");
   let opened = false;
 
-  if (f7RightPanel && f7RightPanel.opened) opened = true;
-
+  if (window.innerWidth >= RightPanelBreakpoint) {
+    if (f7RightPanel && f7RightPanel.opened) opened = true;
+  }
+  
   return !opened ? (
     <NavRight>
       <Link onClick={() => openRightPanel()}>

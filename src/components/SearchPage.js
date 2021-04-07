@@ -44,8 +44,6 @@ function SearchPage() {
     setAllowRightPanel(false);
   }
 
-  console.log("LOC: " + document.location);
-
   return (
     <Page
       id="searchPageRoot"

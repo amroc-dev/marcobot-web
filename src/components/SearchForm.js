@@ -8,6 +8,7 @@ import {
   Block,
   List,
   ListItem,
+  Link,
   ListButton,
   Menu,
   MenuItem,
@@ -23,7 +24,7 @@ import LinkButton from "./LinkButton";
 import { SearchContext } from "@shared/react/SearchContext";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 import { sortOptions } from "@shared/react/SortOptions";
-import { SearchbarFixed } from "@components/Misc";
+import { SearchbarFixed, AboutIcon } from "@components/Misc";
 
 function SearchForm(props) {
   const { submitSearch, setSearchTerm, clearSearchTerm, sortOption, updateSortOption } = useContext(SearchContext);
@@ -58,6 +59,9 @@ function SearchForm(props) {
         />
       </div>
       <div className="sortRow">
+        {/* <Link>
+          <AboutIcon />
+        </Link> */}
         <div className="sortContainer">
           <div>Sort</div>
           {/* <Menu>

@@ -37,7 +37,7 @@ export function LeftPanel(props) {
 export const RightPanelBreakpoint = 900;
 
 export function RightPanel(props) {
-  const { allowRightPanel } = useContext(F7PanelContext);
+  const { allowRightPanel, setOnRightPanelBreak } = useContext(F7PanelContext);
 
   useEffect(() => {
     const panel = f7.panel.get("right");
@@ -57,6 +57,7 @@ export function RightPanel(props) {
       cover
       swipe
       swipeOnlyClose
+      onPanelBreakpoint= { () => setOnRightPanelBreak( val => !val)}
       // onPanelOpened={() => setRightPanelOpen(true)}
       // onPanelClose={() => setRightPanelOpen(false)}
       {...props}
@@ -71,6 +72,7 @@ function F7PanelContextProvider(props) {
   // const [leftPanelOpen, setLeftPanelOpen] = useState(false);
   const [allowRightPanel, setAllowRightPanel] = useState(false);
   // const [rightPanelOpen, setRightPanelOpen] = useState(false);
+  const [onRightPanelBreak, setOnRightPanelBreak] = useState(false);
 
   function openLeftPanel() {
     if (allowLeftPanel) f7.panel.get("left").open();
@@ -104,6 +106,8 @@ function F7PanelContextProvider(props) {
         setAllowRightPanel,
         openRightPanel,
         closeRightPanel,
+        onRightPanelBreak,
+        setOnRightPanelBreak,
         // rightPanelOpen,
         // setRightPanelOpen,
       }}

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useContext, useState, forwardRef } from "react";
-import { Link, Icon, Searchbar, NavLeft, NavRight } from "framework7-react";
+import { Link, Icon, Searchbar, NavLeft, NavRight, f7 } from "framework7-react";
 import { F7PanelContext } from "@root/F7PanelContext";
 import "@css/App.scss";
 
@@ -52,22 +52,27 @@ export function DonateIcon() {
 export function AboutIcon() {
   return (
     <Icon
-      style={{ padding: "0.25rem", color: "rgba(230, 126, 34, 0.75)" }}
+      style={{ padding: "0.25rem", color: "var(--f7-theme-color)" }}
       size={"var(--gt-icon-size-large)"}
-      f7="question_square_fill"
+      f7="question_square"
     />
   );
 }
 
 export function RightPanelNavLink(props) {
-  const { rightPanelOpen, openRightPanel } = useContext(F7PanelContext);
+  const { rightPanelOpen, openRightPanel, onRightPanelBreak } = useContext(F7PanelContext);
 
-  return (
+  const f7RightPanel = f7.panel.get("right");
+  let opened = false;
+
+  if (f7RightPanel && f7RightPanel.opened) opened = true;
+
+  return !opened ? (
     <NavRight>
       <Link onClick={() => openRightPanel()}>
         {props.children}
         <Icon size={"var(--gt-icon-size-large)"} f7="chevron_right" />
       </Link>
     </NavRight>
-  );
+  ) : null;
 }

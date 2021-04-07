@@ -14,8 +14,6 @@ import "@css/App.scss";
 
 require("dotenv").config();
 
-console.log(process.env.MARCO_API_KEY);
-
 // import "@root/inobounce.js";
 
 function MyApp() {
@@ -25,7 +23,7 @@ function MyApp() {
 
   // Framework7 Parameters
   const f7params = {
-    name: "marcobot-site", // App name
+    name: "Marcobot", // App name
     theme: "aurora", // Automatic theme detection
 
     // App store

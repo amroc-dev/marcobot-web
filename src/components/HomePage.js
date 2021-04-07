@@ -21,8 +21,7 @@ import {
 import SearchPageContent from "./SearchPageContent";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 import { F7PanelContext } from "@root/F7PanelContext";
-import marcobot from "@assets/marcobot_256.png";
-import AppleLogin from "@components/AppleLogin";
+import marcobot from "@assets/marcobot_512.png";
 import "@css/HomePage.css";
 
 function HomePage() {
@@ -43,7 +42,6 @@ function HomePage() {
         <Link style={{ margin: "auto", marginTop: "1rem", marginBottom: "1rem" }} href="/search-page" animate={false} transition="f7-dive">
           Go
         </Link>
-        <AppleLogin id="AppleLogin"/>
       </div>
     </Page>
   );

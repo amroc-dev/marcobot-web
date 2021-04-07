@@ -4,6 +4,7 @@ import FiltersPage from "@components/FiltersPage";
 import MenuPage from "@components/MenuPage";
 import FilterTagsPage from "@components/FilterTagsPage";
 import SettingsPage from "@components/SettingsPage";
+import MaintenancePage from "@components/MaintenancePage";
 
 var routes = [
   {

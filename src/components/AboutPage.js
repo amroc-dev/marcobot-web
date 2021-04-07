@@ -19,7 +19,7 @@ import {
   f7,
 } from "framework7-react";
 import { F7PanelContext } from "@root/F7PanelContext";
-import marcobot from "@assets/marcobot_256.png";
+import marcobot from "@assets/marcobot_512.png";
 import { AboutIcon } from "@components/Misc";
 import "@css/DonatePage.css";
 import "@css/HomePage.css";

@@ -6,13 +6,15 @@
   border-radius: 42px;
   padding: 0 1.5rem 0 1.5rem;
   font-weight: 600;
-  height: 38px;
+  height: 50px;
   margin-bottom: 1.5rem;
 }
 
 #patreonLogo {
   padding-right: 0.75rem;
-  height: 18px;
+  height: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 #paypalButton {
@@ -32,10 +34,29 @@
   height: 18px;
 }
 
+#bmacButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      border-radius: 42px;
+    padding: 0 1.5rem 0 1.5rem;
+    font-weight: 600;
+    height: 38px;
+    margin-bottom: 1.5rem;
+}
+
+#bmacLogo {
+    /* padding-right: 0.75rem; */
+    border-radius: 42px;
+    height: 50px;
+  }
+  
+
 #bitcoinLogo {
   height: 20px;
   margin: 0.25rem;
   margin-bottom: 0.1rem;
+  margin-top: 0;
 }
 
 #nanoButton {

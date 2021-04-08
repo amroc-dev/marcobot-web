@@ -23,8 +23,12 @@
 
   --f7-panel-width: 290px;
 
+  --f7-popup-tablet-width: 630px;
+  --f7-popup-tablet-height: 630px;
+
   // --f7-list-bg-color: rgba(0,0,0,0);
-  // --f7-panel-bg-color: white;
+
+//   --f7-panel-backdrop-bg-color: rgba(0, 0, 0, 0.3);
 }
 
 .color-theme-blue {
@@ -57,8 +61,12 @@ html {
 
 }
 
+// $mb-font: "Helvetica";
+// @import url("https://fonts.googleapis.com/css?family=#{$mb-font}");
+
 body {
   max-width: 1280px;
+//   font-family: $mb-font;
   box-shadow: 0 0 64px rgba(0,0,0,0.3);
 }
 

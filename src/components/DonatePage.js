@@ -27,6 +27,7 @@ import patreon from "@assets/patreon.png";
 import nano from "@assets/nano.png";
 import paypal from "@assets/paypal.png";
 import bitcoin from "@assets/bitcoin.png";
+import bmac from "@assets/bmac.png";
 import "@css/HomePage.css";
 
 function DonatePage() {
@@ -40,25 +41,36 @@ function DonatePage() {
     <Page onPageBeforeIn={pageIn} onPageAfterOut={afterPageOut}>
       <Navbar>
         <NavTitle>
-          Donate
-          <DonateIcon />
+          <div style={{ display: "flex", alignItems: "center" }}>
+            Donate
+            {/* <DonateIcon /> */}
+          </div>
         </NavTitle>
         <NavRight>
           <Link popupClose>Close</Link>
         </NavRight>
       </Navbar>
       <Block>
-        Marcobot is free. Free from ads, data harvesting (absolutely no information is collected or stored),
-        and other monetization mechanisms that have made much of the internet shit.
+        Marcobot is free. Free from ads, data harvesting (absolutely no information is collected or stored), and other
+        monetization mechanisms that have made much of the internet shit.
       </Block>
       <Block>
-        If you find Marcobot valuable, please consider donating, even just a dollar, if you can afford to of course. It's the only way I'll be able to keep this alive, and continue working on it.
+        If you find Marcobot valuable, and you can afford to, please consider supporting the project. It's the only way
+        I'll be able to keep this alive, and continue working on it.
       </Block>
-      <Block>Thanks for your support. 
-          <p>Marco.</p></Block>
+      <Block>
+        Thanks for your support.
+        <p>Marco.</p>
+      </Block>
       <Block>
         <div id="donateButtons">
           <div>
+            <Link href="https://www.buymeacoffee.com/marcobot" external>
+              <div id="bmacButton">
+                <img id="bmacLogo" src={bmac} alt="" />
+              </div>
+            </Link>
+
             <Link color="white" href="https://www.patreon.com/bePatron?u=7282195" external>
               <div id="patreonButton">
                 <img id="patreonLogo" src={patreon} alt="" />
@@ -67,12 +79,11 @@ function DonatePage() {
             </Link>
             <Link style={{ marginLeft: "1rem" }}></Link>
 
-            <Link color="white" href="https://www.paypal.com/donate?hosted_button_id=8TRKHBL2AKUCA" external>
+            {/* <Link color="white" href="https://www.paypal.com/donate?hosted_button_id=8TRKHBL2AKUCA" external>
               <div id="paypalButton">
                 <img id="paypalLogo" src={paypal} alt="" />
-                
               </div>
-            </Link>
+            </Link> */}
           </div>
 
           <img id="bitcoinLogo" src={bitcoin} alt="" />

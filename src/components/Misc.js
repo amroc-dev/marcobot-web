@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useContext, useState, forwardRef } from "react";
 import { Link, Icon, Searchbar, NavLeft, NavRight, f7 } from "framework7-react";
 import { F7PanelContext, RightPanelBreakpoint } from "@root/F7PanelContext";
+import coffee from "@assets/coffee_128.png";
 import "@css/App.scss";
 
 export function BackButton(props) {
@@ -61,21 +62,26 @@ export function DonateIcon() {
   //"var(--f7-theme-color)"
 
   return (
-    <Icon
-      style={{ padding: "0.2rem", color: "var(--f7-theme-color)", transform: "rotate(-15deg)" }}
-      size={"var(--gt-icon-size-medium)"}
-      f7="rocket_fill"
-    />
+    // <Icon
+    //   style={{ padding: "0.2rem", color: "var(--f7-theme-color)", transform: "rotate(-15deg)" }}
+    //   size={"var(--gt-icon-size-medium)"}
+    //   f7="rocket_fill"
+    // />
+
+    <img style={{ width: "24px", paddingRight:"0.5rem"}} src={coffee} alt="" />
   );
 }
 
 export function AboutIcon() {
   return (
-    <Icon
-      style={{ padding: "0.25rem", color: "var(--f7-theme-color)" }}
-      size={"var(--gt-icon-size-large)"}
-      f7="question_square"
-    />
+    // <Icon
+    //   style={{ padding: "0.25rem", color: "rgba(0,0,0,0.66)" }}
+    //   size={"var(--gt-icon-size-large)"}
+    //   f7="info_circle"
+    // />
+    <div style={{fontSize:"14px", color:"rgba(0,0,0,0.9)"}}>
+        About
+    </div>
   );
 }
 
@@ -88,7 +94,7 @@ export function RightPanelNavLink(props) {
   if (window.innerWidth >= RightPanelBreakpoint) {
     if (f7RightPanel && f7RightPanel.opened) opened = true;
   }
-  
+
   return !opened ? (
     <NavRight>
       <Link onClick={() => openRightPanel()}>

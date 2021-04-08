@@ -42,8 +42,8 @@ function AboutPage() {
           <Link popupClose>Close</Link>
         </NavRight>
       </Navbar>
-      <Block>About page coming soon...</Block>
-      <Block>Contact me at <Link href={"mailto:marco@marcobot.com"} external>marco@marcobot.com</Link>.</Block>
+      <Block>Will update soon.</Block>
+      <Block><Link href={"mailto:marco@marcobot.com"} external>marco@marcobot.com</Link></Block>
     </Page>
   );
 }

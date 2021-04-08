@@ -37,20 +37,20 @@ function FiltersPage() {
         Filters
         </div> */}
       <Navbar sliding={true}>
-        <NavRight>
+        {/* <NavRight>
           <Link popupOpen=".aboutPagePopup">
             <AboutIcon />
           </Link>
-        </NavRight>
+        </NavRight> */}
         <NavTitle style={{ fontWeight: "400" }} sliding>
           Filters
         </NavTitle>
       </Navbar>
       {/* </Subnavbar> */}
 
-      <Popup className="aboutPagePopup">
+      {/* <Popup className="aboutPagePopup">
         <AboutPage />
-      </Popup>
+      </Popup> */}
 
       <List>
         <ListItem link="/filter-tags-page/" title="Tags" transition="f7-parallax" />

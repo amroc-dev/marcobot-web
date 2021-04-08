@@ -31,6 +31,7 @@ import "@css/SearchPage.scss";
 import "@css/App.scss";
 import LinkButton from "./LinkButton";
 import DonatePage from "@components/DonatePage";
+import AboutPage from "@components/AboutPage";
 
 function SearchPage() {
   const { setHoldSearch } = useContext(SearchResultsContext);
@@ -54,27 +55,35 @@ function SearchPage() {
     >
       {/* Top Navbar */}
       <Navbar sliding={true}>
-        {/* <LeftPanelNavLink /> */}
         <NavLeft>
+          {/* <LeftPanelNavLink /> */}
           <div style={{ display: "flex" }}>
-            <div style={{ padding: "0.25rem", paddingLeft: 0 }}>
+            <div style={{ display: "flex", padding: "0.25rem", paddingLeft: 0 }}>
               <Link popupOpen=".donatePagePopup">
-                Donate
+                {/* Donate */}
                 <DonateIcon />
+              </Link>
+              <Link popupOpen=".aboutPagePopup">
+                <AboutIcon />
               </Link>
             </div>
             <div style={{ padding: "0.25rem" }}></div>
           </div>
         </NavLeft>
+
         <Popup className="donatePagePopup">
           <DonatePage />
+        </Popup>
+
+        <Popup className="aboutPagePopup">
+          <AboutPage />
         </Popup>
 
         <NavTitle sliding>
           <div style={{ display: "flex", alignItems: "center" }}>
             <Link href={document.location.pathname} external>
               <img src={logo} id="searchPageLogo" alt="" />
-              <div style={{ marginLeft: "0.25rem", color:"black" }}>Marcobot</div>
+              {/* <div style={{ marginLeft: "0.25rem", color: "black" }}>Marcobot</div> */}
             </Link>
           </div>
         </NavTitle>

@@ -79,7 +79,7 @@ export function AboutIcon() {
     //   size={"var(--gt-icon-size-large)"}
     //   f7="info_circle"
     // />
-    <div style={{fontSize:"14px", color:"rgba(0,0,0,0.9)"}}>
+    <div style={{fontSize:"16px", color:"rgba(0,0,0,0.9)"}}>
         About
     </div>
   );

@@ -37,6 +37,21 @@ function DonatePage() {
 
   function afterPageOut() {}
 
+//   let toastBottom;
+//   const showToastBottom = () => {
+//     // Create toast
+//     if (!toastBottom) {
+//       toastBottom = f7.toast.create({
+//         text: 'Copied to clipboard',
+//         position: 'center',
+//         width:100,
+//         closeTimeout: 2000,
+//       });
+//     }
+//     // Open it
+//     toastBottom.open();
+//   }
+
   return (
     <Page onPageBeforeIn={pageIn} onPageAfterOut={afterPageOut}>
       <Navbar>
@@ -52,7 +67,7 @@ function DonatePage() {
       </Navbar>
       <Block>
         Marcobot is free. Free from ads, data harvesting (absolutely no information is collected or stored), and other
-        monetization mechanisms that have made much of the internet shit.
+        monetization mechanisms that burden much of the internet and mobile gaming.
       </Block>
       <Block>
         If you find Marcobot valuable, and you can afford to, please consider supporting the project. It's the only way
@@ -71,13 +86,13 @@ function DonatePage() {
               </div>
             </Link>
 
-            <Link color="white" href="https://www.patreon.com/bePatron?u=7282195" external>
+            {/* <Link color="white" href="https://www.patreon.com/bePatron?u=7282195" external>
               <div id="patreonButton">
                 <img id="patreonLogo" src={patreon} alt="" />
                 Patreon
               </div>
             </Link>
-            <Link style={{ marginLeft: "1rem" }}></Link>
+            <Link style={{ marginLeft: "1rem" }}></Link> */}
 
             {/* <Link color="white" href="https://www.paypal.com/donate?hosted_button_id=8TRKHBL2AKUCA" external>
               <div id="paypalButton">
@@ -86,7 +101,7 @@ function DonatePage() {
             </Link> */}
           </div>
 
-          <img id="bitcoinLogo" src={bitcoin} alt="" />
+          {/* <img id="bitcoinLogo" src={bitcoin} alt="" />
           <div
             style={{
               alignSelf: "center",
@@ -95,15 +110,17 @@ function DonatePage() {
             }}
           >
             1HnHSWMkMKd2FsMJJ7rfV8gfT5mbWtbNSA
-          </div>
-        </div>
+          </div> */}
 
-        {/* <div id="nanoButton">
-          <img id="nanoLogo" src={nano} alt="" />
-          <div style={{ fontSize: "1.8vw", fontWeight: "400", paddingLeft: "0.75rem" }}>
+          {/* <Link onClick={ () => showToastBottom()}>
+            <div id="nanoButton">
+              <img id="nanoLogo" src={nano} alt="" />
+            </div>
+          </Link>
+          <div style={{ overflowWrap: "break-word", maxWidth: "200px", fontWeight: "400", paddingLeft: "0.75rem" }}>
             nano_1bsa45aho65poboyx1mbqx7whcsjked81eshwstphwdu5mytj7uuxuich6ot
-          </div>
-        </div> */}
+          </div> */}
+        </div>
       </Block>
     </Page>
   );

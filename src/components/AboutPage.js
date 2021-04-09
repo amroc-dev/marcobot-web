@@ -42,8 +42,10 @@ function AboutPage() {
           <Link popupClose>Close</Link>
         </NavRight>
       </Navbar>
-      <Block>Will update soon.</Block>
+      <Block>I'll put something in here soon...</Block>
       <Block><Link href={"mailto:marco@marcobot.com"} external>marco@marcobot.com</Link></Block>
+      <Block style={{fontSize:"12px"}}>Marcobot doesn't collect or store any sort of personal data at all. Not even cookies are used on this site
+          so I think that means I don't have to include a stupid popup.</Block>
     </Page>
   );
 }

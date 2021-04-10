@@ -1,17 +1,20 @@
 .cardItemRoot {
-  border-radius: var(--gt-border-radius);  
+  border-radius: var(--gt-border-radius);
   margin: 0.5rem;
-  box-shadow: 0 0 8px rgba(0,0,0,0.025);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.025);
 }
 
 .cardItem {
   display: flex;
-  border-radius: var(--gt-border-radius);  
+  border-radius: var(--gt-border-radius);
   border-color: rgba(0, 0, 0, 0);
-  box-shadow: var(--box-shadow); 
+  box-shadow: var(--box-shadow);
   justify-content: flex-start;
   background-color: var(--gt-panel-color);
   color: var(--primary-font-color);
+}
+.cardItemClickable {
+  cursor: pointer;
 }
 
 .searchCountCardItem {
@@ -26,7 +29,7 @@
   --size: 110px;
   width: var(--size);
   height: var(--size);
-  border-radius: var(--gt-border-radius) 0 0 var(--gt-border-radius);  
+  border-radius: var(--gt-border-radius) 0 0 var(--gt-border-radius);
   min-width: var(--size);
   min-height: var(--size);
   /* align-self: center; */
@@ -44,13 +47,12 @@
   box-shadow: 0 0 8px rgba(0,0,0,0.25);
 } */
 
-.cardItem .dataContainer{
+.cardItem .dataContainer {
   display: flex;
   flex-direction: column;
   padding: 0.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-
 
   width: 100%;
   /* background-color: red; */
@@ -58,7 +60,7 @@
   margin-top: 0.25rem; */
 }
 
-.cardItem .titleContainer{
+.cardItem .titleContainer {
   display: flex;
   flex-direction: column;
   font-size: var(--gt-primary-font-size);
@@ -75,13 +77,13 @@
   font-weight: 300;
 } */
 
-.topRowContainer{
+.topRowContainer {
   display: flex;
   flex: 1;
   flex-wrap: nowrap;
 }
 
-.bottomRowContainer{
+.bottomRowContainer {
   display: flex;
   flex: 1;
   align-items: flex-end;
@@ -89,8 +91,6 @@
   /* background-color: red; */
   margin-top: -1.5rem;
 }
-
-
 
 .releaseDate {
   width: 100px;
@@ -105,7 +105,7 @@
   color: var(--gt-secondary-font-color);
 }
 
-.ratingContainer{
+.ratingContainer {
   flex: 1;
   display: inline-flex;
   flex-wrap: nowrap;
@@ -120,7 +120,7 @@
   /* background-color: green; */
 }
 
-.ratingCell{
+.ratingCell {
   margin-right: 0.5rem;
   margin-top: 0.75rem;
   width: 36px;
@@ -131,26 +131,26 @@
   margin-bottom: 0.15rem;
 }
 
-.ratingValue{
+.ratingValue {
   color: white;
   align-self: center;
   font-size: var(--gt-rating-font-size);
   font-weight: 500;
-} 
+}
 
 .fade-in {
-	opacity: 1;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 0.1s;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.1s;
 }
 
 @keyframes fadeInOpacity {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

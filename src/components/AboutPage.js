@@ -42,7 +42,7 @@ function AboutPage() {
           <Link popupClose>Close</Link>
         </NavRight>
       </Navbar>
-      <Block>Info coming soon...</Block>
+      <Block>Marcobot is small search engine for 'pay once' App Store games, games that have no in-app purchases. More info soon.</Block>
       <Block><Link href={"mailto:marco@marcobot.com"} external>marco@marcobot.com</Link></Block>
       <Block style={{fontSize:"12px"}}>Marcobot doesn't collect or store any sort of personal data at all. Not even cookies are used on this site
           so that means I don't have to include any stupid popups.</Block>

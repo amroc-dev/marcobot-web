@@ -71,7 +71,7 @@ function DonatePage() {
       </Block>
       <Block>
         If you find Marcobot valuable, and you can afford to, please consider supporting the project. It's the only way
-        I'll be able to keep this alive, and continue working on it.
+        I'll be able to keep it alive, and continue to improve it.
       </Block>
       <Block>
         Thanks for your support.

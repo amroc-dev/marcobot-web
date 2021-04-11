@@ -28,6 +28,7 @@ import nano from "@assets/nano.png";
 import paypal from "@assets/paypal.png";
 import bitcoin from "@assets/bitcoin.png";
 import bmac from "@assets/bmac.png";
+import kiwanuka from "@assets/kiwanuka.png";
 import "@css/HomePage.css";
 
 function DonatePage() {
@@ -37,27 +38,29 @@ function DonatePage() {
 
   function afterPageOut() {}
 
-//   let toastBottom;
-//   const showToastBottom = () => {
-//     // Create toast
-//     if (!toastBottom) {
-//       toastBottom = f7.toast.create({
-//         text: 'Copied to clipboard',
-//         position: 'center',
-//         width:100,
-//         closeTimeout: 2000,
-//       });
-//     }
-//     // Open it
-//     toastBottom.open();
-//   }
+  //   let toastBottom;
+  //   const showToastBottom = () => {
+  //     // Create toast
+  //     if (!toastBottom) {
+  //       toastBottom = f7.toast.create({
+  //         text: 'Copied to clipboard',
+  //         position: 'center',
+  //         width:100,
+  //         closeTimeout: 2000,
+  //       });
+  //     }
+  //     // Open it
+  //     toastBottom.open();
+  //   }
+
+  const kiwanukaUrl = (window.navigator.standalone ? "itms-apps" : "https") + "://itunes.apple.com/app/id849796318";
 
   return (
     <Page onPageBeforeIn={pageIn} onPageAfterOut={afterPageOut}>
       <Navbar>
         <NavTitle>
           <div style={{ display: "flex", alignItems: "center" }}>
-            Donate
+            Support Marcobot
             {/* <DonateIcon /> */}
           </div>
         </NavTitle>
@@ -79,14 +82,20 @@ function DonatePage() {
       </Block>
       <Block>
         <div id="donateButtons">
-          <div>
-            <Link href="https://www.buymeacoffee.com/marcobot" external>
-              <div id="bmacButton">
-                <img id="bmacLogo" src={bmac} alt="" />
-              </div>
-            </Link>
+          <Link href="https://www.buymeacoffee.com/marcobot" external>
+            <div id="bmacButton">
+              <img id="bmacLogo" src={bmac} alt="" />
+            </div>
+          </Link>
 
-            {/* <Link color="white" href="https://www.patreon.com/bePatron?u=7282195" external>
+          <Link onClick={() => window.open(kiwanukaUrl)}>
+            <div id="kiwanukaPanel">
+              <img id="kiwanuka" src={kiwanuka} alt="" />
+              <div style={{ marginLeft: "0.5rem", color: "rgba(255,255,255,0.95)" }}>Buy Kiwanuka</div>
+            </div>
+          </Link>
+
+          {/* <Link color="white" href="https://www.patreon.com/bePatron?u=7282195" external>
               <div id="patreonButton">
                 <img id="patreonLogo" src={patreon} alt="" />
                 Patreon
@@ -94,12 +103,11 @@ function DonatePage() {
             </Link>
             <Link style={{ marginLeft: "1rem" }}></Link> */}
 
-            {/* <Link color="white" href="https://www.paypal.com/donate?hosted_button_id=8TRKHBL2AKUCA" external>
+          {/* <Link color="white" href="https://www.paypal.com/donate?hosted_button_id=8TRKHBL2AKUCA" external>
               <div id="paypalButton">
                 <img id="paypalLogo" src={paypal} alt="" />
               </div>
             </Link> */}
-          </div>
 
           {/* <img id="bitcoinLogo" src={bitcoin} alt="" />
           <div

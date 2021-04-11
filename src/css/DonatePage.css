@@ -42,14 +42,32 @@
   padding: 0 1.5rem 0 1.5rem;
   font-weight: 600;
   height: 38px;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2.5rem;
 }
 
 #bmacLogo {
   /* padding-right: 0.75rem; */
-  border-radius: 42px;
+  border-radius: 2px;
   height: 60px;
 }
+
+#kiwanuka {
+    border-radius: 0px;
+    height: 62px;
+}
+
+#kiwanukaPanel {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 10px;
+    padding: 0 1.25rem 0 1.25rem;
+    font-weight: 600;
+    /* height: 60px; */
+    margin-bottom: 1.5rem;
+  }
+  
 
 #bitcoinLogo {
   height: 20px;

@@ -48,7 +48,7 @@ function AboutPage() {
             style={{ width: "128px", height: "128px", marginRight: "1rem", borderRadius: "12px" }}
             alt=""
           />
-          Marcobot is small search engine for 'pay once' App Store games, games that have no in-app purchases.
+          Marcobot is a small search engine for 'pay once' App Store games: games that have no in-app purchases.
         </div>
       </Block>
       <Block>More info soon.</Block>

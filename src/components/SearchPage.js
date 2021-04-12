@@ -25,7 +25,7 @@ import {
 import SearchPageContent from "./SearchPageContent";
 import { SearchResultsContext } from "@shared/react/SearchResultsContext";
 import { F7PanelContext } from "@root/F7PanelContext";
-import { LeftPanelNavLink, RightPanelNavLink, DonateIcon, AboutIcon } from "@components/Misc";
+import { LeftPanelNavLink, RightPanelNavLink, DonateIcon, AboutIcon, MenuText } from "@components/Misc";
 import logo from "@assets/marcobot_64.png";
 import "@css/SearchPage.scss";
 import "@css/App.scss";
@@ -60,11 +60,10 @@ function SearchPage() {
           <div style={{ display: "flex" }}>
             <div style={{ display: "flex", padding: "0.25rem", paddingLeft: 0 }}>
               <Link popupOpen=".donatePagePopup">
-                {/* Donate */}
                 <DonateIcon />
               </Link>
               <Link popupOpen=".aboutPagePopup">
-                <AboutIcon />
+                <MenuText>About</MenuText>
               </Link>
             </div>
             <div style={{ padding: "0.25rem" }}></div>

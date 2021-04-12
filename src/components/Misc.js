@@ -38,8 +38,8 @@ export function LeftPanelNavLink(props) {
 
 export function DonateIcon() {
   const frameDelay = 1000 / 30;
-  const repeatDelay = 30;
-  const animDuration = 1;
+  const repeatDelay = 5;
+  const animDuration = 1.5;
   const animFrame = useRef(0);
   const waitCounter = useRef(0);
   const [rot, setRot] = useState("rotate(0deg)");
@@ -51,7 +51,8 @@ export function DonateIcon() {
     if (waitCounter.current < repeatDelay) return;
 
     animFrame.current += deltaTime;
-    let degs = Math.sin(animFrame.current * Math.PI * 5) * 15 * Math.sin((animFrame.current / animDuration) * Math.PI);
+    let degs =
+      Math.sin(animFrame.current * Math.PI * 6) * 12.5 * Math.sin((animFrame.current / animDuration) * Math.PI);
     if (animFrame.current >= animDuration) {
       degs = 0;
       waitCounter.current = 0;
@@ -61,10 +62,10 @@ export function DonateIcon() {
   }
 
   useEffect(() => {
-    waitCounter.current = repeatDelay / 2;
-    animFrame.current = 0;
-    setIntervalObj(setInterval(update, frameDelay));
-    return () => stopAnim();
+    // waitCounter.current = repeatDelay / 2;
+    // animFrame.current = 0;
+    // setIntervalObj(setInterval(update, frameDelay));
+    // return () => stopAnim();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -75,9 +76,9 @@ export function DonateIcon() {
 
   function stopAnim() {
     if (intervalObj) {
-        clearInterval(intervalObj)
-        setIntervalObj(null);
-        setRot("rotate(0deg)");
+      clearInterval(intervalObj);
+      setIntervalObj(null);
+      setRot("rotate(0deg)");
     }
   }
 
@@ -87,22 +88,28 @@ export function DonateIcon() {
     //   size={"var(--gt-icon-size-medium)"}
     //   f7="rocket_fill"
     // />
-
-    <img onClick={stopAnim} style={{ height: "28px", paddingRight: "0.0rem", transform: rot }} src={coffee} alt="" />
+    <div style={{display:"flex", justifyContent:"flex-start", alignItems:"center"}} onClick={() => stopAnim()}>
+      <img style={{ height: "22px", marginLeft: "-5px", transform: rot }} src={coffee} alt="" />
+      <div style={{ paddingLeft: "0.3rem" }}>
+        <MenuText>Support</MenuText>
+      </div>
+    </div>
   );
 }
 
 export function AboutIcon() {
   return (
-    <Icon
-      style={{ padding: "0.0rem", color: "rgba(0, 161, 222, 1)" }}
-      size={"var(--gt-icon-size-large)"}
-      f7="info_circle"
-    />
-    // <div style={{fontSize:"16px", color:"rgba(0,0,0,0.9)"}}>
-    //     About
-    // </div>
+    // <Icon
+    //   style={{ padding: "0.0rem", color: "rgba(0, 161, 222, 1)" }}
+    //   size={"var(--gt-icon-size-large)"}
+    //   f7="info_circle"
+    // />
+    <div style={{ fontSize: "16px", color: "rgba(0,0,0,0.9)" }}>About</div>
   );
+}
+
+export function MenuText(props) {
+  return <div style={{ fontSize: "14px", color: "rgba(0,0,0,0.9)", paddingRight: "0.25rem" }}>{props.children}</div>;
 }
 
 export function RightPanelNavLink(props) {

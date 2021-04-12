@@ -37,29 +37,49 @@ export function LeftPanelNavLink(props) {
 }
 
 export function DonateIcon() {
-  //   const position = useRef([0, 0]);
-  //   const iter = useRef(0);
-  //   const [transformStyle, setTransformStyle] = useState("translate(0,0)");
+  const frameDelay = 1000 / 30;
+  const repeatDelay = 30;
+  const animDuration = 1;
+  const animFrame = useRef(0);
+  const waitCounter = useRef(0);
+  const [rot, setRot] = useState("rotate(0deg)");
+  const [intervalObj, setIntervalObj] = useState(false);
 
-  //   function update() {
-  //     iter.current += 4;
-  //     const x = Math.sin(iter.current * 0.3) * 0.5;
-  //     const y = Math.cos(iter.current * 0.2) * 0.5;
-  //     position.current = [x, y];
-  //     setTransformStyle("translate(" + position.current[0] + "px," + position.current[1] + "px)");
-  //     setTransformStyle("rotate(-20deg)");
-  //   }
+  const deltaTime = parseFloat(frameDelay) / 1000.0;
+  function update() {
+    waitCounter.current += deltaTime;
+    if (waitCounter.current < repeatDelay) return;
 
-  //   useEffect(() => {
-  //     const interval = setInterval(update, 100);
-  //     return () => clearInterval(interval);
-  //     // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   }, []);
+    animFrame.current += deltaTime;
+    let degs = Math.sin(animFrame.current * Math.PI * 5) * 15 * Math.sin((animFrame.current / animDuration) * Math.PI);
+    if (animFrame.current >= animDuration) {
+      degs = 0;
+      waitCounter.current = 0;
+      animFrame.current = 0;
+    }
+    setRot("rotate(" + degs + "deg)");
+  }
+
+  useEffect(() => {
+    waitCounter.current = repeatDelay / 2;
+    animFrame.current = 0;
+    setIntervalObj(setInterval(update, frameDelay));
+    return () => stopAnim();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // "rgba(255, 126, 0, 0.85)"
   //rgba(255, 126, 34, 0.9)
   //rgba(125, 50, 225, 0.75)
   //"var(--f7-theme-color)"
+
+  function stopAnim() {
+    if (intervalObj) {
+        clearInterval(intervalObj)
+        setIntervalObj(null);
+        setRot("rotate(0deg)");
+    }
+  }
 
   return (
     // <Icon
@@ -68,20 +88,20 @@ export function DonateIcon() {
     //   f7="rocket_fill"
     // />
 
-    <img style={{ width: "24px", paddingRight:"0.5rem"}} src={coffee} alt="" />
+    <img onClick={stopAnim} style={{ height: "28px", paddingRight: "0.0rem", transform: rot }} src={coffee} alt="" />
   );
 }
 
 export function AboutIcon() {
   return (
-    // <Icon
-    //   style={{ padding: "0.25rem", color: "rgba(0,0,0,0.66)" }}
-    //   size={"var(--gt-icon-size-large)"}
-    //   f7="info_circle"
-    // />
-    <div style={{fontSize:"16px", color:"rgba(0,0,0,0.9)"}}>
-        About
-    </div>
+    <Icon
+      style={{ padding: "0.0rem", color: "rgba(0, 161, 222, 1)" }}
+      size={"var(--gt-icon-size-large)"}
+      f7="info_circle"
+    />
+    // <div style={{fontSize:"16px", color:"rgba(0,0,0,0.9)"}}>
+    //     About
+    // </div>
   );
 }
 

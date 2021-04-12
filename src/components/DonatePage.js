@@ -73,7 +73,7 @@ function DonatePage() {
         monetization mechanisms that burden much of the internet and mobile gaming.
       </Block>
       <Block>
-        If you find Marcobot valuable, and you can afford to, please consider buying me a coffee, or my game. It's the only way
+        If you find this project valuable and you can afford to, please consider buying me a coffee, or my game. It's the only way
         I'll be able to keep it alive, and continue to improve it.
       </Block>
       <Block>
@@ -91,7 +91,7 @@ function DonatePage() {
           <Link onClick={() => window.open(kiwanukaUrl)}>
             <div id="kiwanukaPanel">
               <img id="kiwanuka" src={kiwanuka} alt="" />
-              <div style={{ marginLeft: "0.5rem", color: "rgba(255,255,255,0.85)", fontFamily: "Vectrex" }}>
+              <div style={{ marginLeft: "0.5rem", color: "rgba(255,255,255,0.85)", fontFamily: "Vectrex",  fontSize:"15px" }}>
                 Kiwanuka
               </div>
             </div>

@@ -91,8 +91,8 @@ function DonatePage() {
           <Link onClick={() => window.open(kiwanukaUrl)}>
             <div id="kiwanukaPanel">
               <img id="kiwanuka" src={kiwanuka} alt="" />
-              <div style={{ marginLeft: "0.5rem", color: "rgba(255,255,255,0.85)", fontFamily: "Vectrex",  fontSize:"15px" }}>
-                Kiwanuka
+              <div style={{ marginLeft: "0.5rem", color: "rgba(255,255,255,0.85)", fontFamily: "Vectrex",  fontSize:"14px" }}>
+                Buy Kiwanuka
               </div>
             </div>
           </Link>

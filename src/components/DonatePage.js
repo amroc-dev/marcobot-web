@@ -73,8 +73,8 @@ function DonatePage() {
         monetization mechanisms that burden much of the internet and mobile gaming.
       </Block>
       <Block>
-        If you find this project valuable and you can afford to, please consider buying me a coffee, or my game. It's the only way
-        I'll be able to keep it alive, and continue to improve it.
+        If you find this project valuable and you can afford to, please consider buying me a coffee, or my game. It's
+        the only way I'll be able to keep it alive, and continue to improve it.
       </Block>
       <Block>
         Thanks for your support.
@@ -91,8 +91,18 @@ function DonatePage() {
           <Link onClick={() => window.open(kiwanukaUrl)}>
             <div id="kiwanukaPanel">
               <img id="kiwanuka" src={kiwanuka} alt="" />
-              <div style={{ marginLeft: "0.5rem", color: "rgba(255,255,255,0.85)", fontFamily: "Vectrex",  fontSize:"14px" }}>
-                Buy Kiwanuka
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection:"column",
+                  alignItems:"flex-start",
+                  marginLeft: "0.5rem",
+                  color: "rgba(255,255,255,0.85)",
+                  fontFamily: "Vectrex",
+                  fontSize: "14px",
+                }}
+              >
+                <div style={{ fontSize: "12px" }}>Buy</div>Kiwanuka
               </div>
             </div>
           </Link>

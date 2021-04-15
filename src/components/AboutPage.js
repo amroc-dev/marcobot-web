@@ -72,7 +72,7 @@ function AboutPage() {
       </Block>
       <Block>Marcobot is a search engine for 'pay once' App Store games. Games that have no in-app purchases.</Block>
       <Block>
-        This site currently just includes paid games, although there are plans to add games which
+        This site currently just includes paid games, but there are plans to add games which
         use the free + unlock full game IAP approach.
       </Block>
       <Block>

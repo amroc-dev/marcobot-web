@@ -9,6 +9,7 @@ import { FilterTagsContextProvider } from "@shared/react/FilterTagsContext";
 import { F7PanelContextProvider, LeftPanel, RightPanel } from "@root/F7PanelContext";
 import routes from "@root/routes";
 import store from "@root/store";
+import Vectrex from '@fonts/Vectrex.ttf';
 
 import "@css/App.scss";
 

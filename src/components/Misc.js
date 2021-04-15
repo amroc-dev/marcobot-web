@@ -88,12 +88,14 @@ export function DonateIcon() {
     //   size={"var(--gt-icon-size-medium)"}
     //   f7="rocket_fill"
     // />
-    <div style={{display:"flex", justifyContent:"flex-start", alignItems:"center"}} onClick={() => stopAnim()}>
-      <img style={{ height: "22px", marginLeft: "-5px", transform: rot }} src={coffee} alt="" />
-      <div style={{ paddingLeft: "0.3rem" }}>
-        <MenuText>Support</MenuText>
+
+      <div style={{ display: "flex", alignItems: "center" }} onClick={() => stopAnim()}>
+        <img style={{ width:"17px", marginLeft: "-5px" }} src={coffee} alt="" />
+        <div style={{ paddingLeft: "0.3rem" }}>
+          <MenuText>Support</MenuText>
+        </div>
       </div>
-    </div>
+
   );
 }
 

@@ -74,7 +74,7 @@ function DonatePage() {
       </Block>
       <Block>
         If you find this project valuable and you can afford to, please consider buying me a coffee, or my game. It's
-        the only way I'll be able to keep it alive, and continue to improve it.
+        the only way I'll be able to keep it going as well as improve it.
       </Block>
       <Block>
         Thanks for your support.

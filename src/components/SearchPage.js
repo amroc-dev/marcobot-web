@@ -32,6 +32,7 @@ import "@css/App.scss";
 import LinkButton from "./LinkButton";
 import DonatePage from "@components/DonatePage";
 import AboutPage from "@components/AboutPage";
+import {event_Support, event_About} from "@root/analytics";
 
 function SearchPage() {
   const { setHoldSearch } = useContext(SearchResultsContext);
@@ -59,10 +60,10 @@ function SearchPage() {
           {/* <LeftPanelNavLink /> */}
      
             {/* <div style={{ display: "flex", padding: "0.25rem", paddingLeft: 0 }}> */}
-              <Link popupOpen=".donatePagePopup">
+              <Link popupOpen=".donatePagePopup" onClick={ () => event_Support()}>
                 <DonateIcon />
               </Link>
-              <Link popupOpen=".aboutPagePopup">
+              <Link popupOpen=".aboutPagePopup" onClick={ () => event_About()}>
                 <MenuText>About</MenuText>
               </Link>
             {/* </div> */}

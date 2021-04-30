@@ -29,6 +29,7 @@ import paypal from "@assets/paypal.png";
 import bitcoin from "@assets/bitcoin.png";
 import bmac from "@assets/bmac.png";
 import kiwanuka from "@assets/kiwanuka.png";
+import {event_BMAC, event_Kiwanuka} from "@root/analytics";
 import "@css/HomePage.css";
 
 function DonatePage() {
@@ -82,13 +83,13 @@ function DonatePage() {
       </Block>
       <Block>
         <div id="donateButtons">
-          <Link href="https://www.buymeacoffee.com/marcobot" external>
+          <Link href="https://www.buymeacoffee.com/marcobot" external onClick={ () => event_BMAC()}>
             <div id="bmacButton">
               <img id="bmacLogo" src={bmac} alt="" />
             </div>
           </Link>
 
-          <Link onClick={() => window.open(kiwanukaUrl)}>
+          <Link onClick={() => {event_Kiwanuka(); window.open(kiwanukaUrl)} }>
             <div id="kiwanukaPanel">
               <img id="kiwanuka" src={kiwanuka} alt="" />
               <div

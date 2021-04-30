@@ -5,6 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import Framework7 from 'framework7/lite-bundle';
 import Framework7React from 'framework7-react';
 
+import "./analytics";
+
 import 'framework7/framework7-bundle.css';
 
 import './css/icons.css';

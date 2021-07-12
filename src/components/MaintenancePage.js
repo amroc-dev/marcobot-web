@@ -31,7 +31,7 @@ function MaintenancePage() {
             <img id="logo" src={marcobot} alt="" />   
         </Block>
         <Block>
-            Sorry! Marcobot is currently being repaired...
+            Sorry, Marcobot is currently undergoing maintenance...
         </Block>
         <Block>
         </Block>

@@ -9,29 +9,29 @@ import MaintenancePage from "@components/MaintenancePage";
 var routes = [
   {
     path: "/",
-    component: MaintenancePage,
+    component: SearchPage,
   },
-//   {
-//     path: "/search-page",
-//     component: SearchPage,
-//   },
+  {
+    path: "/search-page",
+    component: SearchPage,
+  },
 
-//   {
-//     path: "/menu-page",
-//     component: MenuPage,
-//   },
-//   {
-//     path: "/filters-page",
-//     component: FiltersPage,
-//   },
-//   {
-//     path: "/filter-tags-page",
-//     component: FilterTagsPage,
-//   },
-//   {
-//     path: "/settings-page",
-//     component: SettingsPage,
-//   },
+  {
+    path: "/menu-page",
+    component: MenuPage,
+  },
+  {
+    path: "/filters-page",
+    component: FiltersPage,
+  },
+  {
+    path: "/filter-tags-page",
+    component: FilterTagsPage,
+  },
+  {
+    path: "/settings-page",
+    component: SettingsPage,
+  },
 ];
 
 export default routes;
